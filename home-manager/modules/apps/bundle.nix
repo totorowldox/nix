@@ -1,0 +1,5 @@
+{
+	imports = [
+		./electron.nix
+	];
+}

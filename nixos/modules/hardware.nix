@@ -1,0 +1,60 @@
+{
+	boot.supportedFilesystems = [ "ntfs" ];
+
+	fileSystems."/media/windows/c" = {
+		device = "/dev/disk/by-uuid/BA76E5860768395D";
+		fsType = "ntfs";
+		options = [
+			"uid=1000"
+			"gid=100"
+			"rw"
+			"user"
+			"exec"
+			"umask=000"
+		];
+	};
+	fileSystems."/media/windows/d" = {
+		device = "/dev/disk/by-uuid/09C1B27D95CC5896";
+		fsType = "ntfs";
+		options = [
+			"uid=1000"
+			"gid=100"
+			"rw"
+			"user"
+			"exec"
+			"umask=000"
+		];
+	};
+	fileSystems."/media/windows/e" = {
+		device = "/dev/disk/by-uuid/0890550F289795A0";
+		fsType = "ntfs";
+		options = [
+			"uid=1000"
+			"gid=100"
+			"rw"
+			"user"
+			"exec"
+			"umask=000"
+		];
+	};
+	fileSystems."/media/windows/g" = {
+		device = "/dev/disk/by-uuid/C0B4F51EE1BBB23B";
+		fsType = "ntfs";
+		options = [
+			"uid=1000"
+			"gid=100"
+			"rw"
+			"user"
+			"exec"
+			"umask=000"
+		];
+	};
+
+	#hardware.graphics.enable32Bit = true;
+
+	hardware.opengl = {
+		## radv: an open-source Vulkan driver from freedesktop
+		driSupport = true;
+		driSupport32Bit = true;
+	};
+}
