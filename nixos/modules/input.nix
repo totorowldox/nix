@@ -9,6 +9,7 @@
 			fcitx5-rime
 			fcitx5-mozc
 			fcitx5-chinese-addons
+			fcitx5-pinyin-moegirl
 			fcitx5-nord
 		];
 	};
