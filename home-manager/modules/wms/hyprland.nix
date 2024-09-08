@@ -140,8 +140,9 @@
         "waybar"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
-        "mako"
+        "swaync"
         "fcitx5 -d -r"
+        "1password"
         #"fcitx5-remote -r"
       ];
 
@@ -157,6 +158,7 @@
         #"$mainMod, P, pseudo, # dwindle"
         "$mainMod, P, pin"
         "$mainMod, J, togglesplit, # dwindle"
+        "$mainMod, Tab, exec, swaync-client -t"
         ''$mainMod, L, exec, wlogout''
 
         # Move focus with mainMod + arrow keys

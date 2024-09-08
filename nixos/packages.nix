@@ -62,6 +62,7 @@
 		
 		# Notification Controller
 		libnotify
+		swaynotificationcenter
 		
 		# Wayland Stuff
 		xwayland

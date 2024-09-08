@@ -18,6 +18,7 @@
 		./wms/hyprland.nix
 		./wms/waybar.nix
 		./wms/hyprlock.nix
+		./wms/nc
 		./apps/bundle.nix
 		./themes/bundle.nix
 	];

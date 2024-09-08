@@ -1,0 +1,50 @@
+{
+    "layer": "overlay",
+    "cssPriority": "application",
+    "notification-icon-size": 64,
+    "timeout": 10,
+    "timeout-low": 5,
+    "timeout-critical": 0,
+    "fit-to-screen": true,
+    "notification-window-width": 375,
+    "keyboard-shortcuts": true,
+    "image-visibility": "when-available",
+    "transition-time": 200,
+    "hide-on-clear": true,
+    "hide-on-action": true,
+    "script-fail-notify": true,
+    "scripts": {
+    },
+    "widgets": [
+      "title",
+      "dnd",
+      "volume",
+      "mpris",
+      "notifications"
+    ],
+    "widget-config": {
+      "title": {
+        "text": "Quick settings",
+        "clear-all-button": true
+      },
+      "volume": {
+        "label": "",
+        "expand-button-label": "",
+        "collapse-button-label": "",
+        "show-per-app": true,
+        "show-per-app-icon": true,
+        "show-per-app-label": false
+      },
+      "dnd": {
+        "text": "Do Not Disturb"
+      },
+      "mpris": {
+        "image-size": 96,
+        "image-radius": 4
+      },
+      "label": {
+        "text": "",
+        "clear-all-button": false
+      }
+    }
+  }

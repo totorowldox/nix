@@ -6,5 +6,4 @@
 		cava.catppuccin.enable = true;
 		yazi.catppuccin.enable = true;
 	};
-	services.mako.catppuccin.enable = true;
 }
