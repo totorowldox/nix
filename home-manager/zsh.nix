@@ -19,10 +19,12 @@
         username = "remo";
       in {
       
+      # NixOS System
       rbs = "sudo nixos-rebuild switch --flake ${flakeDir}/#${hostname}";
       hms = "home-manager switch --flake ${flakeDir}/#${username}";
       upd = "nix flake update ${flakeDir}/#${hostname}";
       upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}/#${hostname}";
+      cdn = "cd ~/nix";
 
       conf = "vim ${flakeDir}/nixos/configuration.nix";
       pkgs = "vim ${flakeDir}/nixos/packages.nix";
