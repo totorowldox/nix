@@ -4,5 +4,6 @@
         ./qt.nix
         ./catppuccined.nix
         ./fcitx.nix
+        ./cursor.nix
     ];
 }

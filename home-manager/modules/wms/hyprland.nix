@@ -2,7 +2,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemd.enable = true;
 
     plugins = with pkgs; [
       #hyprlandPlugins.hyprtrails
@@ -14,20 +13,19 @@
       monitor = ",1920x1080@120,0x0,1";
 
       env = [
+        # Session vars
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
+
+        # Cursors
+        "HYPRCURSOR_THEME,catppuccin-macchiato-dark-cursors"
+        "HYPRCURSOR_SIZE,36"
         "XCURSOR_SIZE,36"
+
         #"QT_QPA_PLATFORM,wayland"
         "XDG_SCREENSHOTS_DIR,~/screens"
         "SDL_VIDEODRIVER,wayland"
-
-        # Fuck you IME
-        #"GTK_IM_MODULE,fcitx"
-        #"QT_IM_MODULE,fcitx"
-        #"GLFW_IM_MODULE,fcitx"
-        #"SDL_IM_MODULE,fcitx"
-        #"XMODIFIERS,@im=fcitx"
       ];
 
       debug = {
@@ -36,9 +34,7 @@
       };
 
       input = {
-        kb_layout = "us,cn,jp";
-        kb_variant = "lang";
-        #kb_options = "grp:caps_toggle";
+        kb_layout = "us";
 
         follow_mouse = 1;
 
