@@ -72,7 +72,7 @@
         "col.shadow" = "rgba(1a1a1aee)";
       };
 
-      animations = {
+      /*animations = {
         enabled = true;
 
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
@@ -85,6 +85,32 @@
           "borderangle, 1, 8,  default"
           "fade,        1, 7,  default"
           "workspaces,  1, 6,  default"
+        ];
+      };*/
+
+      animations = {
+        enabled = true;
+
+        bezier = [
+          "fluent_decel, 0, 0.2, 0.4, 1"
+          "easeOutCirc, 0, 0.55, 0.45, 1"
+          "easeOutCubic, 0.33, 1, 0.68, 1"
+          "easeinoutsine, 0.37, 0, 0.63, 1"
+        ];
+        animation = [
+          "windowsIn, 1, 1.7, easeOutCubic, slide" # window open
+          "windowsOut, 1, 1.7, easeOutCubic, slide" # window close
+          "windowsMove, 1, 1.7, fluent_decel, slide" # everything in between, moving, dragging, resizing
+
+          # fading
+          "fadeIn, 1, 3, easeOutCubic" # fade in (open) -> layers and windows
+          "fadeOut, 1, 3, easeOutCubic" # fade out (close) -> layers and windows
+          "fadeSwitch, 1, 5, easeOutCirc" # fade on changing activewindow and its opacity
+          "fadeShadow, 1, 5, easeOutCirc" # fade on changing activewindow for shadows
+          "fadeDim, 1, 6, fluent_decel" # the easing of the dimming of inactive windows
+          "border, 1, 2.7, easeOutCirc" # for animating the border's color switch speed
+          "workspaces, 1, 2, fluent_decel, slide" # styles: slide, slidevert, fade, slidefade, slidefadevert
+          "specialWorkspace, 1, 3, fluent_decel, slidevert"
         ];
       };
 
@@ -137,12 +163,12 @@
       exec-once = [
         "swww init"
         "swww img ~/nix/assets/nixos-anime-wallpaper.png"
+        "swaync"
         "waybar"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
-        "swaync"
         "fcitx5 -d -r"
-        "1password"
+        #"1password"
         #"fcitx5-remote -r"
       ];
 
@@ -155,11 +181,12 @@
         "$mainMod, E, exec, nautilus"
         "$mainMod, F, togglefloating"
         "$mainMod, S, exec, wofi --show drun --term kitty"
+        "ALT, space, exec, anyrun"
         #"$mainMod, P, pseudo, # dwindle"
         "$mainMod, P, pin"
         "$mainMod, J, togglesplit, # dwindle"
         "$mainMod, Tab, exec, swaync-client -t"
-        ''$mainMod, L, exec, wlogout''
+        "$mainMod, L, exec, wlogout"
 
         # Move focus with mainMod + arrow keys
         "$mainMod, left,  movefocus, l"
@@ -190,6 +217,7 @@
         "$mainMod, 8, workspace, 8"
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
+        "$mainMod, z, togglespecialworkspace"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
         "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
@@ -202,6 +230,7 @@
         "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
         "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
         "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
+        "$mainMod SHIFT, z, movetoworkspace, special"
 
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e+1"

@@ -1,4 +1,4 @@
-{
+{config, inputs, pkgs, ...} : {
     programs = {
 		btop.enable = true;
 		cava.enable = true;
@@ -9,4 +9,9 @@
     services = {
         mako.enable = true;
     };
+
+    /* Third-Party Apps */
+    home.packages = with pkgs;[
+        osu-lazer-bin
+    ];
 }
