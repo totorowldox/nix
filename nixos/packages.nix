@@ -90,6 +90,8 @@
 	];
 	
 	programs = {
-		steam.enable = true;
+		steam = {
+			enable = true;
+		};
 	};
 }

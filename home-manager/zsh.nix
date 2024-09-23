@@ -22,7 +22,7 @@
       # NixOS System
       rbs = "sudo nixos-rebuild switch --flake ${flakeDir}/#${hostname}";
       hms = "home-manager switch --flake ${flakeDir}/#${username}";
-      upd = "nix flake update ${flakeDir}/#${hostname}";
+      upd = "nix flake update ${flakeDir}";
       upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}/#${hostname}";
       cdn = "cd ~/nix";
 
