@@ -72,7 +72,7 @@
 
                 # Today
                 {
-                    text = ''cmd[update:18000000] echo "<b><big> "$(LANG=ja_JP.utf8 date +'%A')" </big></b>"'';
+                    text = ''cmd[update:18000000] echo "<b><big> "$(LC_ALL=ja_JP.UTF8 date +'%A')" </big></b>"'';
                     #color = $color7;
                     font_size = 22;
                     font_family = "JetBrains Mono 10";
@@ -84,7 +84,7 @@
 
                 # Week
                 {
-                    text = ''cmd[update:18000000] echo "<b> "$(LANG=ja_JP.utf8 date +'%x')" </b>"'';
+                    text = ''cmd[update:18000000] echo "<b> "$(LC_ALL=ja_JP.UTF8 date +'%x')" </b>"'';
                     #color = $color7;
                     font_size = 18;
                     font_family = "JetBrains Mono 10";

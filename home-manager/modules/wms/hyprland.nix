@@ -10,7 +10,8 @@
     settings = {
       "$mainMod" = "SUPER";
 
-      monitor = ",1920x1080@120,0x0,1";
+      #monitor = ",1920x1080@120,0x0,1";
+      monitor = ", highrr, auto, 1";
 
       env = [
         # Session vars
@@ -234,8 +235,8 @@
         "$mainMod SHIFT, z, movetoworkspace, special"
 
         # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
+        "$mainMod, mouse_down, workspace, e-1"
+        "$mainMod, mouse_up, workspace, e+1"
 
         # Configuration files
         #''$mainMod SHIFT, N, exec, kitty -e sh -c "rbs"''

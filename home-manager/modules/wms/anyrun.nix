@@ -9,7 +9,7 @@
             shell
             stdin
         ];
-        width.fraction = 0.25;
+        width.fraction = 0.4;
         y.fraction = 0.3;
         hidePluginInfo = false;
         closeOnClick = true;

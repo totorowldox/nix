@@ -13,6 +13,7 @@
 		./wine.nix
 		./passwd.nix
 		./networking.nix
+		./font.nix
 	];
 	
 }

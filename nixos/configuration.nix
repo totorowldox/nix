@@ -23,7 +23,7 @@
     "https://mirrors.ustc.edu.cn/nix-channels/store" 
     "https://anyrun.cachix.org"
     "https://nix-gaming.cachix.org"
-  ]; # Substituters
+  ];
     
   nix.settings.extra-trusted-public-keys = [
     "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
@@ -37,16 +37,18 @@
   # Localization stuffs...
   i18n.defaultLocale = "zh_CN.UTF-8";
   i18n.extraLocaleSettings = {
+    #LC_ALL = "zh_CN.UTF-8";
     #LC_ALL = "C"; # For WPF apps(wine)
     LC_ADDRESS = "zh_CN.UTF-8";
     LC_IDENTIFICATION = "zh_CN.UTF-8";
     LC_MEASUREMENT = "zh_CN.UTF-8";
+    LC_MESSAGES="ja_JP.UTF-8";
     LC_MONETARY = "zh_CN.UTF-8";
     LC_NAME = "zh_CN.UTF-8";
     LC_NUMERIC = "zh_CN.UTF-8";
     LC_PAPER = "zh_CN.UTF-8";
     LC_TELEPHONE = "zh_CN.UTF-8";
-    LC_TIME = "zh_CN.UTF-8";
+    LC_TIME = "ja_JP.UTF-8";
   };
 
   # Enable CUPS to print documents.

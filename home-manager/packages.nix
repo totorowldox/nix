@@ -5,12 +5,8 @@
         imv.enable = true;
         yazi.enable = true;
     };
-
-    services = {
-        mako.enable = true;
-    };
-
-    /* Third-Party Apps */
+    
+    /* Apps */
     home.packages = with pkgs;[
         osu-lazer-bin
     ];
