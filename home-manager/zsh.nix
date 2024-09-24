@@ -22,7 +22,7 @@
       # NixOS System
       rbs = "sudo nixos-rebuild switch --flake ${flakeDir}/#${hostname}";
       hms = "home-manager switch --flake ${flakeDir}/#${username}";
-      upd = "nix flake update ${flakeDir}";
+      upd = "sudo nix flake update ${flakeDir}";
       upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}/#${hostname}";
       cdn = "cd ~/nix";
 
@@ -31,9 +31,9 @@
 
       ll = "ls -l";
       v = "nvim";
+      hg = "history | grep";
       se = "sudoedit";
       ff = "fastfetch --logo-type builtin --logo nix-old";
-      v2 = "exec sudo ~/下载/v2raya_linux_x64_2.2.5.8";
 
       # Wine
       w32 = "wine";

@@ -19,6 +19,7 @@
 		waylyrics
 		localsend
 		telegram-desktop
+		clash-nyanpasu
 		
 		# Windows program runner
 		wine

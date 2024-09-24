@@ -10,8 +10,6 @@
 		anyrun.url = "github:anyrun-org/anyrun";
     	anyrun.inputs.nixpkgs.follows = "nixpkgs";
 
-		nix-gaming.url = "github:fufexan/nix-gaming";
-
 		berberman = {
 			url = "github:berberman/flakes";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +21,7 @@
 		};
 	};
 
-	outputs = { nixpkgs, catppuccin, anyrun, nix-gaming, berberman, home-manager, ... }@inputs :
+	outputs = { nixpkgs, catppuccin, anyrun, berberman, home-manager, ... }@inputs :
 		let
 			system = "x86_64-linux";
 		in {
