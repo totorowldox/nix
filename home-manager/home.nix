@@ -13,5 +13,6 @@
 		./packages.nix
 		./modules/bundle.nix
 		./zsh.nix
+		./nushell.nix
 	];
 }
