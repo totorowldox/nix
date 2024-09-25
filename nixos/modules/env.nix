@@ -1,8 +1,6 @@
 { pkgs, ... } : {
   lib.mkForce = {
     environment.variables = {
-        EDITOR = "code";
-
         #GTK_THEME = "Catppuccin-Macchiato-Compact-Pink-Dark";
         #QT_QPA_PLATFORMTHEME = "qt5ct";
         #SDL_VIDEODRIVER = "wayland";
@@ -13,6 +11,4 @@
         #XMODIFIERS = "@im=fcitx";
     };
   };
-
-  users.defaultUserShell = pkgs.zsh;
 }

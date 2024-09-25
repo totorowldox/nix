@@ -2,8 +2,6 @@
     programs = {
         nushell = {
             enable = true;
-        # The config.nu can be anywhere you want if you like to edit your Nushell with Nu
-            configFile.source = ./.../config.nu;
             # for editing directly to config.nu 
             extraConfig = ''
                 let carapace_completer = {|spans|
@@ -31,10 +29,38 @@
                 append /usr/bin/env
                 )
             '';
-            shellAliases = {
-                vi = "hx";
-                vim = "hx";
-                nano = "hx";
+
+            shellAliases =
+            let
+                flakeDir = "~/nix";
+                hostname = "remoaku";
+                username = "remo";
+            in {
+                # NixOS System
+                rbs = "sudo nixos-rebuild switch --flake ${flakeDir}/#${hostname}";
+                hms = "home-manager switch --flake ${flakeDir}/#${username}";
+                upd = "sudo nix flake update ${flakeDir}";
+                upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}/#${hostname}";
+                cdn = "cd ~/nix";
+
+                conf = "vim ${flakeDir}/nixos/configuration.nix";
+                pkgs = "vim ${flakeDir}/nixos/packages.nix";
+
+                ll = "ls -l";
+                v = "nvim";
+                se = "sudoedit";
+                ff = "fastfetch --logo-type builtin --logo nix-old";
+
+                # Wine
+                w32 = "wine";
+                wt = "winetricks";
+
+                # Windows drivers/directories
+                cdc = "cd /media/windows/c";
+                cdd = "cd /media/windows/d";
+                cde = "cd /media/windows/e";
+                cdg = "cd /media/windows/g";
+                cdgal = "cd /media/windows/e/GAL";
             };
         };
         carapace.enable = true;
