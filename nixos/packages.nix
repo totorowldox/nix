@@ -26,29 +26,28 @@
 		winetricks
 		protonup-qt
 		
-		# Logout etc
-		swaylock-effects
-		
 		# Coding
 		vscode
 		cpeditor
 		gcc
 		gdb
 		clang-tools
+		just
 		
 		# CLI stuffs
 		thefuck
 		fastfetch
 		tree
 		go-musicfox
+		z-lua
+		cmd-wrapped
+		fzf
 		
 		# Terminal
 		# alacritty
 		kitty # For image support
 		
 		# Utils
-		v2ray
-		fuse
 		pavucontrol
 		
 		# WMs and stuff
@@ -57,10 +56,10 @@
 			mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
 			})
 		)
-		xdg-desktop-portal-hyprland
 		
 		# Wallpaper
 		swww
+		mpvpaper
 		
 		# Notification Controller
 		libnotify

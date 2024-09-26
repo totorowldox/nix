@@ -21,10 +21,13 @@
       upd = "sudo nix flake update ${flakeDir}";
       upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}/#${hostname}";
       cdn = "cd ~/nix";
-
       conf = "vim ${flakeDir}/nixos/configuration.nix";
       pkgs = "vim ${flakeDir}/nixos/packages.nix";
 
+      # NixOS
+      getUrlHash = "nix-prefetch-url --unpack";
+
+      # CLI
       ll = "ls -l";
       v = "nvim";
       hg = "history | grep";
@@ -44,7 +47,7 @@
     };
 
     history.size = 10000;
-    history.path = "${config.xdg.dataHome}/zsh/history";
+    #history.path = "${config.xdg.dataHome}/zsh/history";
 
     plugins = [
       {
@@ -55,6 +58,15 @@
           repo = "zsh-nix-shell";
           rev = "v0.8.0";
           sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+        };
+      }
+      {
+        name = "fzf-tab";
+        src = pkgs.fetchFromGitHub {
+          owner = "Aloxaf";
+          repo = "fzf-tab";
+          rev = "v1.1.2";
+          sha256 = "061jjpgghn8d5q2m2cd2qdjwbz38qrcarldj16xvxbid4c137zs2";
         };
       }
     ];
