@@ -7,7 +7,8 @@
     };
     
     /* Apps */
-    home.packages = with pkgs;[
-        osu-lazer-bin
+    home.packages = let gamePkgs=inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}; in with pkgs;[
+        gamePkgs.osu-stable
+        #osu-lazer-bin
     ];
 }

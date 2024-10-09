@@ -1,15 +1,12 @@
-{ pkgs, ...} : {
+{ pkgs, inputs, ...} : {
 
 	nixpkgs.config.allowUnfree = true;
+
+	services.flatpak.enable = true;
 	
-	environment.systemPackages =
-	let x11Args = ["--ozone-platform=x11" "--enable-features=UseOzonePlatform"]; in 
-	with pkgs; [
+	environment.systemPackages = with pkgs; [
 		# Desktop Apps
 		firefox
-		(microsoft-edge.override {
-			commandLineArgs = x11Args;
-		})
 		wofi
 		qq
 		mpv
@@ -20,9 +17,12 @@
 		localsend
 		telegram-desktop
 		clash-nyanpasu
+		libreoffice
+		jiten
 		
 		# Windows program runner
 		wine
+		wine64
 		winetricks
 		protonup-qt
 		
@@ -39,9 +39,10 @@
 		fastfetch
 		tree
 		go-musicfox
-		z-lua
 		cmd-wrapped
 		fzf
+		zoxide
+		tmux
 		
 		# Terminal
 		# alacritty
@@ -49,6 +50,9 @@
 		
 		# Utils
 		pavucontrol
+		waydroid
+		zip
+		unzip
 		
 		# WMs and stuff
 		waybar
@@ -88,10 +92,4 @@
 		# Polkit
 		polkit_gnome
 	];
-	
-	programs = {
-		steam = {
-			enable = true;
-		};
-	};
 }

@@ -15,9 +15,10 @@
 
       env = [
         # Session vars
-        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_CURRENT_DESKTOP,GNOME"
         "XDG_SESSION_TYPE,wayland"
-        "XDG_SESSION_DESKTOP,Hyprland"
+        "XDG_SESSION_DESKTOP,gnome"
+        "QT_QTA_PLATFORM=wayland"
 
         # Cursors
         "HYPRCURSOR_THEME,catppuccin-macchiato-dark-cursors"
@@ -29,10 +30,10 @@
         "SDL_VIDEODRIVER,wayland"
       ];
 
-      debug = {
-        disable_logs = false;
-        enable_stdout_logs = true;
-      };
+      #debug = {
+      #  disable_logs = false;
+      #  enable_stdout_logs = true;
+      #};
 
       input = {
         kb_layout = "us";
@@ -71,6 +72,9 @@
         shadow_range = 4;
         shadow_render_power = 3;
         "col.shadow" = "rgba(1a1a1aee)";
+
+        dim_inactive = true;
+        dim_strength = 0.1;
       };
 
       /*animations = {
@@ -92,23 +96,24 @@
       animations = {
         enabled = true;
 
-        bezier = [
+        bezier =[
+          "myBounce, 0.05, 0.9, 0.1, 1.05"
           "fluent_decel, 0, 0.2, 0.4, 1"
           "easeOutCirc, 0, 0.55, 0.45, 1"
           "easeOutCubic, 0.33, 1, 0.68, 1"
           "easeinoutsine, 0.37, 0, 0.63, 1"
         ];
         animation = [
-          "windowsIn, 1, 1.7, easeOutCubic, slide" # window open
-          "windowsOut, 1, 1.7, easeOutCubic, slide" # window close
-          "windowsMove, 1, 1.7, fluent_decel, slide" # everything in between, moving, dragging, resizing
+          "windowsIn, 1, 2, myBounce, slide" # window open
+          "windowsOut, 1, 2, myBounce, slide" # window close
+          "windowsMove, 1, 2, fluent_decel, slide" # everything in between, moving, dragging, resizing
 
           # fading
           "fadeIn, 1, 3, easeOutCubic" # fade in (open) -> layers and windows
           "fadeOut, 1, 3, easeOutCubic" # fade out (close) -> layers and windows
-          "fadeSwitch, 1, 5, easeOutCirc" # fade on changing activewindow and its opacity
+          "fadeSwitch, 1, 3, easeOutCirc" # fade on changing activewindow and its opacity
           "fadeShadow, 1, 5, easeOutCirc" # fade on changing activewindow for shadows
-          "fadeDim, 1, 6, fluent_decel" # the easing of the dimming of inactive windows
+          "fadeDim, 1, 3, fluent_decel" # the easing of the dimming of inactive windows
           "border, 1, 2.7, easeOutCirc" # for animating the border's color switch speed
           "workspaces, 1, 2, fluent_decel, slide" # styles: slide, slidevert, fade, slidefade, slidefadevert
           "specialWorkspace, 1, 3, fluent_decel, slidevert"
@@ -117,7 +122,7 @@
 
       dwindle = {
         pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-        preserve_split = true; # you probably want this
+        preserve_split = false;
       };
 
       gestures = {
@@ -184,8 +189,7 @@
         #"$mainMod, S, exec, wofi --show drun --term kitty"
         #"ALT, space, exec, anyrun"
         "$mainMod, S, exec, anyrun"
-        #"$mainMod, P, pseudo, # dwindle"
-        "$mainMod, P, pin"
+        "$mainMod, P, pseudo, # dwindle"
         "$mainMod, J, togglesplit, # dwindle"
         "$mainMod, Tab, exec, swaync-client -t"
         "$mainMod, L, exec, wlogout"

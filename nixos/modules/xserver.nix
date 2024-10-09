@@ -1,4 +1,4 @@
-{pkgs, ...} : {
+{ pkgs, inputs, ... } : {
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -30,9 +30,9 @@
 	};
 	
 	xdg.portal.enable = true;
-	xdg.portal.xdgOpenUsePortal = true;
-	xdg.portal.extraPortals = with pkgs; [ 
-		#xdg-desktop-portal-gtk
+	#xdg.portal.xdgOpenUsePortal = true;
+	#programs.dconf.enable = true;
+	xdg.portal.extraPortals = with pkgs; [
 		xdg-desktop-portal-hyprland
 	];
 }

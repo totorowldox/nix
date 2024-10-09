@@ -10,10 +10,11 @@
 	};
 	
 	imports = [
+		./modules
+
 		./packages.nix
-		./modules/bundle.nix
 		./zsh.nix
-		#./nushell.nix
+		# ./nushell.nix
 		./vars.nix
 	];
 }

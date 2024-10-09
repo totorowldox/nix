@@ -42,7 +42,7 @@
 			emoji = [ "Noto Color Emoji" ];
 		};
 
-		# Fixes pixelation
+		# Fix pixelation
 		antialias = true;
 
 		# Fix Steam CJK fonts

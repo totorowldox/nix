@@ -1,9 +1,10 @@
 { inputs, ... } : {
 
   imports = [
+      ./modules
+
       ./hardware-configuration.nix
       ./packages.nix
-      ./modules/bundle.nix
     ];
     
     #disabledModules = [
@@ -23,11 +24,13 @@
     "https://mirrors.ustc.edu.cn/nix-channels/store" 
     "https://anyrun.cachix.org"
     "https://nix-gaming.cachix.org"
+    "https://hyprland.cachix.org"
   ];
     
   nix.settings.extra-trusted-public-keys = [
     "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
     "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+    "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"]; # Enable flakes
