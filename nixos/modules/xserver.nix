@@ -9,6 +9,10 @@
   services.xserver.desktopManager.wallpaper.mode = "fill";
   services.xserver.desktopManager.gnome.enable = true;
   
+  # Enable COSMIC DE
+  #services.desktopManager.cosmic.enable = true;
+  #services.displayManager.cosmic-greeter.enable = true;
+  
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -25,9 +29,7 @@
 	#	NIXOS_OZONE_WL = "0"; # set to 1 will crash every electron app
 	#};
 	
-	hardware = {
-		opengl.enable = true;
-	};
+	hardware.graphics.enable = true;
 	
 	xdg.portal.enable = true;
 	#xdg.portal.xdgOpenUsePortal = true;

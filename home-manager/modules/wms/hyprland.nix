@@ -15,17 +15,19 @@
 
       env = [
         # Session vars
-        "XDG_CURRENT_DESKTOP,GNOME"
+        "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
-        "XDG_SESSION_DESKTOP,gnome"
-        "QT_QTA_PLATFORM=wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+
+        # QT
+        "QT_QPA_PLATFORM,wayland;xcb"
+        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
 
         # Cursors
         "HYPRCURSOR_THEME,catppuccin-macchiato-dark-cursors"
         "HYPRCURSOR_SIZE,36"
         "XCURSOR_SIZE,36"
 
-        #"QT_QPA_PLATFORM,wayland"
         "XDG_SCREENSHOTS_DIR,~/screens"
         "SDL_VIDEODRIVER,wayland"
       ];
@@ -68,10 +70,12 @@
           new_optimizations = true;
         };
 
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
+        shadow = {
+          enabled = true;
+          range = 4;
+          render_power = 3;
+          color = "rgba(1a1a1aee)";
+        };
 
         dim_inactive = true;
         dim_strength = 0.1;
@@ -142,11 +146,17 @@
       };
 
       windowrule = [
-        "float, ^(imv)$"
-        "float, ^(mpv)$"
-        "float, ^(celluloid)$"
-        "pseudo, fcitx"
-        "float, pavucontrol"
+        "float, class:^(imv)$"
+        "float, class:^(mpv)$"
+        "float, class:^(celluloid)$"
+        "float, class:^(QQ)$"
+        "center, class:^(QQ)$"
+        "float, class:^(zenity)$"
+        "float, class:^(org.gnome.TextEditor)$"
+        "float, class:^(org.gnome.Nautilus)$"
+        "float, class:^(io.github.celluloid_player.Celluloid)$"
+        "pseudo, class:fcitx"
+        "float, title:pavucontrol"
         "size 70% 70%, title:QQ"
         "pin, title:Waylyrics"
         "float, title:Waylyrics"
@@ -155,15 +165,6 @@
         "noshadow, title:Waylyrics"
         "nofocus, title:Waylyrics"
         "move 20% 80%, title:Waylyrics"
-      ];
-      
-      windowrulev2 = [
-        "float, class:^(QQ)$"
-        "center, class:^(QQ)$"
-        "float, class:^(zenity)$"
-        "float, class:^(org.gnome.TextEditor)$"
-        "float, class:^(org.gnome.Nautilus)$"
-        "float, class:^(io.github.celluloid_player.Celluloid)$"
       ];
 
       exec-once = [
@@ -261,6 +262,7 @@
         # Window Controls
         "ALT, Tab, cyclenext"
         "ALT, Tab, bringactivetotop"
+
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging

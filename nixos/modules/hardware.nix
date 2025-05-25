@@ -3,7 +3,7 @@
 
 	fileSystems."/media/windows/c" = {
 		device = "/dev/disk/by-uuid/BA76E5860768395D";
-		fsType = "ntfs";
+		fsType = "ntfs-3g";
 		options = [
 			"uid=1000"
 			"gid=100"
@@ -15,7 +15,7 @@
 	};
 	fileSystems."/media/windows/d" = {
 		device = "/dev/disk/by-uuid/09C1B27D95CC5896";
-		fsType = "ntfs";
+		fsType = "ntfs-3g";
 		options = [
 			"uid=1000"
 			"gid=100"
@@ -27,7 +27,7 @@
 	};
 	fileSystems."/media/windows/e" = {
 		device = "/dev/disk/by-uuid/0890550F289795A0";
-		fsType = "ntfs";
+		fsType = "ntfs-3g";
 		options = [
 			"uid=1000"
 			"gid=100"
@@ -39,7 +39,7 @@
 	};
 	fileSystems."/media/windows/g" = {
 		device = "/dev/disk/by-uuid/C0B4F51EE1BBB23B";
-		fsType = "ntfs";
+		fsType = "ntfs-3g";
 		options = [
 			"uid=1000"
 			"gid=100"
@@ -50,11 +50,5 @@
 		];
 	};
 
-	#hardware.graphics.enable32Bit = true;
-
-	hardware.opengl = {
-		## radv: an open-source Vulkan driver from freedesktop
-		driSupport = true;
-		driSupport32Bit = true;
-	};
+	hardware.graphics.enable32Bit = true;
 }

@@ -7,9 +7,9 @@
       ./packages.nix
     ];
     
-    #disabledModules = [
-    #  ./modules/xserver.nix
-    #];
+    disabledModules = [
+      "programs/anyrun.nix"
+    ];
 
     
   nixpkgs.config.allowUnfree = true; # Allow unfree packages
@@ -21,16 +21,17 @@
   nix.settings.builders-use-substitutes = true;
 
   nix.settings.substituters = [
-    "https://mirrors.ustc.edu.cn/nix-channels/store" 
+    "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+    "https://mirrors.ustc.edu.cn/nix-channels/store"
     "https://anyrun.cachix.org"
     "https://nix-gaming.cachix.org"
-    "https://hyprland.cachix.org"
+    "https://devenv.cachix.org"
   ];
     
   nix.settings.extra-trusted-public-keys = [
     "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
     "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-    "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=" 
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"]; # Enable flakes

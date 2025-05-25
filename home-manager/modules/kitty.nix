@@ -2,8 +2,7 @@
 	programs.kitty = {
 		enable = true;
 		
-		#catpuccin.enable = true;
-		theme = "Catppuccin-Macchiato";
+		#themeFile = "Catppuccin-Macchiato"; # Compare with catppuccin.kitty
 		
 		shellIntegration.enableZshIntegration = true;
 		font = {

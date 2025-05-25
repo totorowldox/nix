@@ -9,8 +9,7 @@
 		./input.nix
 		./env.nix
 		./gc.nix
-		./polkit.nix
-		./wine.nix
+		./security.nix
 		./passwd.nix
 		./networking.nix
 		./font.nix

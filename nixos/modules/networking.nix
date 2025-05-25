@@ -2,7 +2,7 @@
 
   # Network stuffs
   networking.networkmanager.enable = true;
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1" "8.8.8.8" "4.4.4.4" ];
+  networking.nameservers = [ "8.8.8.8" "4.4.4.4" ];
   
 
   # Enable the OpenSSH daemon.

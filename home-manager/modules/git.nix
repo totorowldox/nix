@@ -7,6 +7,10 @@
       
       gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
 
+      http.proxy = "127.0.0.1:7890";
+      https.proxy = "127.0.0.1:7890";
+      
+
       #gpg = {
       #  format = "ssh";
       #};

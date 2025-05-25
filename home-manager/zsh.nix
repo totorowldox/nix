@@ -6,17 +6,20 @@
     syntaxHighlighting.enable = true;
 
     sessionVariables = {
-      FZF_DEFAULT_OPTS="
+      FZF_DEFAULT_OPTS=''
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
 --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
 --color=selected-bg:#494d64 \
---multi";
+--prompt='$' \
+--pointer='🍥' \
+--border=double '';
+#--multi
 
     };
 
     # Custom shell scripts
-    initExtra = ''
+    initContent = ''
     function y() {
       local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
       yazi "$@" --cwd-file="$tmp"
@@ -32,10 +35,7 @@
         --height=50% \
         --margin=2%,2%,2%,2% \
         --layout=reverse-list \
-        --border=double \
         --info=default \
-        --prompt='$' \
-        --pointer='🍥' \
         --header='Select command to execute, CTRL-C or ESC to quit')
       if [[ -n $selected_command ]]; then
         BUFFER=$selected_command
@@ -48,6 +48,10 @@
     bindkey '^R' fzf-history
 
     eval "$(zoxide init zsh)"
+
+    eval "$(direnv hook zsh)"
+
+    eval $(thefuck --alias)
 
     '';
 
@@ -63,7 +67,7 @@
       rbs = "${sudoWithEnvVars} nixos-rebuild switch --flake ${flakeDir}/#${hostname}";
       hms = "home-manager switch --flake ${flakeDir}/#${username}";
 
-      upd = "${sudoWithEnvVars} nix flake update ${flakeDir}";
+      upd = "${sudoWithEnvVars} nix flake update --flake ${flakeDir}";
       upg = "${sudoWithEnvVars} nixos-rebuild switch --upgrade --flake ${flakeDir}/#${hostname}";
       
       cdn = "cd ~/nix";
@@ -93,6 +97,12 @@
       cde = "cd /media/windows/e";
       cdg = "cd /media/windows/g";
       cdgal = "cd /media/windows/e/GAL";
+
+      # Apps
+      osu-lazer = ''export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1; appimage-run ./下载/osu.AppImage'';
+
+      # Env Vars
+      set-proxy = ''export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'';
     };
 
     history.size = 10000;

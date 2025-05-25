@@ -12,13 +12,14 @@
 		mpv
 		celluloid
 		gparted
-		rustdesk-flutter
+		#rustdesk-flutter
 		waylyrics
 		localsend
 		telegram-desktop
 		clash-nyanpasu
 		libreoffice
 		jiten
+		signal-desktop
 		
 		# Windows program runner
 		wine
@@ -33,6 +34,8 @@
 		gdb
 		clang-tools
 		just
+		devenv
+		direnv
 		
 		# CLI stuffs
 		thefuck
@@ -77,7 +80,7 @@
 		# GTK Stuff
 		sassc
 		gtk-engine-murrine
-		gnome.gnome-themes-extra
+		gnome-themes-extra
 		
 		# Screenshotting
 		grim
@@ -89,7 +92,11 @@
 		# Others
 		home-manager
 		
-		# Polkit
+		# Security
 		polkit_gnome
+		libsForQt5.kleopatra
+		gnupg
+		pinentry
+		pinentry-gnome3
 	];
 }

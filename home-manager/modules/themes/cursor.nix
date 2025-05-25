@@ -5,6 +5,6 @@
         gtk.enable = true;
         x11.enable = true;
     };
-    catppuccin.pointerCursor.enable = true;
-    catppuccin.pointerCursor.accent = "dark";
+    catppuccin.cursors.enable = true;
+    catppuccin.cursors.accent = "dark";
 }
