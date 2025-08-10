@@ -49,6 +49,18 @@
 			"umask=000"
 		];
 	};
+	fileSystems."/media/windows/i" = {
+		device = "/dev/disk/by-uuid/7C3F9A9C3514AEE2";
+		fsType = "ntfs-3g";
+		options = [
+			"uid=1000"
+			"gid=100"
+			"rw"
+			"user"
+			"exec"
+			"umask=000"
+		];
+	};
 
 	hardware.graphics.enable32Bit = true;
 }

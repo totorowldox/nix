@@ -8,18 +8,19 @@
 		imv.enable = true;
 		kitty.enable = true;
 
-        gtk = {
-            enable = true;
-            accent = "pink";
-            flavor = "macchiato";
-            icon = {
-                enable = true;
-                accent = "pink";
-            };
-            # “standard”, “compact”
-            size = "compact";
-            # “black”, “rimless”, “normal”
-            # tweaks = [ "rimless" ];
-        };
+        # Catppuccin does not support GTK anymore...
+        # gtk = {
+        #     enable = true;
+        #     accent = "pink";
+        #     flavor = "macchiato";
+        #     icon = {
+        #         enable = true;
+        #         accent = "pink";
+        #     };
+        #     # “standard”, “compact”
+        #     size = "compact";
+        #     # “black”, “rimless”, “normal”
+        #     # tweaks = [ "rimless" ];
+        # };
 	};
 }

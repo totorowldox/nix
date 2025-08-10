@@ -15,7 +15,8 @@
   nixpkgs.config.allowUnfree = true; # Allow unfree packages
 
   networking.hostName = "remoaku"; # Hostname
-    
+
+  programs.appimage.enable = true;
   programs.appimage.binfmt = true; # Allow AppImages to run seamlessly... why not working?
   
   nix.settings.builders-use-substitutes = true;

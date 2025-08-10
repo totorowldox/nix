@@ -44,8 +44,10 @@
 		go-musicfox
 		cmd-wrapped
 		fzf
-		zoxide
 		tmux
+		zoxide # better cd
+		eza # better ls
+		nh # better nix cli
 		
 		# Terminal
 		# alacritty

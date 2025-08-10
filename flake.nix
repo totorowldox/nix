@@ -28,6 +28,7 @@
 	outputs = { nixpkgs, catppuccin, anyrun, nix-gaming, berberman, home-manager, ... }@inputs :
 		let
 			system = "x86_64-linux";
+			flakePath = "~/nix";
 		in {
 			
 		nixosConfigurations.remoaku = nixpkgs.lib.nixosSystem {
@@ -50,6 +51,7 @@
 			pkgs = nixpkgs.legacyPackages.${system};
 			extraSpecialArgs = {
 				inherit inputs;
+				inherit flakePath;
 			};
 			modules = [
 				catppuccin.homeModules.catppuccin

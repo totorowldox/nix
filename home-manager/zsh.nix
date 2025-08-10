@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, flakePath, ... }: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -57,28 +57,30 @@
 
     shellAliases =
       let
-        flakeDir = "~/nix";
         hostname = "remoaku";
         username = "remo";
         sudoWithEnvVars = "HOME=/ sudo -E";
       in {
       
       # NixOS System
-      rbs = "${sudoWithEnvVars} nixos-rebuild switch --flake ${flakeDir}/#${hostname}";
-      hms = "home-manager switch --flake ${flakeDir}/#${username}";
+      #rbs = "${sudoWithEnvVars} nixos-rebuild switch --flake ${flakePath}/#${hostname}";
+      #hms = "home-manager switch --flake ${flakePath}/#${username}";
+      rbs = "nh os switch ${flakePath}";
+      hms = "nh home switch ${flakePath}";
 
-      upd = "${sudoWithEnvVars} nix flake update --flake ${flakeDir}";
-      upg = "${sudoWithEnvVars} nixos-rebuild switch --upgrade --flake ${flakeDir}/#${hostname}";
+      upd = "${sudoWithEnvVars} nix flake update --flake ${flakePath}";
+      upg = "${sudoWithEnvVars} nixos-rebuild switch --upgrade --flake ${flakePath}/#${hostname}";
       
       cdn = "cd ~/nix";
-      conf = "vim ${flakeDir}/nixos/configuration.nix";
-      pkgs = "vim ${flakeDir}/nixos/packages.nix";
+      conf = "vim ${flakePath}/nixos/configuration.nix";
+      pkgs = "vim ${flakePath}/nixos/packages.nix";
 
       # NixOS
       getUrlHash = "nix-prefetch-url --unpack";
 
       # CLI
       cd = "z";
+      ls = "eza";
       cdi = "zi";
       v = "nvim";
       hg = "history | grep";
