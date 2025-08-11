@@ -102,6 +102,7 @@
 
       # Apps
       osu-lazer = ''export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1; appimage-run ./下载/osu.AppImage'';
+      ani-rss = "cd ~/ani-rss/ && ani-rss"; # Hack for configuring
 
       # Env Vars
       set-proxy = ''export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'';
