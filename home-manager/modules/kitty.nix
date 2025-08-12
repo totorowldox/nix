@@ -7,7 +7,7 @@
 		shellIntegration.enableZshIntegration = true;
 		font = {
         		size = 13.0;
-        		name = "JetBrains Mono";
+        		name = "Maple Mono NF CN";
 		};
 		settings = {
 			scrollback_lines = 10000;

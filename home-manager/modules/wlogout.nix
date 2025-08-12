@@ -53,7 +53,7 @@
             
             button {
                 color: #b7bdf8;
-                font-family: "JetBrains Mono";
+                font-family: "Maple Mono NF CN";
                 font-size: 28px;
                 background-color: #363a4f;
 

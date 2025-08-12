@@ -12,6 +12,7 @@
 		#source-han-serif
 
 		jetbrains-mono
+		maple-mono.NF-CN-unhinted
 		cascadia-code
 		powerline-fonts
 		powerline-symbols
@@ -35,6 +36,7 @@
 				"Noto Sans CJK JP"
 			];
 			monospace = [
+				"Maple Mono NF CN"
 				"JetBrains Mono"
 				"Noto Sans Mono CJK SC"
 				"Noto Sans Mono CJK JP"

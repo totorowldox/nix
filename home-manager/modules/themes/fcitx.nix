@@ -2,7 +2,7 @@
     home.file.".config/fcitx5/conf/classicui.conf" = {
 		text = ''
 Theme=Nord-Dark
-Font="JetBrains Mono 15"
+Font="Maple Mono NF CN 15"
         '';
     
     };

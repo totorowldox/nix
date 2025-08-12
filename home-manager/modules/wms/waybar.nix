@@ -12,7 +12,7 @@
 
 * {
     border: none;
-    font-family: "JetBrains Mono", "Noto Sans CJK SC";
+    font-family: "Maple Mono NF CN", "Noto Sans CJK SC";
     font-size: 17px;
     min-height: 0;
     border-radius: 1rem;
@@ -32,7 +32,7 @@
     transition: none;
     color: @green;
     background: @surface0;
-    font-family: "JetBrains Mono", "Noto Sans CJK SC";
+    font-family: "Maple Mono NF CN", "Noto Sans CJK SC";
 }
 
 #workspaces {
@@ -120,7 +120,7 @@
     color: @teal;
     font-size: 22px;
     font-weight: bold;
-    font-family: "JetBrains Mono";
+    font-family: "Maple Mono NF CN";
     background: @surface0;
 }
 

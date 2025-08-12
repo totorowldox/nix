@@ -26,7 +26,7 @@
             input-field = [
                 {
                     size = "250, 50";
-                    position = "0, 60";
+                    position = "0, -70";
                     dots_center = true;
                     dots_size = 0.26;
                     dots_spacing = 0.64;
@@ -47,11 +47,11 @@
                     text = ''cmd[update:1000] echo "<b><big> $(date +"%H") </big></b>"'';
                     #color = $color6;
                     font_size = 112;
-                    font_family = "JetBrains Mono 10";
+                    font_family = "Maple Mono NF CN 10";
                     shadow_passes = 3;
                     shadow_size = 4;
 
-                    position = "0, 220";
+                    position = "0, 320";
                     halign = "center";
                     valign = "center";
                 }
@@ -61,11 +61,11 @@
                     text = ''cmd[update:1000] echo "<b><big> $(date +"%M") </big></b>"'';
                     #color = $color6;
                     font_size = 112;
-                    font_family = "JetBrains Mono 10";
+                    font_family = "Maple Mono NF CN 10";
                     shadow_passes = 3;
                     shadow_size = 4;
 
-                    position = "0, 80";
+                    position = "0, 180";
                     halign = "center";
                     valign = "center";
                 }
@@ -75,9 +75,9 @@
                     text = ''cmd[update:18000000] echo "<b><big> "$(LC_ALL=ja_JP.UTF8 date +'%A')" </big></b>"'';
                     #color = $color7;
                     font_size = 22;
-                    font_family = "JetBrains Mono 10";
+                    font_family = "Maple Mono NF CN 10";
 
-                    position = "0, -30";
+                    position = "0, 70";
                     halign = "center";
                     valign = "center";
                 }
@@ -87,9 +87,9 @@
                     text = ''cmd[update:18000000] echo "<b> "$(LC_ALL=ja_JP.UTF8 date +'%x')" </b>"'';
                     #color = $color7;
                     font_size = 18;
-                    font_family = "JetBrains Mono 10";
+                    font_family = "Maple Mono NF CN 10";
 
-                    position = "0, -70";
+                    position = "0, 30";
                     halign = "center";
                     valign = "center";
                 }
