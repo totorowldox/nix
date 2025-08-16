@@ -20,6 +20,7 @@
 		libreoffice
 		jiten
 		signal-desktop
+		nautilus
 		
 		# Windows program runner
 		wine
@@ -79,10 +80,10 @@
 		wl-clipboard
 		cliphist
 
-		# GTK Stuff
+		# Theming Stuff
 		sassc
-		gtk-engine-murrine
-		gnome-themes-extra
+		#gtk-engine-murrine
+		#gnome-themes-extra
 		
 		# Screenshotting
 		grim
@@ -100,5 +101,8 @@
 		gnupg
 		pinentry
 		pinentry-gnome3
+
+		# XDG portal
+		xdg-desktop-portal-hyprland
 	];
 }

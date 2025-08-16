@@ -7,7 +7,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.wallpaper.mode = "fill";
-  services.xserver.desktopManager.gnome.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
   
   # Enable COSMIC DE
   #services.desktopManager.cosmic.enable = true;
