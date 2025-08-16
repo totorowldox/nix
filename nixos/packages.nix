@@ -8,20 +8,24 @@
 		# Desktop Apps
 		firefox
 		wofi
-		qq
 		mpv
-		celluloid
-		gparted
+		celluloid # GUI-fied mpv
+		gparted # Disk manager
 		#rustdesk-flutter
-		waylyrics
-		localsend
-		telegram-desktop
+		waylyrics # Lyrics displayer
+		localsend # LAN file sharing tool
 		clash-nyanpasu
 		libreoffice
-		jiten
+		jiten # CLI Japanese dictionary
+		nautilus # File manager
+		gedit # Text editor
+		smile # Emoji picker
+		musescore # Music score engraving app
+
+		# SMS
+		qq
 		signal-desktop
-		nautilus
-		gedit
+		telegram-desktop
 		
 		# Windows program runner
 		wine
