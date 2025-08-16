@@ -46,6 +46,7 @@
 		cmd-wrapped
 		fzf
 		tmux
+		at
 		zoxide # better cd
 		eza # better ls
 		nh # better nix cli

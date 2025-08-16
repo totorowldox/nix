@@ -43,6 +43,21 @@
         zle accept-line
       fi
     }
+    function set-reminder() { 
+      if [[ $# -ne 2 ]]; then
+        echo "Usage: set-reminder 'message' 'time'"
+        return 1
+        fi
+      local message=$1
+      local time=$2
+      echo "notify-send '$message'" | at "$time" > /dev/null
+      if [[ $? -eq 0 ]]; then
+        echo "Reminder set: '$message' at $time"
+      else
+        echo "Error setting reminder"
+        return 1
+        fi
+      }
 
     zle -N fzf-history
     bindkey '^R' fzf-history
