@@ -21,6 +21,7 @@
 		jiten
 		signal-desktop
 		nautilus
+		gedit
 		
 		# Windows program runner
 		wine

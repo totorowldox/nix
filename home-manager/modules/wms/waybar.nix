@@ -38,8 +38,8 @@
 #workspaces {
     background: @surface0;
     margin: 5px;
-    font-family: "JetBrain Mono";
-    font-size: 22px;
+    font-family: "Maple Mono NF CN";
+    font-size: 25px;
     border-radius: 1rem;
 }
 #workspaces button {
@@ -118,7 +118,7 @@
     border-radius: 1rem;
     transition: none;
     color: @teal;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: bold;
     font-family: "Maple Mono NF CN";
     background: @surface0;
@@ -139,7 +139,7 @@
 }
 
 #custom-launcher {
-    font-size: 24px;
+    font-size: 25px;
     margin: 5px;
     margin-left: 1rem;
     padding-left: 1rem;
