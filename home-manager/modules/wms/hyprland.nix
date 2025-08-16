@@ -157,6 +157,8 @@
         "float, class:^(org.gnome.TextEditor)$"
         "float, class:^(org.gnome.Nautilus)$"
         "float, class:^(io.github.celluloid_player.Celluloid)$"
+        "float, class:^(it.mijorus.smile)$"
+        "size 10% 10%, class:^(it.mijorus.smile)$"
         "pseudo, class:fcitx"
         "float, title:pavucontrol"
         "size 15% 80%, title:QQ"
@@ -244,12 +246,6 @@
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e-1"
         "$mainMod, mouse_up, workspace, e+1"
-
-        # Configuration files
-        #''$mainMod SHIFT, N, exec, kitty -e sh -c "rbs"''
-        #''$mainMod SHIFT, C, exec, kitty -e sh -c "conf"''
-        ''$mainMod SHIFT, H, exec, kitty -e sh -c "nvim ~/nix/home-manager/modules/wms/hyprland.nix"''
-        ''$mainMod SHIFT, W, exec, kitty -e sh -c "nvim ~/nix/home-manager/modules/wms/waybar.nix''
         
         # Screenshotting
         '', Print, exec, grim - | swappy -f -''
@@ -264,6 +260,9 @@
         # Window Controls
         "ALT, Tab, cyclenext"
         "ALT, Tab, bringactivetotop"
+
+        # App shortcuts
+        "$mainMod, period, exec, smile"
 
       ];
 
