@@ -1,4 +1,4 @@
-{pkgs, ...} : {
+{pkgs, flakePath, ...} : {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -179,6 +179,7 @@
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         "fcitx5 -d -r"
+        "${flakePath}/scripts/startup-apps.sh"
         #"1password"
         #"fcitx5-remote -r"
       ];
