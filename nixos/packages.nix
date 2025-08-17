@@ -21,6 +21,7 @@
 		gedit # Text editor
 		smile # Emoji picker
 		musescore # Music score engraving app
+		mission-center # Resource management
 
 		# SMS
 		qq
