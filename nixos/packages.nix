@@ -4,7 +4,19 @@
 
 	services.flatpak.enable = true;
 	
-	environment.systemPackages = with pkgs; [
+	environment.systemPackages =
+	let
+		# Fix electron IME
+		vscode-wayland = pkgs.symlinkJoin {
+		name = "vscode-wayland";
+		paths = [ pkgs.vscode ];
+		buildInputs = [ pkgs.makeWrapper ];
+		postBuild = ''
+		wrapProgram $out/bin/code \
+			--add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime"
+		'';
+	};
+	in with pkgs; [
 		# Desktop Apps
 		firefox
 		wofi
@@ -35,7 +47,7 @@
 		protonup-qt
 		
 		# Coding
-		vscode
+		vscode-wayland
 		cpeditor
 		gcc
 		gdb
