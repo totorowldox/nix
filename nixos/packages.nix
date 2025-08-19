@@ -34,6 +34,8 @@
 		smile # Emoji picker
 		musescore # Music score engraving app
 		mission-center # Resource management
+		tailscale # VPN
+		tailscale-systray
 
 		# SMS
 		qq

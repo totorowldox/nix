@@ -12,20 +12,20 @@
       		inputs.nixpkgs.follows = "nixpkgs";
     	};
 
-		berberman = {
-			url = "github:berberman/flakes";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
 		nix-gaming.url = "github:fufexan/nix-gaming";
 	
 		home-manager = {
 			url = "github:nix-community/home-manager/release-25.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		nur-xddxdd = {
+			url = "github:xddxdd/nur-packages";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
-	outputs = { nixpkgs, catppuccin, anyrun, nix-gaming, berberman, home-manager, ... }@inputs :
+	outputs = { nixpkgs, catppuccin, anyrun, nix-gaming, nur-xddxdd, home-manager, ... }@inputs :
 		let
 			system = "x86_64-linux";
 			flakePath = "~/nix";
@@ -37,11 +37,8 @@
 				inherit inputs;
 			};
 			modules = [
-				{
-					nixpkgs.overlays = [ 
-						berberman.overlays.default
-					]; 
-        		}
+				nur-xddxdd.nixosModules.setupOverlay
+				nur-xddxdd.nixosModules.nix-cache-garnix
 				catppuccin.nixosModules.catppuccin
 				./nixos/configuration.nix
 			];
