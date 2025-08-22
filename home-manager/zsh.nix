@@ -86,7 +86,7 @@
       upd = "${sudoWithEnvVars} nix flake update --flake ${flakePath}";
       upg = "${sudoWithEnvVars} nixos-rebuild switch --upgrade --flake ${flakePath}/#${hostname}";
       
-      cdn = "cd ~/nix";
+      cdn = "cd ${flakePath}";
       conf = "vim ${flakePath}/nixos/configuration.nix";
       pkgs = "vim ${flakePath}/nixos/packages.nix";
 

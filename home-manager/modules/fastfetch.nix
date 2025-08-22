@@ -1,4 +1,4 @@
-{
+{flakePath, ...} : {
   programs.fastfetch = {
     enable = true;
 
@@ -11,7 +11,7 @@
       };
 
       logo = {
-        source = "~/nix/assets/nix-chan.png";
+        source = "${flakePath}/assets/nix-chan.png";
         type = "kitty-direct";
         width = 42;
         height = 17;

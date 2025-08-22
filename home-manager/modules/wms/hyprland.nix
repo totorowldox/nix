@@ -173,7 +173,7 @@
 
       exec-once = [
         "swww init"
-        "swww img ~/nix/assets/nixos-anime-wallpaper.png"
+        "swww img ${flakePath}/assets/nixos-anime-wallpaper.png"
         "swaync"
         "waybar"
         "wl-paste --type text --watch cliphist store"

@@ -1,10 +1,10 @@
-{pkgs, ...} : {
+{pkgs, flakePath, ...} : {
     programs.wlogout = {
         enable = true;
         layout = [
             {
                 label = "lock";
-                action = "~/nix/scripts/lockscreen.sh";
+                action = "${flakePath}/scripts/lockscreen.sh";
                 text = "Lock";
                 keybind = "l";
             }
@@ -28,7 +28,7 @@
             }
             {
                 label = "suspend";
-                action = "~/nix/scripts/suspend.sh";
+                action = "${flakePath}/scripts/suspend.sh";
                 text = "Suspend";
                 keybind = "p";
             }

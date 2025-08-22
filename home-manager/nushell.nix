@@ -1,4 +1,4 @@
-{
+{flakePath, ...} : {
     programs = {
         nushell = {
             enable = true;
@@ -32,19 +32,18 @@
 
             shellAliases =
             let
-                flakeDir = "~/nix";
                 hostname = "remoaku";
                 username = "remo";
             in {
                 # NixOS System
-                rbs = "sudo nixos-rebuild switch --flake ${flakeDir}/#${hostname}";
-                hms = "home-manager switch --flake ${flakeDir}/#${username}";
-                upd = "sudo nix flake update ${flakeDir}";
-                upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}/#${hostname}";
-                cdn = "cd ~/nix";
+                rbs = "sudo nixos-rebuild switch --flake ${flakePath}/#${hostname}";
+                hms = "home-manager switch --flake ${flakePath}/#${username}";
+                upd = "sudo nix flake update ${flakePath}";
+                upg = "sudo nixos-rebuild switch --upgrade --flake ${flakePath}/#${hostname}";
+                cdn = "cd ${flakePath}";
 
-                conf = "vim ${flakeDir}/nixos/configuration.nix";
-                pkgs = "vim ${flakeDir}/nixos/packages.nix";
+                conf = "vim ${flakePath}/nixos/configuration.nix";
+                pkgs = "vim ${flakePath}/nixos/packages.nix";
 
                 ll = "ls -l";
                 v = "nvim";
