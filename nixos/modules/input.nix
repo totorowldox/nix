@@ -15,8 +15,8 @@
 			fcitx5-chinese-addons
 			#fcitx5-pinyin-moegirl
 			fcitx5-nord
-			rime-ice
-			rime-moegirl
+			#rime-ice
+			#rime-moegirl
 		];
 	};
 

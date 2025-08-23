@@ -19,13 +19,13 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		nur-xddxdd = {
-			url = "github:xddxdd/nur-packages";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		#nur-xddxdd = {
+		#	url = "github:xddxdd/nur-packages";
+		#	inputs.nixpkgs.follows = "nixpkgs";
+		#};
 	};
 
-	outputs = { nixpkgs, catppuccin, anyrun, nix-gaming, nur-xddxdd, home-manager, ... }@inputs :
+	outputs = { nixpkgs, catppuccin, anyrun, nix-gaming, home-manager, ... }@inputs :
 		let
 			system = "x86_64-linux";
 			flakePath = "~/nix";
@@ -37,8 +37,8 @@
 				inherit inputs;
 			};
 			modules = [
-				nur-xddxdd.nixosModules.setupOverlay
-				nur-xddxdd.nixosModules.nix-cache-garnix
+				#inputs.nur-xddxdd.nixosModules.setupOverlay
+				#inputs.nur-xddxdd.nixosModules.nix-cache-garnix
 				catppuccin.nixosModules.catppuccin
 				./nixos/configuration.nix
 			];
