@@ -1,6 +1,8 @@
 {
 	boot.supportedFilesystems = [ "ntfs" ];
 
+	hardware.bluetooth.enable = true;
+
 	fileSystems."/media/windows/c" = {
 		device = "/dev/disk/by-uuid/BA76E5860768395D";
 		fsType = "ntfs-3g";

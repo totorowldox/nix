@@ -23,7 +23,7 @@
 		mpv
 		celluloid # GUI-fied mpv
 		gparted # Disk manager
-		#rustdesk-flutter
+		rustdesk-flutter
 		waylyrics # Lyrics displayer
 		localsend # LAN file sharing tool
 		clash-nyanpasu
