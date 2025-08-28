@@ -15,7 +15,7 @@
     devices = [ "nodev" ];
   };
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [ "amdgpu" "rtw88_8821cu" ];
 
   # For beauty!
   catppuccin.grub = {
