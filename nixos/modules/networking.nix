@@ -8,18 +8,18 @@
 	services.tailscale.enable = true;
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     22
     53317 # LocalSend
-    13888 # Ani-RSS
+    7789 # Ani-RSS
   ];
   networking.firewall.allowedUDPPorts = [ 
     22
     53317
-    13888 # Ani-RSS
+    7789 # Ani-RSS
   ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
