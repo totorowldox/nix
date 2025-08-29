@@ -10,6 +10,15 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Enable Sunshine service
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+    
+  };
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     22
