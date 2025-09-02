@@ -3,6 +3,8 @@
 	nixpkgs.config.allowUnfree = true;
 
 	services.flatpak.enable = true;
+
+	services.atd.enable = true;
 	
 	environment.systemPackages =
 	let
@@ -65,10 +67,10 @@
 		cmd-wrapped
 		fzf
 		tmux
-		at
 		zoxide # better cd
 		eza # better ls
 		nh # better nix cli
+		lazygit # better git TUI
 		
 		# Terminal
 		# alacritty
