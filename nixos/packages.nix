@@ -71,6 +71,7 @@
 		eza # better ls
 		nh # better nix cli
 		lazygit # better git TUI
+		ripgrep
 		
 		# Terminal
 		# alacritty
