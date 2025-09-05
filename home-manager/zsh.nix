@@ -103,10 +103,10 @@
       ff = "fastfetch --logo-type builtin --logo nix-old";
 
       # Wine
-      wine = "WINEARCH=win32 WINEPREFIX=~/.wine wine";
-      winetricks = "WINEARCH=win32 WINEPREFIX=~/.wine winetricks";
-      w64 = "WINEARCH=win64 WINEPREFIX=~/.wine64 wine64";
-      wt64 = "WINEARCH=win64 WINEPREFIX=~/.wine64 winetricks";
+      #wine = "WINEARCH=win32 WINEPREFIX=~/.wine wine";
+      #winetricks = "WINEARCH=win32 WINEPREFIX=~/.wine winetricks";
+      w64 = "wine64";
+      #wt64 = "WINEARCH=win64 WINEPREFIX=~/.wine64 winetricks";
 
       # Windows drivers/directories
       cdc = "cd /media/windows/c";

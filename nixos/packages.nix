@@ -44,8 +44,7 @@
 		telegram-desktop
 		
 		# Windows program runner
-		wine
-		wine64
+		wineWowPackages.stable
 		winetricks
 		protonup-qt
 		
