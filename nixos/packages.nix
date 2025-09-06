@@ -125,6 +125,6 @@
 		pinentry-gnome3
 
 		# XDG portal
-		xdg-desktop-portal-hyprland
+		xdg-desktop-portal-gtk
 	];
 }

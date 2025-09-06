@@ -3,7 +3,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
+  # Enable the GDM
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.wallpaper.mode = "fill";
@@ -12,6 +12,9 @@
   # Enable COSMIC DE
   #services.desktopManager.cosmic.enable = true;
   #services.displayManager.cosmic-greeter.enable = true;
+
+  # Enable niri
+  programs.niri.enable = true;
   
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -35,6 +38,6 @@
 	#xdg.portal.xdgOpenUsePortal = true;
 	#programs.dconf.enable = true;
 	xdg.portal.extraPortals = with pkgs; [
-		xdg-desktop-portal-hyprland
+		xdg-desktop-portal-gtk
 	];
 }
