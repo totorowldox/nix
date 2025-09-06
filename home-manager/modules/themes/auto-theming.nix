@@ -9,12 +9,16 @@
 		tmux.enable = true;
 		kitty.enable = true;
         fcitx5.enable = true;
-        firefox.enable = true;
+        firefox = {
+            enable = true;
+            profileNames = [ "5xw00j7d" ];
+        };
         gedit.enable = true;
         gtk.enable = true;
         qt.enable = true;
         lazygit.enable = true;
         wofi.enable = true;
-				waybar.enable = false;
+		waybar.enable = false;
+        vscode.enable = true;
     };
 }

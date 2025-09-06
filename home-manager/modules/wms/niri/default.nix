@@ -200,7 +200,7 @@
                 "Mod+F".action.toggle-window-floating = {};
                 "Mod+M".action.maximize-column = {};
                 "Mod+S".action.spawn = "anyrun";
-                "Mod+Tab".action.spawn = "swaync-client -t";
+                "Mod+Tab".action.spawn-sh = "swaync-client -t";
                 "Mod+L".action.spawn = "wlogout";
                 "Mod+R".action.switch-preset-column-width = {};
 
