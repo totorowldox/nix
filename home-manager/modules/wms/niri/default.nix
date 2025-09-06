@@ -1,11 +1,14 @@
-{pkgs, inputs, flakePath, ...} : {
-    imports = [ inputs.niri.homeModules.niri ];
+{pkgs, config, inputs, flakePath, ...} : {
+    imports = [ inputs.niri.homeModules.niri ./waybar.nix ];
     home.packages = with pkgs; [
         (xwayland-satellite.override { withSystemd = false; }) # Niri automatically runs this when xwayland support is required
     ];
     programs.niri = {
         enable = true;
         settings = {
+
+            hotkey-overlay.skip-at-startup = true;
+
             environment = {
                 # Session vars
                 XDG_CURRENT_DESKTOP="Hyprland";
@@ -41,6 +44,13 @@
                 };
             };
 
+            workspaces = {
+                "dev" = {};
+                "browser" = {};
+                "chat" = {};
+                "gaming" = {};
+            };
+
             layout = {
                 gaps = 5;  # Inner gaps
                 struts = { left = 20; right = 20; top = 20; bottom = 20; };  # Outer gaps emulation
@@ -50,46 +60,62 @@
                     enable = true;
                     width = 4;
                     active.gradient = {
-                        from = "#FF66B3";
-                        to = "#FFCCFF";
+                        from = config.lib.stylix.colors.withHashtag.base0D; #"#FF66B3";
+                        to =   config.lib.stylix.colors.withHashtag.base0E; #"#FFCCFF";
                         angle = 45;
                         in' = "oklab";
                     };
-                    inactive.color = "#595959";
+                    inactive.color = config.lib.stylix.colors.withHashtag.base03; #"#595959";
                 };
                 focus-ring.enable=false;
                 preset-column-widths = [
-                { proportion = 0.3333; }
-                { proportion = 0.5; }
-                { proportion = 0.6667; }
+                    { proportion = 0.3333; }
+                    { proportion = 0.5; }
+                    { proportion = 0.6667; }
                 ];
             };
 
             animations = {
-                # Approximating user's custom animations with Niri's easing/spring options
-                window-open.kind.easing = {
-                duration-ms = 200;
-                curve = "cubic-bezier";
-                curve-args = [ 0.05 0.9 0.1 1.05 ];  # myBounce
+                window-open = {
+                    kind.easing = {
+                        duration-ms = 200;
+                        curve = "cubic-bezier";
+                        curve-args = [ 0.2 1.2 0.3 1.1 ]; # Pronounced bounce
+                    };
+                    custom-shader = builtins.readFile ./shader/open.glsl;
                 };
-                window-close.kind.easing = {
-                duration-ms = 200;
-                curve = "cubic-bezier";
-                curve-args = [ 0.05 0.9 0.1 1.05 ];  # myBounce
+                window-close = {
+                    kind.easing = {
+                        duration-ms = 200;
+                        curve = "cubic-bezier";
+                        curve-args = [ 0.2 1.2 0.3 1.1 ]; # Matching bounce
+                    };
+                    custom-shader = builtins.readFile ./shader/close.glsl;
                 };
                 window-movement.kind = {
-                spring = { damping-ratio = 1.0; stiffness = 800; epsilon = 0.0001; };
+                    spring = { 
+                        damping-ratio = 0.85; # Slightly underdamped for a subtle bounce
+                        stiffness = 1200; # Higher stiffness for quicker response
+                        epsilon = 0.0001; 
+                    };
                 };
                 window-resize.kind = {
-                spring = { damping-ratio = 1.0; stiffness = 800; epsilon = 0.0001; };
+                    spring = { 
+                        damping-ratio = 0.9; # Near-critical damping for smooth resizing
+                        stiffness = 1000; # Balanced stiffness for fluid resizing
+                        epsilon = 0.0001; 
+                    };
                 };
                 workspace-switch.kind = {
-                spring = { damping-ratio = 1.0; stiffness = 1000; epsilon = 0.0001; };
+                    spring = { 
+                        damping-ratio = 0.8; # More bounce for a dynamic workspace switch
+                        stiffness = 1500; # Higher stiffness for a faster snap
+                        epsilon = 0.0001; 
+                    };
                 };
-                # Other animations can be added/adjusted as per Niri docs
             };
 
-            prefer-no-csd = true;  # If needed, but no direct misc like in Hyprland
+            prefer-no-csd = true;
 
             window-rules = [
                 {
@@ -103,52 +129,51 @@
                     draw-border-with-background = false;
                 }
                 {
-                matches = [ { app-id = "^(imv)$"; } ];
-                tiled-state = false;
+                    matches = [ { app-id = "^(imv)$"; } ];
+                    tiled-state = false;
                 }
                 {
-                matches = [ { app-id = "^(mpv)$"; } ];
-                tiled-state = false;
+                    matches = [ { app-id = "^(mpv)$"; } ];
+                    tiled-state = false;
                 }
                 {
-                matches = [ { app-id = "^(celluloid)$"; } ];  # Assuming io.github.celluloid_player.Celluloid
-                tiled-state = false;
+                    matches = [ { app-id = "^(celluloid)$"; } ];
+                    tiled-state = false;
                 }
                 {
-                matches = [ { app-id = "^(QQ)$"; } ];
-                tiled-state = false;
-                default-floating-position = { x = 0.05; y = 0.1; relative-to = "top-left"; };  # Approximate %; Niri uses pixels, but % not supported directly
+                    matches = [ { app-id = "^(QQ)$"; } ];
+                    tiled-state = false;
+                    default-floating-position = { x = 0.05; y = 0.1; relative-to = "top-left"; };
                 }
                 {
-                matches = [ { app-id = "^(zenity)$"; } ];
-                tiled-state = false;
+                    matches = [ { app-id = "^(zenity)$"; } ];
+                    tiled-state = false;
                 }
                 {
-                matches = [ { app-id = "^(org.gnome.TextEditor)$"; } ];
-                tiled-state = false;
+                    matches = [ { app-id = "^(org.gnome.TextEditor)$"; } ];
+                    tiled-state = false;
                 }
                 {
-                matches = [ { app-id = "^(org.gnome.Nautilus)$"; } ];
-                tiled-state = false;
+                    matches = [ { app-id = "^(org.gnome.Nautilus)$"; } ];
+                    tiled-state = false;
                 }
                 {
-                matches = [ { app-id = "^(io.github.celluloid_player.Celluloid)$"; } ];
-                tiled-state = false;
+                    matches = [ { app-id = "^(io.github.celluloid_player.Celluloid)$"; } ];
+                    tiled-state = false;
                 }
                 {
-                matches = [ { app-id = "^(it.mijorus.smile)$"; } ];
-                tiled-state = false;
-                }
-                # fcitx pseudo not directly translatable
-                {
-                matches = [ { title = "pavucontrol"; } ];
-                tiled-state = false;
+                    matches = [ { app-id = "^(it.mijorus.smile)$"; } ];
+                    tiled-state = false;
                 }
                 {
-                matches = [ { title = "Waylyrics"; } ];
-                tiled-state = false;
-                draw-border-with-background = false;  # Approximate noborder/noshadow
-                default-floating-position = { x = 0.2; y = 0.8; relative-to = "bottom-left"; };
+                    matches = [ { title = "pavucontrol"; } ];
+                    tiled-state = false;
+                }
+                {
+                    matches = [ { title = "Waylyrics"; } ];
+                    tiled-state = false;
+                    draw-border-with-background = false;  # Approximate noborder/noshadow
+                    default-floating-position = { x = 0.2; y = 0.8; relative-to = "bottom-left"; };
                 }
                 # Note: Niri uses app-id instead of class; adjust if needed. No noblur, noshadow directly.
             ];
@@ -162,7 +187,7 @@
                 { argv = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
                 { argv = [ "fcitx5" "-d" "-r" ]; }
                 { argv = [ "blueman-applet" ]; }
-                #{ sh = "${flakePath}/scripts/startup-apps.sh"; }
+                { sh = "${flakePath}/scripts/startup-apps.sh"; }
             ];
 
             binds = {
@@ -170,31 +195,45 @@
 
                 "Mod+Return".action.spawn = "kitty";
                 "Mod+Q".action.close-window = {};
-                "Mod+M".action.fullscreen-window = {};
+                "Mod+Shift+M".action.fullscreen-window = {};
                 "Mod+E".action.spawn = "nautilus";
                 "Mod+F".action.toggle-window-floating = {};
+                "Mod+M".action.maximize-column = {};
                 "Mod+S".action.spawn = "anyrun";
-                # No pseudo, togglesplit
                 "Mod+Tab".action.spawn = "swaync-client -t";
                 "Mod+L".action.spawn = "wlogout";
+                "Mod+R".action.switch-preset-column-width = {};
 
                 # Focus
                 "Mod+Left".action.focus-column-left = {};
                 "Mod+Right".action.focus-column-right = {};
                 "Mod+Up".action.focus-window-up = {};
                 "Mod+Down".action.focus-window-down = {};
+                "Mod+Home".action.focus-column-first = {};
+                "Mod+End".action.focus-column-last = {};
+                "Mod+Page_Down".action.focus-workspace-down = {};
+                "Mod+Page_Up".action.focus-workspace-up = {};
+                "Mod+O".action.toggle-overview = {};
 
                 # Move/Swap
                 "Mod+Shift+Left".action.move-column-left = {};
                 "Mod+Shift+Right".action.move-column-right = {};
                 "Mod+Shift+Up".action.move-window-up = {};
                 "Mod+Shift+Down".action.move-window-down = {};
+                "Mod+Shift+Home".action.move-column-to-first = {};
+                "Mod+Shift+End".action.move-column-to-last = {};
+                "Mod+Shift+Page_Down".action.move-column-to-workspace-down = {};
+                "Mod+Shift+Page_Up".action.move-column-to-workspace-up = {};
+                "Mod+Ctrl+Page_Down".action.move-workspace-down = {};
+                "Mod+Ctrl+Page_Up".action.move-workspace-up = {};
 
                 # Resize (proportions in Niri)
                 "Mod+Ctrl+Left".action.set-column-width = "-5%";  # Approximate -60 pixels
                 "Mod+Ctrl+Right".action.set-column-width = "+5%";
                 "Mod+Ctrl+Up".action.set-window-height = "-5%";
                 "Mod+Ctrl+Down".action.set-window-height = "+5%";
+                "Mod+Comma".action.consume-or-expel-window-left = {};
+                "Mod+Period".action.consume-or-expel-window-right = {};
 
                 # Workspaces (Niri uses relative/indexed; approximating 1-10)
                 "Mod+1".action.focus-workspace = 1;
@@ -207,7 +246,6 @@
                 "Mod+8".action.focus-workspace = 8;
                 "Mod+9".action.focus-workspace = 9;
                 "Mod+0".action.focus-workspace = 10;
-                "Mod+Z".action.focus-workspace-down = {};  # Approximate toggle special
 
                 # Move to workspace
                 "Mod+Shift+1".action.move-column-to-workspace = 1;
@@ -220,7 +258,6 @@
                 "Mod+Shift+8".action.move-column-to-workspace = 8;
                 "Mod+Shift+9".action.move-column-to-workspace = 9;
                 "Mod+Shift+0".action.move-column-to-workspace = 10;
-                "Mod+Shift+Z".action.move-column-to-workspace-down = {};
 
                 # Workspace scroll with mouse
                 "Mod+WheelScrollDown".action.focus-workspace-down = {};
@@ -237,15 +274,11 @@
                 "Mod+W".action.spawn = [ "pkill" "-SIGUSR2" "waybar" ];
 
                 # Cycle next
-                "Alt+Tab".action.focus-window-down = {};  # Approximate cyclenext
-                # bringactivetotop no direct
+                # "Alt+Tab".action.focus-column-right = {};
+                # "Alt+Shift+Tab".action.focus-column-left = {};
 
                 # App shortcuts
-                "Mod+Period".action.spawn = "smile";
-
-                # Mouse binds (using button actions)
-                #"Mod+MouseLeft".action.move-window = {};
-                #"Mod+MouseRight".action.resize-window = {};
+                "Mod+Semicolon".action.spawn = "smile";
             };
         };
     };

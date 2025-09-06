@@ -11,7 +11,7 @@
 			scrollback_indicator_opacity = "0.5";
 			detect_url = true;
 			
-			background_opacity = lib.mkForce "0.8";
+			background_opacity = lib.mkForce "0.9";
 			background_blur = 30;
 			
 		};

@@ -1,7 +1,7 @@
 {
     imports = [
 		./nc
-		./hyprland
+		#./hyprland
 		./niri
 		
 		./hyprlock.nix
