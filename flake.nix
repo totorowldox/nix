@@ -23,12 +23,29 @@
 			url = "github:sodiboo/niri-flake";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 	};
 
-	outputs = { nixpkgs, catppuccin, anyrun, nix-gaming, home-manager, ... }@inputs :
+	outputs = { nixpkgs, catppuccin, stylix, anyrun, nix-gaming, home-manager, ... }@inputs :
 		let
 			system = "x86_64-linux";
 			flakePath = "~/nix";
+			pkgs = nixpkgs.legacyPackages.${system};
+			colorScheme = rec {
+				name = "catppuccin-macchiato";
+				path = "${pkgs.base16-schemes}/share/themes/${name}.yaml";
+				polarity = "dark";
+				terminal-opacity = 0.8;
+			};
+			fontConfig = {
+				monospace = {
+					name = "Maple Mono NF CN";
+				};
+			};
 		in {
 			
 		nixosConfigurations.remoaku = nixpkgs.lib.nixosSystem {
@@ -39,19 +56,39 @@
 			modules = [
 				#inputs.nur-xddxdd.nixosModules.setupOverlay
 				#inputs.nur-xddxdd.nixosModules.nix-cache-garnix
-				catppuccin.nixosModules.catppuccin
+				#catppuccin.nixosModules.catppuccin
+				stylix.nixosModules.stylix
+				{
+					stylix = {
+						enable = true;
+						polarity = colorScheme.polarity;
+						base16Scheme = colorScheme.path;
+						fonts = fontConfig;
+						opacity.terminal = colorScheme.terminal-opacity;
+					};
+					disabledModules = [ "${stylix}/modules/gnome/nixos.nix" ]; # Manually disable GNOME shell
+				}
 				./nixos/configuration.nix
 			];
 		};
 
 		homeConfigurations.remo = home-manager.lib.homeManagerConfiguration {
-			pkgs = nixpkgs.legacyPackages.${system};
+			inherit pkgs;
 			extraSpecialArgs = {
 				inherit inputs;
 				inherit flakePath;
 			};
 			modules = [
 				catppuccin.homeModules.catppuccin
+				stylix.homeModules.stylix
+				{
+					stylix = {
+						enable = true;
+						polarity = colorScheme.polarity;
+						base16Scheme = colorScheme.path;
+						fonts = fontConfig;
+					};
+				}
 				./home-manager/home.nix
 			];
 		};

@@ -1,6 +1,4 @@
-{lib, ...} : {
-
-  imports = [ ./macchiato.nix ];
+{config, lib, ...} : {
 
   xdg.configFile."waybar/config".source = ./waybar.conf;
   programs.waybar = {
@@ -8,8 +6,6 @@
   
     style = 
       ''
-@import "macchiato.css";
-
 * {
     border: none;
     font-family: "Maple Mono NF CN", "Noto Sans CJK SC";
@@ -20,7 +16,7 @@
 
 #waybar {
     background: transparent;
-    color: @text;
+    color: #${config.lib.stylix.colors.base05};
     margin: 0;
     padding: 0;
 }
@@ -30,13 +26,13 @@
     padding-left: 1rem;
     padding-right: 1rem;
     transition: none;
-    color: @green;
-    background: @surface0;
+    color: #${config.lib.stylix.colors.base0B};
+    background: #${config.lib.stylix.colors.base02};
     font-family: "Maple Mono NF CN", "Noto Sans CJK SC";
 }
 
 #workspaces {
-    background: @surface0;
+    background: #${config.lib.stylix.colors.base02};
     margin: 5px;
     font-family: "Maple Mono NF CN";
     font-size: 25px;
@@ -44,20 +40,20 @@
 }
 #workspaces button {
     margin: 5px;
-    color: @sky;
-    background: @surface1;
+    color: #${config.lib.stylix.colors.base0D};
+    background: #${config.lib.stylix.colors.base03};
 }
 
 #workspaces button.active {
-  color: @lavender;
+  color: #${config.lib.stylix.colors.base07};
   border-radius: 1rem;
-  background: @surface2;
+  background: #${config.lib.stylix.colors.base04};
   font-weight: bold;
 }
 
 #workspaces button:hover {
-    color: @crust;
-    background: @rosewater;
+    color: #${config.lib.stylix.colors.base01};
+    background: #${config.lib.stylix.colors.base06};
 }
 
 #battery,
@@ -67,8 +63,8 @@
     margin: 5px;
     padding: 0.5rem 1rem;
     transition: none;
-    background: @surface0;
-    color: @lavender;
+    background: #${config.lib.stylix.colors.base02};
+    color: #${config.lib.stylix.colors.base07};
 }
 
 #pulseaudio {
@@ -89,7 +85,7 @@
 #battery:hover,
 #backlight:hover
 {
-    background: @surface1;
+    background: #${config.lib.stylix.colors.base03};
 }
 
 #battery.charging, #battery.plugged {
@@ -117,11 +113,11 @@
     padding-right: 1.5rem;
     border-radius: 1rem;
     transition: none;
-    color: @teal;
+    color: #${config.lib.stylix.colors.base0C};
     font-size: 25px;
     font-weight: bold;
     font-family: "Maple Mono NF CN";
-    background: @surface0;
+    background: #${config.lib.stylix.colors.base02};
 }
 
 #memory,
@@ -131,11 +127,11 @@
     padding-left: 1rem;
     padding-right: 1rem;
     transition: none;
-    color: @red;
-    background: @surface0;
+    color: #${config.lib.stylix.colors.base08};
+    background: #${config.lib.stylix.colors.base02};
 }
 #cpu {
-    color: @mauve;
+    color: #${config.lib.stylix.colors.base0E};
 }
 
 #custom-launcher {
@@ -147,7 +143,7 @@
     border-radius: 1rem;
     transition: none;
     color: rgb(126, 186, 228);
-    background: @surface0;
+    background: #${config.lib.stylix.colors.base02};
 }
       '';
   };

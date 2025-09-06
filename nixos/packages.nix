@@ -55,7 +55,7 @@
 		just
 		devenv
 		direnv
-		jetbrains.rider
+		#jetbrains.rider
 		
 		# CLI stuffs
 		thefuck

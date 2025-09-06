@@ -14,14 +14,9 @@
     copyKernels = true;
     devices = [ "nodev" ];
   };
+  stylix.targets.grub.enable = true;
 
   boot.initrd.kernelModules = [ "amdgpu" "rtw88_8821cu" ];
-
-  # For beauty!
-  catppuccin.grub = {
-    enable = true;
-    flavor = "macchiato";
-  };
 }
 
 

@@ -1,4 +1,4 @@
-{pkgs, flakePath, ...} : {
+{config, pkgs, flakePath, ...} : {
     programs.wlogout = {
         enable = true;
         layout = [
@@ -52,7 +52,7 @@
             }
             
             button {
-                color: #b7bdf8;
+                color: #${config.lib.stylix.colors.base07};
                 font-family: "Maple Mono NF CN";
                 font-size: 28px;
                 background-color: #363a4f;
@@ -67,7 +67,7 @@
             }
 
             button:focus {
-                background-color: #6e738d;
+                background-color: #${config.lib.stylix.colors.base04};
                 outline-style: solid;
             }
 
@@ -96,7 +96,7 @@
             }
 
             #lock #logout #suspend #hibernate #shutdown #reboot {
-                background-color: #f5bde6;
+                background-color: #${config.lib.stylix.colors.base0E};
             }
         '';
     };

@@ -1,4 +1,11 @@
-{
+{config, lib, ...} : let
+  hexToRgb = hex: let
+      r = lib.fromHexString (lib.substring 0 2 hex);
+      g = lib.fromHexString (lib.substring 2 2 hex);
+      b = lib.fromHexString (lib.substring 4 2 hex);
+    in
+      "rgb(${toString r}, ${toString g}, ${toString b})";
+  in {
     programs.hyprlock = {
         enable = true;
         
@@ -31,9 +38,9 @@
                     dots_size = 0.26;
                     dots_spacing = 0.64;
                     fade_on_empty = false;
-                    font_color = "rgb(202, 211, 245)";
-                    inner_color = "rgb(54, 58, 79)";
-                    outer_color = "rgb(245, 189, 230)";
+                    font_color  = hexToRgb config.lib.stylix.colors.base05;
+                    inner_color = hexToRgb config.lib.stylix.colors.base02;#"rgb(54, 58, 79)";
+                    outer_color = hexToRgb config.lib.stylix.colors.base0E;#"rgb(245, 189, 230)";
                     outline_thickness = 3;
                     rounding = 22;
                     placeholder_text = ''<span foreground="##cad3f5">Password...</span>'';
