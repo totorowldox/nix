@@ -1,4 +1,4 @@
-{
+{ pkgs, ... } : {
   # Network stuffs
   networking.networkmanager.enable = true;
   #networking.networkmanager.wifi.backend = "iwd";
@@ -20,16 +20,29 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    22
-    53317 # LocalSend
-    7789 # Ani-RSS
-  ];
-  networking.firewall.allowedUDPPorts = [ 
-    22
-    53317
-    7789 # Ani-RSS
-  ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall = let
+      localRange = "192.168.0.0/24";
+      openToLocalPorts = [ ];
+      openToWANPorts = [
+        53317 # LocalSend
+        7789 # Ani-RSS
+      ];
+    in {
+    
+    enable = true;
+    package = pkgs.nftables;
+
+    allowedTCPPorts = openToWANPorts;
+    allowedUDPPorts = openToWANPorts;
+
+    extraCommands = ''
+      nft 'flush table inet nixos-fw'
+      nft 'add table inet nixos-fw'
+      nft 'add chain inet nixos-fw input { type filter hook input priority 0 ; policy drop ; }'
+      nft 'add rule inet nixos-fw input iif lo accept'
+      nft 'add rule inet nixos-fw input ct state established,related accept'
+      nft 'add rule inet nixos-fw input ip saddr ${localRange} dport { ${builtins.concatStringsSep ", " (map toString openToLocalPorts)} } accept'
+      nft 'add rule inet nixos-fw input log prefix "dropped: " drop'
+    '';
+  };
 }
