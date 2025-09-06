@@ -10,14 +10,6 @@
       http.proxy = "127.0.0.1:7890";
       https.proxy = "127.0.0.1:7890";
       
-
-      #gpg = {
-      #  format = "ssh";
-      #};
-      #"gpg \"ssh\"" = {
-      #  program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
-      #};
-      
       commit = {
         gpgsign = true;
       };
