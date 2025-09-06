@@ -15,5 +15,6 @@
         qt.enable = true;
         lazygit.enable = true;
         wofi.enable = true;
+				waybar.enable = false;
     };
 }
