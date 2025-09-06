@@ -50,13 +50,12 @@
 		
 		# Coding
 		vscode-wayland
-		cpeditor
 		gcc
 		gdb
-		clang-tools
 		just
 		devenv
 		direnv
+		jetbrains.rider
 		
 		# CLI stuffs
 		thefuck

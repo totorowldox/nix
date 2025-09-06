@@ -1,10 +1,9 @@
 {
     imports = [
 		./nc
+		./hyprland
+		./niri
 		
-		./hyprland.nix
-		./niri.nix
-		./waybar.nix
 		./hyprlock.nix
 		./anyrun.nix
     ];
