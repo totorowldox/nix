@@ -18,13 +18,13 @@
       #  program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
       #};
       
-      #commit = {
-      #  gpgsign = true;
-      #};
+      commit = {
+        gpgsign = true;
+      };
 
-      #user = {
-      #  signingKey = "<your key>";
-      #};
+      user = {
+        signingKey = "F8756BAC3A9C7CA9";
+      };
     };
   };
 }
