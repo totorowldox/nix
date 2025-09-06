@@ -2,7 +2,7 @@
   programs.git = {
     enable = true;
     userName  = "totorowldox";
-    userEmail = "2553658033@qq.com";
+    userEmail = "totorowldox@gmail.com";
     extraConfig = {
       
       gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
