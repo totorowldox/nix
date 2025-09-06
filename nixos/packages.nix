@@ -80,6 +80,8 @@
 		waydroid
 		zip
 		unzip
+		usb-modeswitch
+		usbutils
 		
 		# WMs and stuff
 		waybar

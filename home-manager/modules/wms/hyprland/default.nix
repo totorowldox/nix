@@ -183,6 +183,7 @@
         "wl-paste --type image --watch cliphist store"
         "fcitx5 -d -r"
         "${flakePath}/scripts/startup-apps.sh"
+        "blueman-applet"
         #"1password"
         #"fcitx5-remote -r"
       ];

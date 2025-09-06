@@ -161,6 +161,7 @@
                 { argv = [ "wl-paste" "--type" "text" "--watch" "cliphist" "store" ]; }
                 { argv = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
                 { argv = [ "fcitx5" "-d" "-r" ]; }
+                { argv = [ "blueman-applet" ]; }
                 #{ sh = "${flakePath}/scripts/startup-apps.sh"; }
             ];
 
