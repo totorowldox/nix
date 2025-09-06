@@ -116,6 +116,7 @@
 		
 		# Others
 		home-manager
+		cachix
 		
 		# Security
 		polkit_gnome

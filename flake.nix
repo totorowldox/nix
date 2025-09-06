@@ -19,10 +19,10 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		#nur-xddxdd = {
-		#	url = "github:xddxdd/nur-packages";
-		#	inputs.nixpkgs.follows = "nixpkgs";
-		#};
+		niri = {
+			url = "github:sodiboo/niri-flake";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { nixpkgs, catppuccin, anyrun, nix-gaming, home-manager, ... }@inputs :

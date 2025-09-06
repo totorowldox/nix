@@ -5,7 +5,7 @@
   networking.nameservers = [ "8.8.8.8" "4.4.4.4" ];
 
   # Enable tailscale service
-	services.tailscale.enable = true;
+	#services.tailscale.enable = true; # Temporarily disabled due to build errors (test) 
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
