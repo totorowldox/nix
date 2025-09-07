@@ -1,5 +1,8 @@
 { pkgs, inputs, ... } : {
 
+	#config.common = {
+	#	default = [ "gnome" "gtk" ];
+	#};
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -22,22 +25,22 @@
     #variant = "";
   };
 
-	programs.hyprland = {
-		enable = true;
-		xwayland.enable = true;	
-	};
+	# programs.hyprland = {
+	# 	enable = true;
+	# 	xwayland.enable = true;	
+	# };
 
-	# Fuck you nixos manual
-	#environment.sessionVariables = {
-	#	NIXOS_OZONE_WL = "0"; # set to 1 will crash every electron app
-	#};
+	environment.sessionVariables = {
+		NIXOS_OZONE_WL = "1";
+	};
 	
 	hardware.graphics.enable = true;
 	
 	xdg.portal.enable = true;
-	#xdg.portal.xdgOpenUsePortal = true;
-	#programs.dconf.enable = true;
+	xdg.portal.xdgOpenUsePortal = true;
+	programs.dconf.enable = true;
 	xdg.portal.extraPortals = with pkgs; [
 		xdg-desktop-portal-gtk
+		xdg-desktop-portal-gnome
 	];
 }

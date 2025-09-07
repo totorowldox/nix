@@ -72,12 +72,12 @@ log "Waiting $INITIAL_DELAY seconds for Wayland session to initialize"
 
 # Launch applications
 launch_app localsend_app
-launch_app qq --use-wayland-ime
+#launch_app qq --use-wayland-ime
 launch_app 1password --silent
 launch_app qbittorrent
 launch_flatpak "com.valvesoftware.Steam"
 launch_app kleopatra
-launch_app firefox &
 launch_app clash-nyanpasu
+launch_app firefox &
 
 log "Startup script completed"

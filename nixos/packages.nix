@@ -49,7 +49,7 @@
 		protonup-qt
 		
 		# Coding
-		vscode-wayland
+		vscode
 		gcc
 		gdb
 		just
@@ -127,6 +127,6 @@
 		pinentry-gnome3
 
 		# XDG portal
-		xdg-desktop-portal-gtk
+		# xdg-desktop-portal-gtk
 	];
 }

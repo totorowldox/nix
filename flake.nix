@@ -36,6 +36,9 @@
 			flakePath = "~/nix";
 			pkgs = nixpkgs.legacyPackages.${system};
 			colorScheme = rec {
+				useImage = true;
+				image = ./assets/nixos-kukuru-wallpaper.png;
+
 				name = "catppuccin-macchiato";
 				path = "${pkgs.base16-schemes}/share/themes/${name}.yaml";
 				polarity = "dark";
@@ -61,10 +64,12 @@
 				{
 					stylix = {
 						enable = true;
+						image = if colorScheme.useImage then colorScheme.image else null;
 						polarity = colorScheme.polarity;
-						base16Scheme = colorScheme.path;
 						fonts = fontConfig;
 						opacity.terminal = colorScheme.terminal-opacity;
+					} // nixpkgs.lib.optionalAttrs (!colorScheme.useImage) {
+						base16Scheme = colorScheme.path;
 					};
 					disabledModules = [ "${stylix}/modules/gnome/nixos.nix" ]; # Manually disable GNOME shell
 				}
@@ -84,9 +89,11 @@
 				{
 					stylix = {
 						enable = true;
+						image = if colorScheme.useImage then colorScheme.image else null;
 						polarity = colorScheme.polarity;
-						base16Scheme = colorScheme.path;
 						fonts = fontConfig;
+					} // nixpkgs.lib.optionalAttrs (!colorScheme.useImage) {
+						base16Scheme = colorScheme.path;
 					};
 				}
 				./home-manager/home.nix

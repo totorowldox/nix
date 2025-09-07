@@ -11,6 +11,7 @@
         fcitx5.enable = true;
         firefox = {
             enable = true;
+            colorTheme.enable = true;
             profileNames = [ "5xw00j7d" ];
         };
         gedit.enable = true;
