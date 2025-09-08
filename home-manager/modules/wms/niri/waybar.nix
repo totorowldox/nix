@@ -8,7 +8,7 @@
       ''
 * {
     border: none;
-    font-family: "Maple Mono NF CN", "Noto Sans CJK SC";
+    font-family: "Maple Mono NF CN";
     font-size: 17px;
     min-height: 0;
     border-radius: 1rem;
@@ -26,13 +26,13 @@
     padding-left: 1rem;
     padding-right: 1rem;
     transition: none;
-    color: #${config.lib.stylix.colors.base0B};
-    background: #${config.lib.stylix.colors.base02};
-    font-family: "Maple Mono NF CN", "Noto Sans CJK SC";
+    color: #${config.lib.stylix.colors.base05};
+    background: #${config.lib.stylix.colors.base01};
+    font-family: "Maple Mono NF CN";
 }
 
 #workspaces {
-    background: #${config.lib.stylix.colors.base02};
+    background: #${config.lib.stylix.colors.base01};
     margin: 5px;
     font-family: "Maple Mono NF CN";
     font-size: 25px;
@@ -40,20 +40,20 @@
 }
 #workspaces button {
     margin: 5px;
-    color: #${config.lib.stylix.colors.base0D};
-    background: #${config.lib.stylix.colors.base03};
+    color: #${config.lib.stylix.colors.base04};
+    background: #${config.lib.stylix.colors.base00};
 }
 
 #workspaces button.active {
-  color: #${config.lib.stylix.colors.base07};
+  color: #${config.lib.stylix.colors.base05};
   border-radius: 1rem;
-  background: #${config.lib.stylix.colors.base04};
+  background: #${config.lib.stylix.colors.base02};
   font-weight: bold;
 }
 
 #workspaces button:hover {
     color: #${config.lib.stylix.colors.base01};
-    background: #${config.lib.stylix.colors.base06};
+    background: #${config.lib.stylix.colors.base04};
 }
 
 #battery,
@@ -63,8 +63,8 @@
     margin: 5px;
     padding: 0.5rem 1rem;
     transition: none;
-    background: #${config.lib.stylix.colors.base02};
-    color: #${config.lib.stylix.colors.base07};
+    background: #${config.lib.stylix.colors.base01};
+    color: #${config.lib.stylix.colors.base05};
 }
 
 #pulseaudio {
@@ -85,7 +85,7 @@
 #battery:hover,
 #backlight:hover
 {
-    background: #${config.lib.stylix.colors.base03};
+    background: #${config.lib.stylix.colors.base02};
 }
 
 #battery.charging, #battery.plugged {
@@ -113,11 +113,11 @@
     padding-right: 1.5rem;
     border-radius: 1rem;
     transition: none;
-    color: #${config.lib.stylix.colors.base0C};
+    color: #${config.lib.stylix.colors.base05};
     font-size: 25px;
     font-weight: bold;
     font-family: "Maple Mono NF CN";
-    background: #${config.lib.stylix.colors.base02};
+    background: #${config.lib.stylix.colors.base01};
 }
 
 #memory,
@@ -127,11 +127,11 @@
     padding-left: 1rem;
     padding-right: 1rem;
     transition: none;
-    color: #${config.lib.stylix.colors.base08};
-    background: #${config.lib.stylix.colors.base02};
+    color: #${config.lib.stylix.colors.base05};
+    background: #${config.lib.stylix.colors.base01};
 }
 #cpu {
-    color: #${config.lib.stylix.colors.base0E};
+    color: #${config.lib.stylix.colors.base05};
 }
 
 #custom-launcher {
@@ -143,7 +143,7 @@
     border-radius: 1rem;
     transition: none;
     color: rgb(126, 186, 228);
-    background: #${config.lib.stylix.colors.base02};
+    background: #${config.lib.stylix.colors.base01};
 }
       '';
   };

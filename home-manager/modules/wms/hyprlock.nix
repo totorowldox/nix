@@ -39,8 +39,8 @@
                     dots_spacing = 0.64;
                     fade_on_empty = false;
                     font_color  = hexToRgb config.lib.stylix.colors.base05;
-                    inner_color = hexToRgb config.lib.stylix.colors.base02;#"rgb(54, 58, 79)";
-                    outer_color = hexToRgb config.lib.stylix.colors.base0E;#"rgb(245, 189, 230)";
+                    inner_color = hexToRgb config.lib.stylix.colors.base00;#"rgb(54, 58, 79)";
+                    outer_color = hexToRgb config.lib.stylix.colors.base01;#"rgb(245, 189, 230)";
                     outline_thickness = 3;
                     rounding = 22;
                     placeholder_text = ''<span foreground="##cad3f5">Password...</span>'';

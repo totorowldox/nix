@@ -52,10 +52,10 @@
             }
             
             button {
-                color: #${config.lib.stylix.colors.base07};
+                color: #${config.lib.stylix.colors.base01};
                 font-family: "Maple Mono NF CN";
                 font-size: 28px;
-                background-color: #363a4f;
+                background-color: #${config.lib.stylix.colors.base00};
 
                 border-radius: 0px;
                 border-style: none;
@@ -67,7 +67,7 @@
             }
 
             button:focus {
-                background-color: #${config.lib.stylix.colors.base04};
+                background-color: #${config.lib.stylix.colors.base02};
                 outline-style: solid;
             }
 
@@ -96,7 +96,11 @@
             }
 
             #lock #logout #suspend #hibernate #shutdown #reboot {
-                background-color: #${config.lib.stylix.colors.base0E};
+                background-color: #${config.lib.stylix.colors.base01};
+            }
+
+            label {
+                color: #${config.lib.stylix.colors.base05};
             }
         '';
     };

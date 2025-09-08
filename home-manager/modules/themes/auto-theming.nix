@@ -12,10 +12,11 @@
         firefox = {
             enable = true;
             colorTheme.enable = true;
-            profileNames = [ "5xw00j7d" ];
+            profileNames = [ "remo" ];
         };
         gedit.enable = true;
         gtk.enable = true;
+        gtksourceview.enable = true;
         qt.enable = true;
         lazygit.enable = true;
         wofi.enable = true;

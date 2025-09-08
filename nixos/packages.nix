@@ -1,132 +1,131 @@
-{ pkgs, inputs, ...} : {
+{ pkgs, inputs, ... }: {
 
-	nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
-	services.flatpak.enable = true;
+  services.flatpak.enable = true;
 
-	services.atd.enable = true;
-	
-	environment.systemPackages =
-	let
-		# Fix electron IME
-		vscode-wayland = pkgs.symlinkJoin {
-		name = "vscode-wayland";
-		paths = [ pkgs.vscode ];
-		buildInputs = [ pkgs.makeWrapper ];
-		postBuild = ''
-		wrapProgram $out/bin/code \
-			--add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime"
-		'';
-	};
-	in with pkgs; [
-		# Desktop Apps
-		firefox
-		wofi
-		mpv
-		celluloid # GUI-fied mpv
-		gparted # Disk manager
-		rustdesk-flutter
-		waylyrics # Lyrics displayer
-		localsend # LAN file sharing tool
-		clash-nyanpasu
-		libreoffice
-		jiten # CLI Japanese dictionary
-		nautilus # File manager
-		gedit # Text editor
-		smile # Emoji picker
-		musescore # Music score engraving app
-		mission-center # Resource management
-		tailscale-systray
+  services.atd.enable = true;
 
-		# SMS
-		qq
-		signal-desktop
-		telegram-desktop
-		
-		# Windows program runner
-		wineWowPackages.stable
-		winetricks
-		protonup-qt
-		
-		# Coding
-		vscode
-		gcc
-		gdb
-		just
-		devenv
-		direnv
-		#jetbrains.rider
-		
-		# CLI stuffs
-		thefuck
-		fastfetch
-		tree
-		go-musicfox
-		cmd-wrapped
-		fzf
-		tmux
-		zoxide # better cd
-		eza # better ls
-		nh # better nix cli
-		lazygit # better git TUI
-		ripgrep
-		
-		# Terminal
-		# alacritty
-		kitty # For image support
-		
-		# Utils
-		pavucontrol
-		waydroid
-		zip
-		unzip
-		usb-modeswitch
-		usbutils
-		
-		# WMs and stuff
-		waybar
-		(waybar.overrideAttrs (oldAttrs: {
-			mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-			})
-		)
-		
-		# Wallpaper
-		swww
-		mpvpaper
-		
-		# Notification Controller
-		libnotify
-		swaynotificationcenter
-		
-		# Wayland Stuff
-		xwayland
-		wl-clipboard
-		cliphist
+  environment.systemPackages = let
+    # Fix electron IME
+    vscode-wayland = pkgs.symlinkJoin {
+      name = "vscode-wayland";
+      paths = [ pkgs.vscode ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/code \
+        	--add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime"
+      '';
+    };
+  in with pkgs; [
+    # Desktop Apps
+    firefox
+    wofi
+    mpv
+    celluloid # GUI-fied mpv
+    gparted # Disk manager
+    rustdesk-flutter
+    waylyrics # Lyrics displayer
+    localsend # LAN file sharing tool
+    clash-nyanpasu
+    libreoffice
+    jiten # CLI Japanese dictionary
+    nautilus # File manager
+    gedit # Text editor
+    smile # Emoji picker
+    musescore # Music score engraving app
+    mission-center # Resource management
+    tailscale-systray
 
-		# Theming Stuff
-		sassc
-		#gtk-engine-murrine
-		#gnome-themes-extra
-		
-		# Screenshotting
-		grim
-		grimblast
-		slurp
-		flameshot
-		swappy
-		
-		# Others
-		home-manager
-		cachix
-		
-		# Security
-		polkit_gnome
-		libsForQt5.kleopatra
-		gnupg
-		pinentry
-		pinentry-gnome3
+    # SMS
+    qq
+    signal-desktop
+    telegram-desktop
 
-		# XDG portal
-		# xdg-desktop-portal-gtk
-	];
+    # Windows program runner
+    wineWowPackages.stable
+    winetricks
+    protonup-qt
+
+    # Coding
+    vscode
+    gcc
+    gdb
+    just
+    devenv
+    direnv
+    nixfmt-classic
+    #jetbrains.rider
+
+    # CLI stuffs
+    thefuck
+    fastfetch
+    tree
+    go-musicfox
+    cmd-wrapped
+    fzf
+    tmux
+    zoxide # better cd
+    eza # better ls
+    nh # better nix cli
+    lazygit # better git TUI
+    ripgrep
+
+    # Terminal
+    # alacritty
+    kitty # For image support
+
+    # Utils
+    pavucontrol
+    waydroid
+    zip
+    unzip
+    usb-modeswitch
+    usbutils
+
+    # WMs and stuff
+    waybar
+    (waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    }))
+
+    # Wallpaper
+    swww
+    mpvpaper
+
+    # Notification Controller
+    libnotify
+    swaynotificationcenter
+
+    # Wayland Stuff
+    xwayland
+    wl-clipboard
+    cliphist
+
+    # Theming Stuff
+    sassc
+    #gtk-engine-murrine
+    #gnome-themes-extra
+
+    # Screenshotting
+    grim
+    grimblast
+    slurp
+    flameshot
+    swappy
+
+    # Others
+    home-manager
+    cachix
+
+    # Security
+    polkit_gnome
+    libsForQt5.kleopatra
+    gnupg
+    pinentry
+    pinentry-gnome3
+
+    # XDG portal
+    # xdg-desktop-portal-gtk
+  ];
 }

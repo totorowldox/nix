@@ -1,5 +1,5 @@
 {
 	imports = [
-		#./electron.nix
+		./firefox
 	];
 }

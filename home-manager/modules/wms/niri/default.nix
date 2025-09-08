@@ -14,10 +14,14 @@
                 XDG_CURRENT_DESKTOP="niri";
                 XDG_SESSION_TYPE = "wayland";
                 XDG_SESSION_DESKTOP = "niri";
+                MOZ_ENABLE_WAYLAND = "1";
 
                 # QT
-                QT_QPA_PLATFORM = "wayland;xcb";
+                QT_QPA_PLATFORM = "wayland";
                 QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+
+                # GTK
+                GDK_BACKEND="wayland";
 
                 # Cursors
                 XCURSOR_SIZE = "36";
@@ -196,7 +200,7 @@
                 "Mod+Return".action.spawn = "kitty";
                 "Mod+Q".action.close-window = {};
                 "Mod+Shift+M".action.fullscreen-window = {};
-                "Mod+E".action.spawn = "nautilus";
+                "Mod+E".action.spawn-sh = "nautilus --new-window";
                 "Mod+F".action.toggle-window-floating = {};
                 "Mod+M".action.maximize-column = {};
                 "Mod+S".action.spawn = "anyrun";
