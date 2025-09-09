@@ -17,7 +17,7 @@
     gedit.enable = true;
     gtk = {
         enable = true;
-        flatpakSupport = false; # Fix for flatpak packages (steam etc.)
+        flatpakSupport.enable = false; # Fix for flatpak packages (steam etc.)
     };
     gtksourceview.enable = true;
     qt.enable = true;
