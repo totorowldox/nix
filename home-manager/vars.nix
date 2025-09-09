@@ -1,7 +1,7 @@
 {
-    home.sessionVariables = {
-        EDITOR = "code";
-        TERMNIAL = "kitty";
-        BROWSER = "firefox";
-    };
+  home.sessionVariables = {
+    EDITOR = "code";
+    TERMNIAL = "kitty";
+    BROWSER = "firefox";
+  };
 }

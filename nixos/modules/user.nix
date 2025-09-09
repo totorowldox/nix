@@ -1,4 +1,4 @@
-{pkgs, ...} : {
+{ pkgs, ... }: {
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -7,9 +7,10 @@
     isNormalUser = true;
     description = "Remo";
     extraGroups = [ "networkmanager" "wheel" "input" ];
-    packages = with pkgs; [
-    	# user packages
-    ];
+    packages = with pkgs;
+      [
+        # user packages
+      ];
   };
-  
+
 }

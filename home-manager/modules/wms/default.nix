@@ -1,10 +1,10 @@
 {
-    imports = [
-		./nc
-		#./hyprland
-		./niri
-		
-		./hyprlock.nix
-		./anyrun.nix
-    ];
+  imports = [
+    ./nc
+    #./hyprland
+    ./niri
+
+    ./hyprlock.nix
+    ./anyrun.nix
+  ];
 }

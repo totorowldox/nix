@@ -1,26 +1,29 @@
 {
-    stylix.targets = {
-        hyprlock.enable = false;
-        hyprland.enable = true;
-		yazi.enable = true;
-    	kde.enable=true;
-		btop.enable = true;
-		cava.enable = true;
-		tmux.enable = true;
-		kitty.enable = true;
-        fcitx5.enable = true;
-        firefox = {
-            enable = true;
-            colorTheme.enable = true;
-            profileNames = [ "remo" ];
-        };
-        gedit.enable = true;
-        gtk.enable = true;
-        gtksourceview.enable = true;
-        qt.enable = true;
-        lazygit.enable = true;
-        wofi.enable = true;
-		waybar.enable = false;
-        vscode.enable = true;
+  stylix.targets = {
+    hyprlock.enable = false;
+    hyprland.enable = true;
+    yazi.enable = true;
+    kde.enable = true;
+    btop.enable = true;
+    cava.enable = true;
+    tmux.enable = true;
+    kitty.enable = true;
+    fcitx5.enable = true;
+    firefox = {
+      enable = true;
+      colorTheme.enable = true;
+      profileNames = [ "remo" ];
     };
+    gedit.enable = true;
+    gtk = {
+        enable = true;
+        flatpakSupport = false; # Fix for flatpak packages (steam etc.)
+    };
+    gtksourceview.enable = true;
+    qt.enable = true;
+    lazygit.enable = true;
+    wofi.enable = true;
+    waybar.enable = false;
+    vscode.enable = true;
+  };
 }

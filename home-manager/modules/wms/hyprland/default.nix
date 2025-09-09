@@ -1,16 +1,15 @@
-{pkgs, flakePath, ...} : {
-  imports = [
-    ./waybar.nix
-  ];
+{ pkgs, flakePath, ... }: {
+  imports = [ ./waybar.nix ];
 
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
 
-    plugins = with pkgs; [
-      #hyprlandPlugins.hyprtrails
-    ];
+    plugins = with pkgs;
+      [
+        #hyprlandPlugins.hyprtrails
+      ];
 
     settings = {
       "$mainMod" = "SUPER";
@@ -47,9 +46,7 @@
 
         follow_mouse = 1;
 
-        touchpad = {
-          natural_scroll = false;
-        };
+        touchpad = { natural_scroll = false; };
 
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
       };
@@ -58,7 +55,7 @@
         gaps_in = 5;
         gaps_out = 20;
         border_size = 3;
-	      #"col.active_border" = "rgba(ff66b3ee) rgba(ffccffee) 45deg"; # Managed by stylix
+        #"col.active_border" = "rgba(ff66b3ee) rgba(ffccffee) 45deg"; # Managed by stylix
         #"col.inactive_border" = "rgba(595959aa)";
 
         layout = "dwindle";
@@ -85,26 +82,27 @@
         dim_strength = 0.1;
       };
 
-      /*animations = {
-        enabled = true;
+      /* animations = {
+           enabled = true;
 
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        # bezier = "myBezier, 0.33, 0.82, 0.9, -0.08";
+           bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+           # bezier = "myBezier, 0.33, 0.82, 0.9, -0.08";
 
-        animation = [
-          "windows,     1, 7,  myBezier"
-          "windowsOut,  1, 7,  default, popin 80%"
-          "border,      1, 10, default"
-          "borderangle, 1, 8,  default"
-          "fade,        1, 7,  default"
-          "workspaces,  1, 6,  default"
-        ];
-      };*/
+           animation = [
+             "windows,     1, 7,  myBezier"
+             "windowsOut,  1, 7,  default, popin 80%"
+             "border,      1, 10, default"
+             "borderangle, 1, 8,  default"
+             "fade,        1, 7,  default"
+             "workspaces,  1, 6,  default"
+           ];
+         };
+      */
 
       animations = {
         enabled = true;
 
-        bezier =[
+        bezier = [
           "myBounce, 0.05, 0.9, 0.1, 1.05"
           "fluent_decel, 0, 0.2, 0.4, 1"
           "easeOutCirc, 0, 0.55, 0.45, 1"
@@ -129,7 +127,8 @@
       };
 
       dwindle = {
-        pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        pseudotile =
+          true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
         preserve_split = false;
       };
 
@@ -251,17 +250,17 @@
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e-1"
         "$mainMod, mouse_up, workspace, e+1"
-        
+
         # Screenshotting
-        '', Print, exec, grim - | swappy -f -''
-        ''$mainMod, Print, exec, grim - | wl-copy''
+        ", Print, exec, grim - | swappy -f -"
+        "$mainMod, Print, exec, grim - | wl-copy"
         ''CTRL ALT, A, exec, grim -g "$(slurp)" - | swappy -f -''
         ''$mainMod, A, exec, grim -g "$(slurp)" - | wl-copy''
 
         # Waybar
         "$mainMod, B, exec, pkill -SIGUSR1 waybar"
         "$mainMod, W, exec, pkill -SIGUSR2 waybar"
-        
+
         # Window Controls
         "ALT, Tab, cyclenext"
         "ALT, Tab, bringactivetotop"

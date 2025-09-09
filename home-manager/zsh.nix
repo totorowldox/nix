@@ -6,77 +6,76 @@
     syntaxHighlighting.enable = true;
 
     sessionVariables = {
-      FZF_DEFAULT_OPTS=''
---color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
---color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
---color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
---color=selected-bg:#494d64 \
---prompt='$' \
---pointer='🍥' \
---border=double '';
-#--multi
+      FZF_DEFAULT_OPTS = ''
+        --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+        --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+        --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
+        --color=selected-bg:#494d64 \
+        --prompt='$' \
+        --pointer='🍥' \
+        --border=double '';
+      #--multi
 
     };
 
     # Custom shell scripts
     initContent = ''
-    function y() {
-      local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-      yazi "$@" --cwd-file="$tmp"
-      if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-        builtin cd -- "$cwd"
-      fi
-      rm -f -- "$tmp"
-    }
-    function fzf-history() {
-      local selected_command=$(history | awk '{$1=""; sub(/^ */, ""); if (!seen[$0]++) print $0}' | fzf -i \
-        --ansi \
-        --reverse \
-        --height=50% \
-        --margin=2%,2%,2%,2% \
-        --layout=reverse-list \
-        --info=default \
-        --header='Select command to execute, CTRL-C or ESC to quit')
-      if [[ -n $selected_command ]]; then
-        BUFFER=$selected_command
-        CURSOR=$#BUFFER
-        zle accept-line
-      fi
-    }
-    function set-reminder() { 
-      if [[ $# -ne 2 ]]; then
-        echo "Usage: set-reminder 'message' 'time'"
-        return 1
+      function y() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+        yazi "$@" --cwd-file="$tmp"
+        if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+          builtin cd -- "$cwd"
         fi
-      local message=$1
-      local time=$2
-      echo "notify-send '$message'" | at "$time" > /dev/null
-      if [[ $? -eq 0 ]]; then
-        echo "Reminder set: '$message' at $time"
-      else
-        echo "Error setting reminder"
-        return 1
+        rm -f -- "$tmp"
+      }
+      function fzf-history() {
+        local selected_command=$(history | awk '{$1=""; sub(/^ */, ""); if (!seen[$0]++) print $0}' | fzf -i \
+          --ansi \
+          --reverse \
+          --height=50% \
+          --margin=2%,2%,2%,2% \
+          --layout=reverse-list \
+          --info=default \
+          --header='Select command to execute, CTRL-C or ESC to quit')
+        if [[ -n $selected_command ]]; then
+          BUFFER=$selected_command
+          CURSOR=$#BUFFER
+          zle accept-line
         fi
       }
+      function set-reminder() { 
+        if [[ $# -ne 2 ]]; then
+          echo "Usage: set-reminder 'message' 'time'"
+          return 1
+          fi
+        local message=$1
+        local time=$2
+        echo "notify-send '$message'" | at "$time" > /dev/null
+        if [[ $? -eq 0 ]]; then
+          echo "Reminder set: '$message' at $time"
+        else
+          echo "Error setting reminder"
+          return 1
+          fi
+        }
 
-    zle -N fzf-history
-    bindkey '^R' fzf-history
+      zle -N fzf-history
+      bindkey '^R' fzf-history
 
-    eval "$(zoxide init zsh)"
+      eval "$(zoxide init zsh)"
 
-    eval "$(direnv hook zsh)"
+      eval "$(direnv hook zsh)"
 
-    eval $(thefuck --alias)
+      eval $(thefuck --alias)
 
     '';
 
-    shellAliases =
-      let
-        hostname = "remoaku";
-        username = "remo";
-        sudoWithEnvVars = "HOME=/ sudo -E";
-      in {
-      
+    shellAliases = let
+      hostname = "remoaku";
+      username = "remo";
+      sudoWithEnvVars = "HOME=/ sudo -E";
+    in {
+
       # NixOS System
       #rbs = "${sudoWithEnvVars} nixos-rebuild switch --flake ${flakePath}/#${hostname}";
       #hms = "home-manager switch --flake ${flakePath}/#${username}";
@@ -84,8 +83,9 @@
       hms = "nh home switch ${flakePath}";
 
       upd = "${sudoWithEnvVars} nix flake update --flake ${flakePath}";
-      upg = "${sudoWithEnvVars} nixos-rebuild switch --upgrade --flake ${flakePath}/#${hostname}";
-      
+      upg =
+        "${sudoWithEnvVars} nixos-rebuild switch --upgrade --flake ${flakePath}/#${hostname}";
+
       cdn = "cd ${flakePath}";
       conf = "vim ${flakePath}/nixos/configuration.nix";
       pkgs = "vim ${flakePath}/nixos/packages.nix";
@@ -116,11 +116,13 @@
       cdgal = "cd /media/windows/e/GAL";
 
       # Apps
-      osu-lazer = ''export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1; appimage-run ./下载/osu.AppImage'';
+      osu-lazer =
+        "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1; appimage-run ./下载/osu.AppImage";
       ani-rss = "cd ~/ani-rss/ && ani-rss"; # Hack for configuring
 
       # Env Vars
-      set-proxy = ''export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'';
+      set-proxy =
+        "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890";
     };
 
     history.size = 10000;
@@ -150,11 +152,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ 
-        "extract"
-        "git" 
-        "sudo"
-        ];
+      plugins = [ "extract" "git" "sudo" ];
       theme = "bira"; # gnzh, blinks is also really nice
     };
   };
