@@ -6,5 +6,7 @@
 
     ./hyprlock.nix
     ./anyrun.nix
+    ./wlogout.nix
+    ./wofi.nix
   ];
 }

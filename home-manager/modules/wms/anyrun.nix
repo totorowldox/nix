@@ -9,12 +9,13 @@
         symbols
         shell
         stdin
+        niri-focus
       ];
       width.fraction = 0.4;
       y.fraction = 0.3;
       hidePluginInfo = false;
       hideIcons = false;
-      closeOnClick = false;
+      closeOnClick = true;
     };
     extraCss = ''
 window {

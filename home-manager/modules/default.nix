@@ -4,11 +4,9 @@
     ./themes
     ./wms
 
-    ./fastfetch.nix
     ./git.nix
-    ./kitty.nix
     ./ssh.nix
-    ./wlogout.nix
+    ./input.nix
     #./waylyrics.nix #waylyrics doesn't start for Read-only file system
     # MAKE MANUAL CHANGE TO ~/.config/waylyrics/config.toml
     # --------------------------------
