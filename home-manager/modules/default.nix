@@ -7,6 +7,7 @@
     ./git.nix
     ./ssh.nix
     ./input.nix
+    ./removable.nix
     #./waylyrics.nix #waylyrics doesn't start for Read-only file system
     # MAKE MANUAL CHANGE TO ~/.config/waylyrics/config.toml
     # --------------------------------

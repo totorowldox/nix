@@ -2,6 +2,8 @@
   boot.supportedFilesystems = [ "ntfs" ];
 
   hardware.bluetooth.enable = true;
+  
+  services.udisks2.enable = true;
 
   fileSystems."/media/windows/c" = {
     device = "/dev/disk/by-uuid/BA76E5860768395D";
