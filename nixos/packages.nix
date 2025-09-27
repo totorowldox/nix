@@ -7,14 +7,13 @@
   services.atd.enable = true;
 
   environment.systemPackages = let
-    # Fix electron IME
-    vscode-wayland = pkgs.symlinkJoin {
-      name = "vscode-wayland";
-      paths = [ pkgs.vscode ];
+    qq-x11 = pkgs.symlinkJoin {
+      name = "qq-x11";
+      paths = [ pkgs.qq ];
       buildInputs = [ pkgs.makeWrapper ];
       postBuild = ''
-        wrapProgram $out/bin/code \
-        	--add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime"
+        wrapProgram $out/bin/qq \
+        	--add-flags "--ozone-platform=x11"
       '';
     };
   in with pkgs; [
@@ -36,9 +35,10 @@
     musescore # Music score engraving app
     mission-center # Resource management
     tailscale-systray
+    notepad-next
 
     # SMS
-    qq
+    qq-x11
     signal-desktop
     telegram-desktop
 
