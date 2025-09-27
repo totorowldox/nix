@@ -57,9 +57,6 @@
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [
-          #inputs.nur-xddxdd.nixosModules.setupOverlay
-          #inputs.nur-xddxdd.nixosModules.nix-cache-garnix
-          #catppuccin.nixosModules.catppuccin
           stylix.nixosModules.stylix
           {
             stylix = {
