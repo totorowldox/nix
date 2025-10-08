@@ -33,10 +33,20 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    niri-caelestia-shell = {
+      url = "github:jutraim/niri-caelestia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, catppuccin, stylix, anyrun, nix-gaming, home-manager, nur
-    , ... }@inputs:
+    , niri-caelestia-shell, quickshell, ... }@inputs:
     let
       system = "x86_64-linux";
       flakePath = "~/nix";
@@ -81,8 +91,9 @@
         extraSpecialArgs = { inherit inputs flakePath; };
         modules = [
           { nixpkgs.overlays = [ nur.overlays.default ]; }
-          catppuccin.homeModules.catppuccin
+          #catppuccin.homeModules.catppuccin
           stylix.homeModules.stylix
+          niri-caelestia-shell.homeManagerModules.default
           {
             stylix = {
               enable = true;

@@ -16,6 +16,7 @@
         	--add-flags "--ozone-platform=x11"
       '';
     };
+    quickshell = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
   in with pkgs; [
     # Desktop Apps
     firefox
@@ -36,6 +37,7 @@
     mission-center # Resource management
     tailscale-systray
     notepad-next
+    obs-studio
 
     # SMS
     qq-x11
@@ -101,6 +103,7 @@
     xwayland
     wl-clipboard
     cliphist
+    quickshell
 
     # Theming Stuff
     sassc

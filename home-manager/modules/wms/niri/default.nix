@@ -209,6 +209,7 @@
         { argv = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
         { argv = [ "fcitx5" "-d" "-r" ]; }
         { argv = [ "blueman-applet" ]; }
+        { argv = [ "quickshell" "-c" "niri-caelestia-shell" "-n" ]; }
         { sh = "${flakePath}/scripts/startup-apps.sh"; }
       ];
 
@@ -222,7 +223,17 @@
         "Mod+E".action.spawn-sh = "nautilus --new-window";
         "Mod+F".action.toggle-window-floating = { };
         "Mod+M".action.maximize-column = { };
-        "Mod+S".action.spawn = "anyrun";
+        #"Mod+S".action.spawn = "anyrun";
+        "Mod+S".action.spawn = [
+          "qs"
+          "-c"
+          "niri-caelestia-shell"
+          "ipc"
+          "call"
+          "drawers"
+          "toggle"
+          "launcher"
+        ];
         "Mod+Tab".action.spawn-sh = "swaync-client -t";
         "Mod+L".action.spawn = "wlogout";
         "Mod+R".action.switch-preset-column-width = { };
