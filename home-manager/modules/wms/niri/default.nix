@@ -84,6 +84,16 @@
           { proportion = 0.5; }
           { proportion = 0.6667; }
         ];
+        insert-hint = {
+          enable = true;
+          display = {
+            gradient = {
+              from = config.lib.stylix.colors.withHashtag.base0A;
+              to = config.lib.stylix.colors.withHashtag.base09;
+              angle = 45;
+            };
+          };
+        };
       };
 
       overview = {
@@ -94,6 +104,14 @@
       prefer-no-csd = true;
 
       window-rules = [
+        {
+          matches = [{ is-focused = true; }];
+          opacity = 1.0;
+        }
+        {
+          matches = [{ is-focused = false; }];
+          opacity = 0.85;
+        }
         {
           geometry-corner-radius = {
             bottom-left = 10.0;

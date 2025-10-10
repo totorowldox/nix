@@ -435,8 +435,8 @@
     horizontal-view-movement = {
       kind.spring = {
         damping-ratio = 1.0;
-        stiffness = 600;
-        epsilon = 1.0e-3;
+        stiffness = 800;
+        epsilon = 1.0e-4;
       };
     };
   };

@@ -50,10 +50,6 @@
             enabled = true;
           }
           {
-            id = "workspaces";
-            enabled = true;
-          }
-          {
             id = "spacer";
             enabled = true;
           }
