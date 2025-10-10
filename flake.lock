@@ -336,11 +336,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760015796,
-        "narHash": "sha256-c/WkaynHrRE1EHWATe5+vb9M9YabfTaR1GHivdybaSU=",
+        "lastModified": 1760061988,
+        "narHash": "sha256-CeuMo7fjWm3XaoK+b1PGyaVIlE1GHudoxk9jrJFvfbY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6564ee29d0521af3feba937a91024e6a3e77a8b6",
+        "rev": "c7f4214faca2f196c551b767c12a70bfa0614510",
         "type": "github"
       },
       "original": {
@@ -535,11 +535,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760017894,
-        "narHash": "sha256-twRVNJRbiJ98/Sr4sRoQr5BMXHN9qwoBj1InD2QgFJg=",
+        "lastModified": 1760065872,
+        "narHash": "sha256-3NAYIgP9u81Oj3VAThVzkuOBi/HBlW79KGLBTa1knk8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "bffb37af409f67ec4203cebee2ed37fb90965f57",
+        "rev": "2a9b45277b7a553ee55ce53910f9383e698ad7bb",
         "type": "github"
       },
       "original": {
@@ -616,26 +616,6 @@
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       }
     },
-    "quickshell_3": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1759997568,
-        "narHash": "sha256-xQyzPkgpgjAceJKwZhLU2//Y1jAmvPGOq80svqkWFhQ=",
-        "ref": "refs/heads/master",
-        "rev": "3e32ae595f97bd2d2e5ed4512fb4bb25edb4eae6",
-        "revCount": 691,
-        "type": "git",
-        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
-      }
-    },
     "root": {
       "inputs": {
         "anyrun": "anyrun",
@@ -647,7 +627,6 @@
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_3",
         "nur": "nur",
-        "quickshell": "quickshell_3",
         "stylix": "stylix"
       }
     },

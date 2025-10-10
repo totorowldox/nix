@@ -4,5 +4,6 @@
     #./qt.nix
     ./auto-theming.nix
     ./cursor.nix
+    ./PFP.nix
   ];
 }

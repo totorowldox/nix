@@ -16,7 +16,6 @@
         	--add-flags "--ozone-platform=x11"
       '';
     };
-    quickshell = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
   in with pkgs; [
     # Desktop Apps
     firefox
@@ -102,7 +101,6 @@
     xwayland
     wl-clipboard
     cliphist
-    quickshell
 
     # Theming Stuff
     sassc

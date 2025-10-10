@@ -20,11 +20,37 @@
         #sans = ;
       };
       background.enabled = false;
+      general = {
+        apps = {
+          terminal = [ "kitty" ];
+          audio = [ "pavucontrol" ];
+          playback = [ "celluoid" ];
+          explorer = [ "nautilus" ];
+        };
+      };
+      utilities = {
+        enabled = true;
+        maxToasts = 4;
+        toasts = {
+          audioInputChanged = true;
+          audioOutputChanged = true;
+          capsLockChanged = true;
+          chargingChanged = true;
+          configLoaded = true;
+          dndChanged = true;
+          gameModeChanged = true;
+          numLockChanged = true;
+        };
+      };
       bar = {
         persistent = true;
         entries = [
           {
             id = "logo";
+            enabled = true;
+          }
+          {
+            id = "workspaces";
             enabled = true;
           }
           {

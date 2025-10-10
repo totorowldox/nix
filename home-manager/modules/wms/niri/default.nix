@@ -1,5 +1,5 @@
 { pkgs, config, inputs, flakePath, ... }: {
-  imports = [ inputs.niri.homeModules.niri ./waybar.nix ./caelestia.nix ];
+  imports = [ inputs.niri.homeModules.niri ./animation.nix ./caelestia.nix ];
   home.packages = with pkgs;
     [
       (xwayland-satellite.override {
@@ -86,44 +86,9 @@
         ];
       };
 
-      animations = {
-        window-open = {
-          kind.easing = {
-            duration-ms = 200;
-            curve = "cubic-bezier";
-            curve-args = [ 0.2 1.2 0.3 1.1 ]; # Pronounced bounce
-          };
-          custom-shader = builtins.readFile ./shader/open.glsl;
-        };
-        window-close = {
-          kind.easing = {
-            duration-ms = 200;
-            curve = "cubic-bezier";
-            curve-args = [ 0.2 1.2 0.3 1.1 ]; # Matching bounce
-          };
-          custom-shader = builtins.readFile ./shader/close.glsl;
-        };
-        window-movement.kind = {
-          spring = {
-            damping-ratio = 0.85; # Slightly underdamped for a subtle bounce
-            stiffness = 1200; # Higher stiffness for quicker response
-            epsilon = 1.0e-4;
-          };
-        };
-        window-resize.kind = {
-          spring = {
-            damping-ratio = 0.9; # Near-critical damping for smooth resizing
-            stiffness = 1000; # Balanced stiffness for fluid resizing
-            epsilon = 1.0e-4;
-          };
-        };
-        workspace-switch.kind = {
-          spring = {
-            damping-ratio = 0.8; # More bounce for a dynamic workspace switch
-            stiffness = 1500; # Higher stiffness for a faster snap
-            epsilon = 1.0e-4;
-          };
-        };
+      overview = {
+        zoom = 0.36;
+        backdrop-color = config.lib.stylix.colors.withHashtag.base01;
       };
 
       prefer-no-csd = true;
@@ -203,7 +168,9 @@
           argv =
             [ "swww" "img" "${flakePath}/assets/nixos-anime-wallpaper.png" ];
         }
-        { argv = [ "swaync" ]; }
+        {
+          argv = [ "swaync" ];
+        }
         #{ argv = [ "waybar" ]; }
         { argv = [ "wl-paste" "--type" "text" "--watch" "cliphist" "store" ]; }
         { argv = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
@@ -223,13 +190,8 @@
         "Mod+F".action.toggle-window-floating = { };
         "Mod+M".action.maximize-column = { };
         #"Mod+S".action.spawn = "anyrun";
-        "Mod+S".action.spawn = [
-          "caelestia"
-          "shell"
-          "drawers"
-          "toggle"
-          "launcher"
-        ];
+        "Mod+S".action.spawn =
+          [ "caelestia" "shell" "drawers" "toggle" "launcher" ];
         "Mod+Tab".action.spawn-sh = "swaync-client -t";
         "Mod+L".action.spawn = "wlogout";
         "Mod+R".action.switch-preset-column-width = { };

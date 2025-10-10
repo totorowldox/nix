@@ -43,15 +43,10 @@
       url = "github:caelestia-dots/cli";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { nixpkgs, catppuccin, stylix, anyrun, nix-gaming, home-manager, nur
-    , niri-caelestia-shell, quickshell, ... }@inputs:
+    , niri-caelestia-shell, ... }@inputs:
     let
       system = "x86_64-linux";
       flakePath = "~/nix";
