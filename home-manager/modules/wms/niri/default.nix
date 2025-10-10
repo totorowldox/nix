@@ -1,5 +1,5 @@
 { pkgs, config, inputs, flakePath, ... }: {
-  imports = [ inputs.niri.homeModules.niri ./waybar.nix ];
+  imports = [ inputs.niri.homeModules.niri ./waybar.nix ./caelestia.nix ];
   home.packages = with pkgs;
     [
       (xwayland-satellite.override {
@@ -204,12 +204,11 @@
             [ "swww" "img" "${flakePath}/assets/nixos-anime-wallpaper.png" ];
         }
         { argv = [ "swaync" ]; }
-        { argv = [ "waybar" ]; }
+        #{ argv = [ "waybar" ]; }
         { argv = [ "wl-paste" "--type" "text" "--watch" "cliphist" "store" ]; }
         { argv = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
         { argv = [ "fcitx5" "-d" "-r" ]; }
         { argv = [ "blueman-applet" ]; }
-        { argv = [ "quickshell" "-c" "niri-caelestia-shell" "-n" ]; }
         { sh = "${flakePath}/scripts/startup-apps.sh"; }
       ];
 
@@ -225,11 +224,8 @@
         "Mod+M".action.maximize-column = { };
         #"Mod+S".action.spawn = "anyrun";
         "Mod+S".action.spawn = [
-          "qs"
-          "-c"
-          "niri-caelestia-shell"
-          "ipc"
-          "call"
+          "caelestia"
+          "shell"
           "drawers"
           "toggle"
           "launcher"

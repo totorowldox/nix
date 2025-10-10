@@ -60,7 +60,6 @@
     #jetbrains.rider
 
     # CLI stuffs
-    thefuck
     fastfetch
     tree
     go-musicfox
@@ -123,7 +122,7 @@
 
     # Security
     polkit_gnome
-    libsForQt5.kleopatra
+    kdePackages.kleopatra
     gnupg
     pinentry
     pinentry-gnome3

@@ -66,8 +66,6 @@
 
       eval "$(direnv hook zsh)"
 
-      eval $(thefuck --alias)
-
     '';
 
     shellAliases = let
