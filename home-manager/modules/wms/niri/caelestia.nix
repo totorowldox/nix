@@ -19,6 +19,7 @@
         mono = config.stylix.fonts.monospace.name;
         #sans = ;
       };
+      notifs.expire = false;
       background.enabled = false;
       general = {
         apps = {

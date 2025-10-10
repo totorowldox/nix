@@ -181,14 +181,19 @@
       ];
 
       spawn-at-startup = [
-        { argv = [ "swww" "init" ]; }
+        { argv = [ "swww" "-n" "niri" ]; }
         {
-          argv =
-            [ "swww" "img" "${flakePath}/assets/nixos-anime-wallpaper.png" ];
+          argv = [
+            "swww"
+            "img"
+            "${flakePath}/assets/nixos-anime-wallpaper.png"
+            "-n"
+            "niri"
+          ];
         }
-        {
-          argv = [ "swaync" ];
-        }
+        # {
+        #   argv = [ "swaync" ];
+        # }
         #{ argv = [ "waybar" ]; }
         { argv = [ "wl-paste" "--type" "text" "--watch" "cliphist" "store" ]; }
         { argv = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
