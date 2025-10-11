@@ -11,10 +11,7 @@
 
   imports = [
     ./modules
-
+    ./programs
     ./packages.nix
-    ./zsh.nix
-    # ./nushell.nix
-    ./vars.nix
   ];
 }

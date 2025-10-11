@@ -1,6 +1,5 @@
 {
   imports = [
-    ./apps
     ./themes
     ./wms
 
@@ -8,5 +7,6 @@
     ./ssh.nix
     ./input.nix
     ./removable.nix
+    ./vars.nix
   ];
 }

@@ -181,7 +181,7 @@
       ];
 
       spawn-at-startup = [
-        { argv = [ "swww" "-n" "niri" ]; }
+        { argv = [ "swww-daemon" "-n" "niri" ]; }
         {
           argv = [
             "swww"

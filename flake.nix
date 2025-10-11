@@ -104,7 +104,7 @@
               base16Scheme = colorScheme.path;
             };
           }
-          ./home-manager/home.nix
+          ./home-manager/remo.nix
         ];
       };
     };
