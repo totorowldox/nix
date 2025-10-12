@@ -1,13 +1,17 @@
 { config, ... }: {
   programs.niri.settings.animations = {
     window-open = {
-      kind.spring = {
-        damping-ratio = 0.7;
-        stiffness = 300;
-        epsilon = 1.0e-3;
+      # kind.spring = {
+      #   damping-ratio = 0.7;
+      #   stiffness = 300;
+      #   epsilon = 1.0e-3;
+      # };
+      kind.easing = {
+        curve = "linear";
+        duration-ms = 250;
       };
       custom-shader = ''
-                // Example: fill the current geometry with a solid vertical gradient and
+        // Example: fill the current geometry with a solid vertical gradient and
         // gradually make opaque.
         vec4 solid_gradient(vec3 coords_geo, vec3 size_geo) {
             vec4 color = vec4(0.0);
@@ -51,13 +55,13 @@
         // This is the function that you must define.
         vec4 open_color(vec3 coords_geo, vec3 size_geo) {
             // You can pick one of the example functions or write your own.
-            return default_open(coords_geo, size_geo);
+            return expanding_circle(coords_geo, size_geo);
         }
       '';
     };
     window-close = {
       kind.easing = {
-        curve = "ease-out-quad";
+        curve = "linear";
         duration-ms = 1000;
       };
       custom-shader = let

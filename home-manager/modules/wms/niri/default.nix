@@ -88,8 +88,8 @@
           enable = true;
           display = {
             gradient = {
-              from = config.lib.stylix.colors.withHashtag.base0A;
-              to = config.lib.stylix.colors.withHashtag.base09;
+              from = config.lib.stylix.colors.withHashtag.base0A + "80";
+              to = config.lib.stylix.colors.withHashtag.base09 + "80";
               angle = 45;
             };
           };
