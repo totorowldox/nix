@@ -37,7 +37,7 @@
     tailscale-systray
     notepad-next
     obs-studio
-
+    
     # SMS
     qq-x11
     signal-desktop
@@ -77,7 +77,6 @@
 
     # Utils
     pavucontrol
-    waydroid
     zip
     unzip
     usb-modeswitch
@@ -117,6 +116,7 @@
     # Others
     home-manager
     cachix
+    nur.repos.ataraxiasjel.waydroid-script
 
     # Security
     polkit_gnome

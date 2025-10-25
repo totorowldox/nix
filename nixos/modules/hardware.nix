@@ -32,4 +32,5 @@
   };
 
   hardware.graphics.enable32Bit = true;
+  services.gvfs.enable = true;
 }

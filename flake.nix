@@ -5,8 +5,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    catppuccin.url = "github:catppuccin/nix";
-
     anyrun = {
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,20 +43,26 @@
     };
   };
 
-  outputs = { nixpkgs, catppuccin, stylix, anyrun, nix-gaming, home-manager, nur
+  outputs = { nixpkgs, stylix, anyrun, nix-gaming, home-manager, nur
     , niri-caelestia-shell, ... }@inputs:
     let
       system = "x86_64-linux";
       flakePath = "~/nix";
       pkgs = nixpkgs.legacyPackages.${system};
       colorScheme = rec {
-        useImage = true;
+        useImage = false;
         image = ./assets/nixos-kukuru-wallpaper.png;
 
-        name = "catppuccin-macchiato";
+        name = "gruvbox-dark";
+        # tomorrow-night-eighties
+        # catppuccin-macchiato
+        #
+        # gruvbox-dark
+
+
         path = "${pkgs.base16-schemes}/share/themes/${name}.yaml";
         polarity = "dark";
-        terminal-opacity = 0.8;
+        terminal-opacity = 1;
       };
       fontConfig = { monospace = { name = "Maple Mono NF CN"; }; };
     in {
@@ -67,6 +71,7 @@
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [
+          { nixpkgs.overlays = [ nur.overlays.default ]; }
           stylix.nixosModules.stylix
           {
             stylix = {
@@ -91,7 +96,6 @@
         extraSpecialArgs = { inherit inputs flakePath; };
         modules = [
           { nixpkgs.overlays = [ nur.overlays.default ]; }
-          #catppuccin.homeModules.catppuccin
           stylix.homeModules.stylix
           niri-caelestia-shell.homeManagerModules.default
           {

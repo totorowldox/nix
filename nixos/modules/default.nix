@@ -15,4 +15,5 @@
     ./font.nix
   ];
 
+  virtualisation.waydroid.enable = true;
 }
