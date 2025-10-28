@@ -20,6 +20,7 @@
         #sans = ;
       };
       notifs.expire = false;
+      notifs.actionOnClick = true;
       background.enabled = false;
       general = {
         apps = {

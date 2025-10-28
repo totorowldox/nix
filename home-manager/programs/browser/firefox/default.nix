@@ -23,5 +23,5 @@
     };
   };
 
-  nixpkgs.config.permittedInsecurePackages = [ "immersive-translate-1.21.7" ];
+  nixpkgs.config.permittedInsecurePackages = [ "immersive-translate-1.22.4" ];
 }

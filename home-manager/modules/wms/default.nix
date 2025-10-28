@@ -5,7 +5,7 @@
     ./niri
 
     ./hyprlock.nix
-    ./anyrun.nix
+    #./anyrun.nix
     ./wlogout.nix
     ./wofi.nix
   ];

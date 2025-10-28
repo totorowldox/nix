@@ -3,17 +3,12 @@
   description = "Remo's NixOS System Configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -23,7 +18,7 @@
     };
 
     stylix = {
-      url = "github:nix-community/stylix";
+      url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -34,16 +29,18 @@
 
     niri-caelestia-shell = {
       url = "github:jutraim/niri-caelestia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs"; # Remove when upgrading to 25.11
     };
 
     caelestia-cli = {
       url = "github:caelestia-dots/cli";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs"; # ...
     };
+
+    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
-  outputs = { nixpkgs, stylix, anyrun, nix-gaming, home-manager, nur
+  outputs = { nixpkgs, stylix, nix-gaming, home-manager, nur
     , niri-caelestia-shell, ... }@inputs:
     let
       system = "x86_64-linux";
@@ -87,6 +84,7 @@
               "${stylix}/modules/gnome/nixos.nix"
             ]; # Manually disable GNOME shell
           }
+          inputs.minegrub-theme.nixosModules.default
           ./nixos/configuration.nix
         ];
       };
