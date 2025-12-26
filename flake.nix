@@ -3,12 +3,12 @@
   description = "Remo's NixOS System Configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -18,7 +18,7 @@
     };
 
     stylix = {
-      url = "github:nix-community/stylix/release-25.05";
+      url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -43,71 +43,45 @@
   outputs = { nixpkgs, stylix, nix-gaming, home-manager, nur
     , niri-caelestia-shell, ... }@inputs:
     let
-      system = "x86_64-linux";
-      flakePath = "~/nix";
-      pkgs = nixpkgs.legacyPackages.${system};
-      colorScheme = rec {
-        useImage = false;
-        image = ./assets/nixos-kukuru-wallpaper.png;
+      mkHost = { hostname, system ? "x86_64-linux" }:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          theme = import ./lib/theme.nix { inherit pkgs; };
+          vars = import ./lib/vars { inherit hostname; };
+        in nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs hostname theme; };
+          modules = [
+            { nixpkgs.overlays = [ nur.overlays.default ]; }
 
-        name = "gruvbox-dark";
-        # tomorrow-night-eighties
-        # catppuccin-macchiato
-        #
-        # gruvbox-dark
+            stylix.nixosModules.stylix
+            inputs.minegrub-theme.nixosModules.default
 
+            ./hosts/${hostname}
+            ./modules/common
+            ./modules/${hostname}
 
-        path = "${pkgs.base16-schemes}/share/themes/${name}.yaml";
-        polarity = "dark";
-        terminal-opacity = 1;
-      };
-      fontConfig = { monospace = { name = "Maple Mono NF CN"; }; };
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit inputs vars theme hostname;
+              };
+              home-manager.users.remo = {
+                imports = [
+                  niri-caelestia-shell.homeManagerModules.default
+                  ./home-manager/common
+                  ./home-manager/${hostname}
+                ];
+              };
+            }
+          ];
+        };
     in {
-
-      nixosConfigurations.remoaku = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          { nixpkgs.overlays = [ nur.overlays.default ]; }
-          stylix.nixosModules.stylix
-          {
-            stylix = {
-              enable = true;
-              image = if colorScheme.useImage then colorScheme.image else null;
-              polarity = colorScheme.polarity;
-              fonts = fontConfig;
-              opacity.terminal = colorScheme.terminal-opacity;
-            } // nixpkgs.lib.optionalAttrs (!colorScheme.useImage) {
-              base16Scheme = colorScheme.path;
-            };
-            disabledModules = [
-              "${stylix}/modules/gnome/nixos.nix"
-            ]; # Manually disable GNOME shell
-          }
-          inputs.minegrub-theme.nixosModules.default
-          ./nixos/configuration.nix
-        ];
-      };
-
-      homeConfigurations.remo = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs flakePath; };
-        modules = [
-          { nixpkgs.overlays = [ nur.overlays.default ]; }
-          stylix.homeModules.stylix
-          niri-caelestia-shell.homeManagerModules.default
-          {
-            stylix = {
-              enable = true;
-              image = if colorScheme.useImage then colorScheme.image else null;
-              polarity = colorScheme.polarity;
-              fonts = fontConfig;
-            } // nixpkgs.lib.optionalAttrs (!colorScheme.useImage) {
-              base16Scheme = colorScheme.path;
-            };
-          }
-          ./home-manager/remo.nix
-        ];
+      nixosConfigurations = {
+        remoaku = mkHost { hostname = "remoaku"; };
+        kagaribi = mkHost { hostname = "kagaribi"; };
       };
     };
 
