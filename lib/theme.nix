@@ -11,9 +11,5 @@ rec {
     terminalOpacity = 0.9;
   };
 
-  fonts = {
-    monospace = {
-      name = "Maple Mono NF CN";
-    };
-  };
+  fonts = { monospace = { name = "Maple Mono NF CN"; }; };
 }

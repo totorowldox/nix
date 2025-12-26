@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # home.pointerCursor = {
   #   size = 36;
   #   gtk.enable = true;

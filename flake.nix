@@ -29,12 +29,10 @@
 
     niri-caelestia-shell = {
       url = "github:jutraim/niri-caelestia-shell";
-      #inputs.nixpkgs.follows = "nixpkgs"; # Remove when upgrading to 25.11
     };
 
     caelestia-cli = {
       url = "github:caelestia-dots/cli";
-      #inputs.nixpkgs.follows = "nixpkgs"; # ...
     };
 
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
@@ -84,5 +82,4 @@
         kagaribi = mkHost { hostname = "kagaribi"; };
       };
     };
-
 }
