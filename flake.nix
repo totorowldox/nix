@@ -35,6 +35,8 @@
       url = "github:caelestia-dots/cli";
     };
 
+    vicinae.url = "github:vicinaehq/vicinae";
+
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 

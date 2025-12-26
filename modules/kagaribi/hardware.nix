@@ -23,6 +23,19 @@
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/linux/nvidia-x11/default.nix
     };
   };
+
+  fileSystems."/media/windows/c" = {
+    device = "/dev/disk/by-uuid/227CBA057CB9D42F";
+    fsType = "ntfs-3g";
+    options = [ "uid=1000" "gid=100" "rw" "user" "exec" "umask=000" ];
+  };
+
+  fileSystems."/media/windows/d" = {
+    device = "/dev/disk/by-uuid/2888BA5A88BA266A";
+    fsType = "ntfs-3g";
+    options = [ "uid=1000" "gid=100" "rw" "user" "exec" "umask=000" ];
+  };
+
   services.xserver.videoDrivers = [ "nvidia" ];
   services.gvfs.enable = true;
 }

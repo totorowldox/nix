@@ -1,4 +1,4 @@
 { pkgs, ... }: {
-  imports = [ ./ai.nix ];
+  imports = [ ./ai.nix ./vicinae.nix ];
   home.packages = with pkgs; [ qbittorrent-enhanced ];
 }

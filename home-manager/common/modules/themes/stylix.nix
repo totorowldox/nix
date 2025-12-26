@@ -33,6 +33,7 @@
       wofi.enable = true;
       waybar.enable = false;
       vscode.enable = true;
+      vicinae.enable = true;
     };
   };
 }

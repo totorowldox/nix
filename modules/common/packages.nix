@@ -103,7 +103,7 @@
     # Wayland Stuff
     xwayland
     wl-clipboard
-    cliphist
+    #cliphist
 
     # Theming Stuff
     sassc

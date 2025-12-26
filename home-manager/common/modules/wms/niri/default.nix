@@ -37,7 +37,8 @@
       input = {
         keyboard.xkb.layout = "us";
         focus-follows-mouse = { max-scroll-amount = "10%"; };
-        touchpad.natural-scroll = false;
+        touchpad.natural-scroll = true;
+        touchpad.accel-speed = 0.2;
         # sensitivity maps to accel-speed, 0 means no modification
         mouse.accel-speed = 0.0;
       };
@@ -111,7 +112,7 @@
         }
         {
           matches = [{ is-focused = false; }];
-          opacity = 0.85;
+          opacity = 0.95;
         }
         {
           geometry-corner-radius = {
@@ -196,16 +197,24 @@
         #   argv = [ "swaync" ];
         # }
         #{ argv = [ "waybar" ]; }
-        { argv = [ "wl-paste" "--type" "text" "--watch" "cliphist" "store" ]; }
-        { argv = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
+        {
+          argv = [ "vicinae" "server" ];
+        }
+        #{ argv = [ "wl-paste" "--type" "text" "--watch" "cliphist" "store" ]; }
+        #{ argv = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
         { argv = [ "fcitx5" "-d" "-r" ]; }
         { argv = [ "blueman-applet" ]; }
         { sh = "${vars.flakePath}/scripts/startup-apps.sh"; }
       ];
 
       binds = {
-        "Mod+V".action.spawn-sh =
-          "cliphist list | wofi --dmenu | cliphist decode | wl-copy";
+        # "Mod+V".action.spawn-sh =
+        #   "cliphist list | wofi --dmenu | cliphist decode | wl-copy";
+        "Mod+V" = {
+          repeat = false;
+          action.spawn-sh =
+            "vicinae vicinae://extensions/vicinae/clipboard/history";
+        };
 
         "Mod+Return".action.spawn = "kitty";
         "Mod+Q".action.close-window = { };
@@ -216,6 +225,10 @@
         #"Mod+S".action.spawn = "anyrun";
         "Mod+S".action.spawn =
           [ "caelestia" "shell" "drawers" "toggle" "launcher" ];
+        "Mod+Space" = {
+          repeat = false;
+          action.spawn = [ "vicinae" "toggle" ];
+        };
         "Mod+Tab".action.spawn-sh = "swaync-client -t";
         "Mod+L".action.spawn = "wlogout";
         "Mod+R".action.switch-preset-column-width = { };
@@ -290,7 +303,8 @@
         "Mod+B".action.spawn = [ "pkill" "-SIGUSR1" "waybar" ];
         "Mod+W".action.spawn = [ "pkill" "-SIGUSR2" "waybar" ];
 
-        # Cycle next
+        # Niri supports this since 25.11!
+        # Cycle next 
         # "Alt+Tab".action.focus-column-right = {};
         # "Alt+Shift+Tab".action.focus-column-left = {};
 
