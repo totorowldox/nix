@@ -27,15 +27,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri-caelestia-shell = {
-      url = "github:jutraim/niri-caelestia-shell";
-    };
+    niri-caelestia-shell = { url = "github:jutraim/niri-caelestia-shell"; };
 
-    caelestia-cli = {
-      url = "github:caelestia-dots/cli";
-    };
+    caelestia-cli = { url = "github:caelestia-dots/cli"; };
 
     vicinae.url = "github:vicinaehq/vicinae";
+    vicinae-extensions.url = "github:vicinaehq/extensions";
 
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
