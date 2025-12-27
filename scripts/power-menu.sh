@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 
-current=$(powerprofilesctl get)
+# [TODO] Implement power-saver when tlp updated to 1.9+
 
-profiles="power-saver
-balanced
-performance"
+current=$(tlp-stat -s | grep "Mode" | awk -F'= ' '{print $2}' || echo "unknown")
 
-choice=$(printf "%s" "$profiles" | \
-  vicinae dmenu --placeholder "Current power profile: $current")
+profiles="Performance:ac
+Balanced:bat
+Auto:start"
 
-[ -n "$choice" ] && powerprofilesctl set "$choice"
+choice_label=$(echo "$profiles" | cut -d':' -f1 | vicinae dmenu --placeholder "Current TLP Mode: $current")
+
+[ -z "$choice_label" ] && exit 0
+
+target=$(echo "$profiles" | grep "^$choice_label" | cut -d':' -f2)
+
+pkexec tlp "$target"

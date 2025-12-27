@@ -39,6 +39,10 @@
         focus-follows-mouse = { max-scroll-amount = "10%"; };
         touchpad.natural-scroll = true;
         touchpad.accel-speed = 0.2;
+        touchpad.scroll-factor = {
+          horizontal = 1.0;
+          vertical = 0.5;
+        };
         # sensitivity maps to accel-speed, 0 means no modification
         mouse.accel-speed = 0.0;
       };
