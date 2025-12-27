@@ -27,9 +27,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri-caelestia-shell = { url = "github:jutraim/niri-caelestia-shell"; };
+    #niri-caelestia-shell = { url = "github:jutraim/niri-caelestia-shell"; };
 
-    caelestia-cli = { url = "github:caelestia-dots/cli"; };
+    #caelestia-cli = { url = "github:caelestia-dots/cli"; };
 
     vicinae.url = "github:vicinaehq/vicinae";
     vicinae-extensions.url = "github:vicinaehq/extensions";
@@ -37,8 +37,7 @@
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
-  outputs = { nixpkgs, stylix, nix-gaming, home-manager, nur
-    , niri-caelestia-shell, ... }@inputs:
+  outputs = { nixpkgs, stylix, nix-gaming, home-manager, nur, ... }@inputs:
     let
       mkHost = { hostname, system ? "x86_64-linux" }:
         let
@@ -67,7 +66,7 @@
               };
               home-manager.users.remo = {
                 imports = [
-                  niri-caelestia-shell.homeManagerModules.default
+                  #niri-caelestia-shell.homeManagerModules.default
                   ./home-manager/common
                   ./home-manager/${hostname}
                 ];

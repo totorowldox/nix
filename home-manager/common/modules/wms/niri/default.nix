@@ -98,12 +98,29 @@
         };
       };
 
+      # recent-windows = {
+      #   highlight = {
+      #     active-color = config.lib.stylix.colors.withHashtag.base0D;
+      #     urgent-color = config.lib.stylix.colors.withHashtag.base08;
+      #   };
+      # };
+
       overview = {
         zoom = 0.36;
         backdrop-color = config.lib.stylix.colors.withHashtag.base01;
       };
 
+      gestures.hot-corners = { enable = false; };
+
       prefer-no-csd = true;
+
+      layer-rules = [
+        {
+          matches = [{ namespace = "^swaync-notification-window$"; }];
+          block-out-from = "screencast";
+          place-within-backdrop = true;
+        }
+      ];
 
       window-rules = [
         {
@@ -193,9 +210,7 @@
             "niri"
           ];
         }
-        {
-          argv = [ "swaync" ];
-        }
+        { argv = [ "swaync" ]; }
         { argv = [ "waybar" ]; }
         {
           argv = [ "vicinae" "server" ];
