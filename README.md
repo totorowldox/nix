@@ -10,3 +10,4 @@ Or change the `flakePath` in that file.
 ## Things that are done not declaratively
 
 - flatpaks
+- rime-ice ( install it by [rime-auto-deploy](https://github.com/Mark24Code/rime-auto-deploy) )

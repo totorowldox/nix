@@ -1,5 +1,5 @@
 { pkgs, config, inputs, vars, ... }: {
-  imports = [ inputs.niri.homeModules.niri ./animation.nix ./caelestia.nix ];
+  imports = [ inputs.niri.homeModules.niri ./animation.nix ./waybar ];
   home.packages = with pkgs;
     [
       (xwayland-satellite.override {
@@ -193,10 +193,10 @@
             "niri"
           ];
         }
-        # {
-        #   argv = [ "swaync" ];
-        # }
-        #{ argv = [ "waybar" ]; }
+        {
+          argv = [ "swaync" ];
+        }
+        { argv = [ "waybar" ]; }
         {
           argv = [ "vicinae" "server" ];
         }
@@ -232,6 +232,7 @@
         "Mod+Tab".action.spawn-sh = "swaync-client -t";
         "Mod+L".action.spawn = "wlogout";
         "Mod+R".action.switch-preset-column-width = { };
+        "Mod+P".action.spawn-sh = "${vars.flakePath}/scripts/power-menu.sh";
 
         # Focus
         "Mod+Left".action.focus-column-left = { };

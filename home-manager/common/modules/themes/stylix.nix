@@ -34,6 +34,8 @@
       waybar.enable = false;
       vscode.enable = true;
       vicinae.enable = true;
+      swaync.enable = true;
+      
     };
   };
 }

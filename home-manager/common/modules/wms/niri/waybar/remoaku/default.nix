@@ -1,6 +1,8 @@
 { config, lib, ... }: {
 
   xdg.configFile."waybar/config".source = ./waybar.conf;
+
+  # [TODO] Modify batter blink animation for stylix
   programs.waybar = {
     enable = true;
 
@@ -24,7 +26,6 @@
           margin: 5px;
           padding-left: 1rem;
           padding-right: 1rem;
-          transition: none;
           color: #${config.lib.stylix.colors.base05};
           background: #${config.lib.stylix.colors.base01};
           font-family: "Maple Mono NF CN";
@@ -58,10 +59,10 @@
       #battery,
       #backlight,
       #pulseaudio,
-      #network {
+      #network
+      #custom-notification {
           margin: 5px;
           padding: 0.5rem 1rem;
-          transition: none;
           background: #${config.lib.stylix.colors.base01};
           color: #${config.lib.stylix.colors.base05};
       }
@@ -73,22 +74,35 @@
       }
 
       #network {
-          border-radius: 0px 1rem 1rem 0px;
-          margin-right: 1rem;
           margin-left: 0;
           padding-right: 1rem;
+          margin-right: 5px;
+          border-radius: 0px 1rem 1rem 0px;
+      }
+
+      #backlight {
+          margin-right: 0;
+          border-radius: 1rem 0px 0px 1rem;
+          padding-left: 1rem;
+      }
+
+      #battery {
+          margin-left: 0;
+          padding-right: 1rem;
+          border-radius: 0px 1rem 1rem 0px;
       }
 
       #network:hover,
       #pulseaudio:hover,
       #battery:hover,
-      #backlight:hover
+      #backlight:hover,
+      #custom-notification:hover
       {
           background: #${config.lib.stylix.colors.base02};
       }
 
       #battery.charging, #battery.plugged {
-          color: white;
+          color: #${config.lib.stylix.colors.base05};
       }
 
       #battery.critical:not(.charging) {
@@ -142,6 +156,15 @@
           border-radius: 1rem;
           transition: none;
           color: rgb(126, 186, 228);
+          background: #${config.lib.stylix.colors.base01};
+      }
+
+      #custom-notification {
+         margin: 5px;
+         margin-right: 1rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
+          border-radius: 1rem;
           background: #${config.lib.stylix.colors.base01};
       }
     '';
