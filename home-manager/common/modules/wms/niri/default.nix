@@ -223,9 +223,9 @@
         "Mod+F".action.toggle-window-floating = { };
         "Mod+M".action.maximize-column = { };
         #"Mod+S".action.spawn = "anyrun";
-        "Mod+S".action.spawn =
-          [ "caelestia" "shell" "drawers" "toggle" "launcher" ];
-        "Mod+Space" = {
+        # "Mod+S".action.spawn =
+        #   [ "caelestia" "shell" "drawers" "toggle" "launcher" ];
+        "Mod+S" = {
           repeat = false;
           action.spawn = [ "vicinae" "toggle" ];
         };

@@ -16,7 +16,7 @@
       }
       {
         label = "logout";
-        action = "hyprctl dispatch exit";
+        action = "niri msg action quit";
         text = "Logout";
         keybind = "o";
       }

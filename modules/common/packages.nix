@@ -43,7 +43,7 @@
     obs-studio
     
     # SMS
-    qq-x11
+    qq
     signal-desktop
     telegram-desktop
 
