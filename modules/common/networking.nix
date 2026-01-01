@@ -3,7 +3,7 @@
   networking.networkmanager.enable = true;
   #networking.networkmanager.wifi.backend = "iwd";
   networking.nameservers = [ "8.8.8.8" "4.4.4.4" ];
-  networking.nat.enable = true;     # Enable NAT for container
+  networking.nat.enable = true; # Enable NAT for container
   networking.nat.internalInterfaces = [ "waydroid0" ];
 
   environment.etc."resolv.conf".text = ''
@@ -13,7 +13,7 @@
   '';
 
   # Enable tailscale service
-  #services.tailscale.enable = true; # Temporarily disabled due to build errors (test)
+  services.tailscale.enable = true;
 
   # Enable bluetooth
   services.blueman.enable = true;
