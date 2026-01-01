@@ -6,4 +6,6 @@
       refresh = 180.0;
     };
   };
+
+  shellAliases = { };
 }
