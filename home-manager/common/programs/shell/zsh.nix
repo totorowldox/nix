@@ -98,7 +98,7 @@
       v = "nvim";
       hg = "history | grep";
       se = "sudoedit";
-      ff = "fastfetch --logo-type builtin --logo nix-old";
+      ff = "fastfetch --logo-type builtin --logo Nixos";
 
       # Wine
       #wine = "WINEARCH=win32 WINEPREFIX=~/.wine wine";

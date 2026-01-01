@@ -4,63 +4,61 @@
 
     settings = {
       display = {
+        separator = "   "; # Cleaner separator
         color = {
-          keys = "35";
-          output = "90";
+          keys = "magenta";
+          output = "white"; # Brighter output for better readability
         };
       };
 
       logo = {
         source = "${vars.flakePath}/assets/nix-chan.png";
         type = "kitty-direct";
-        width = 42;
-        height = 17;
-        preserveAspectRatio = true;
-
+        width = 45;
+        height = 18;
         padding = {
-          top = 1;
-          left = 3;
+          top = 2;
+          left = 4;
         };
       };
 
       modules = [
-        "break"
+        "title"
         {
           type = "custom";
-          format = "┌──────────────────────Hardware──────────────────────┐";
+          format = "─────────────────────────────────────────────────────";
         }
         {
-          type = "cpu";
-          key = "│  ";
-        }
-        {
-          type = "gpu";
-          key = "│ 󰍛 ";
-        }
-        {
-          type = "memory";
-          key = "│ 󰑭 ";
-        }
-        {
-          type = "custom";
-          format = "└────────────────────────────────────────────────────┘";
-        }
-        "break"
-        {
-          type = "custom";
-          format = "┌──────────────────────Software──────────────────────┐";
+          type = "os";
+          key = "󱄅 OS";
         }
         {
           type = "kernel";
-          key = "│ ├ ";
+          key = "󰌽 Kernel";
         }
         {
           type = "packages";
-          key = "│ ├󰏖 ";
+          key = "󰏖 PKG";
         }
         {
           type = "shell";
-          key = "└ └ ";
+          key = " SH";
+        }
+        "break"
+        {
+          type = "cpu";
+          key = " CPU";
+          # Show frequency and cores for more "pro" look
+          format = "{1} ({3}) @ {7}";
+        }
+        {
+          type = "gpu";
+          key = "󰍛 GPU";
+        }
+        {
+          type = "memory";
+          key = "󰑭 RAM";
+          format = "{1} / {2} ({3})";
         }
         "break"
         {
@@ -68,45 +66,27 @@
           key = " WM";
         }
         {
-          type = "wmtheme";
-          key = "│ ├󰉼 ";
-        }
-        {
           type = "terminal";
-          key = "└ └ ";
-        }
-        {
-          type = "custom";
-          format = "└────────────────────────────────────────────────────┘";
+          key = " TER";
         }
         "break"
         {
-          type = "custom";
-          format = "┌────────────────────Uptime / Age────────────────────┐";
-        }
-        {
           type = "command";
-          key = "│  ";
-          text = # bash
-            ''
-              birth_install=$(stat -c %W /)
-              current=$(date +%s)
-              delta=$((current - birth_install))
-              delta_days=$((delta / 86400))
-              echo $delta_days days
-            '';
+          key = "󱘖 AGE";
+          text =
+            "birth_install=$(stat -c %W /); current=$(date +%s); echo $(((current - birth_install) / 86400)) days";
         }
         {
           type = "uptime";
-          key = "│  ";
-        }
-        {
-          type = "custom";
-          format = "└────────────────────────────────────────────────────┘";
+          key = " UP ";
         }
         "break"
+        # The "Secret Sauce": A color palette strip
+        {
+          type = "colors";
+          symbol = "circle"; # Can be "circle", "square", or "block"
+        }
       ];
     };
   };
 }
-

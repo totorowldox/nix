@@ -118,13 +118,11 @@
 
       prefer-no-csd = true;
 
-      layer-rules = [
-        {
-          matches = [{ namespace = "^swaync-notification-window$"; }];
-          block-out-from = "screencast";
-          place-within-backdrop = true;
-        }
-      ];
+      layer-rules = [{
+        matches = [{ namespace = "^swaync-notification-window$"; }];
+        block-out-from = "screencast";
+        place-within-backdrop = true;
+      }];
 
       window-rules = [
         {
@@ -215,15 +213,15 @@
           ];
         }
         { argv = [ "swaync" ]; }
-        { argv = [ "waybar" ]; }
         {
-          argv = [ "vicinae" "server" ];
+          argv = [ "waybar" ];
         }
         #{ argv = [ "wl-paste" "--type" "text" "--watch" "cliphist" "store" ]; }
         #{ argv = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
-        { argv = [ "fcitx5" "-d" "-r" ]; }
+        { sh = "fcitx5 -d -r"; }
         { argv = [ "blueman-applet" ]; }
         { sh = "${vars.flakePath}/scripts/startup-apps.sh"; }
+        { sh = "vicinae server"; }
       ];
 
       binds = {

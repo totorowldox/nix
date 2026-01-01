@@ -1,12 +1,14 @@
 { pkgs, inputs, ... }: {
 
   nixpkgs.config.allowUnfree = true;
-  
+
   nixpkgs.config.permittedInsecurePackages = [ "immersive-translate-1.22.4" ];
 
   services.flatpak.enable = true;
 
   services.atd.enable = true;
+
+  services.samba.enable = true;
 
   programs.clash-verge.enable = true;
 
@@ -41,7 +43,7 @@
     tailscale-systray
     notepad-next
     obs-studio
-    
+
     # SMS
     qq
     signal-desktop

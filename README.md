@@ -11,3 +11,5 @@ Or change the `flakePath` in that file.
 
 - flatpaks
 - rime-ice ( install it by [rime-auto-deploy](https://github.com/Mark24Code/rime-auto-deploy) )
+- vscode plugins
+- wine components
