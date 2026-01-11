@@ -1,7 +1,4 @@
 {
-  imports = [
-    ./hardware.nix
-    ./kernel-modules.nix
-    ./packages.nix
-  ];
+  imports =
+    [ ./hardware.nix ./kernel-modules.nix ./packages.nix ./specialisation.nix ];
 }

@@ -1,3 +1,3 @@
 {
-  boot.initrd.kernelModules = [ "amdgpu" "rtw88_8821cu" ];
+  boot.initrd.kernelModules = [ "rtw88_8821cu" ];
 }

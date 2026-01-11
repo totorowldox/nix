@@ -59,7 +59,7 @@
       #battery,
       #backlight,
       #pulseaudio,
-      #network
+      #network,
       #custom-notification {
           margin: 5px;
           padding: 0.5rem 1rem;

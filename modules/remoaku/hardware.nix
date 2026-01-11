@@ -1,8 +1,8 @@
-{
+{ pkgs, ... }: {
   boot.supportedFilesystems = [ "ntfs" ];
 
   hardware.bluetooth.enable = true;
-  
+
   services.udisks2.enable = true;
 
   fileSystems."/media/windows/c" = {
@@ -33,4 +33,18 @@
 
   hardware.graphics.enable32Bit = true;
   services.gvfs.enable = true;
+
+  systemd.services.usb-wifi-fix = {
+    description = "Fix USB Wifi dongle mode";
+
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart =
+        "${pkgs.usb-modeswitch}/bin/usb_modeswitch -KW -v 0bda -p 1a2b";
+      RemainAfterExit = true;
+    };
+  };
 }
