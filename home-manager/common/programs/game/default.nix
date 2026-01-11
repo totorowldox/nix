@@ -8,9 +8,9 @@
       jdks = [
         temurin-bin-8 # For very old versions/mods
         temurin-bin-17 # For 1.20.1
-        temurin-bin-21 # For 1.20.5+ and 1.21
       ];
     })
+    temurin-bin-21
     umu-launcher
   ];
 }

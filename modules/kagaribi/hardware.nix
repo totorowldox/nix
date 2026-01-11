@@ -16,7 +16,7 @@
     nvidia = {
       open = true; # Compatible with RTX 2080 Super and newer
       modesetting.enable = true; # Mandatory for Wayland
-      powerManagement.enable = false;
+      powerManagement.enable = true;
       powerManagement.finegrained = true;
       prime = {
         offload = {
