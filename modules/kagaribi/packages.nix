@@ -1,7 +1,5 @@
 # Dedicated packages for laptop
 
-{ pkgs, ... } : {
-  environment.systemPackages = with pkgs; [
-    brightnessctl
-  ];
+{ pkgs, ... }: {
+  environment.systemPackages = with pkgs; [ brightnessctl mangohud ];
 }
