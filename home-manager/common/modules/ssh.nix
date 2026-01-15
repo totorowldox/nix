@@ -9,5 +9,9 @@
     };
     extraConfig = "";
   };
+
+  home.file.".ssh/authorized_keys".text = ''
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN6mBjCZKta7fjJ1AEzVvwOxJymlaRVnbsXomjllAkko Login use
+  '';
 }
 

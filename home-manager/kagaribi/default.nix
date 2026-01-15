@@ -10,4 +10,6 @@
     enable = true;
     createDirectories = true;
   };
+
+  programs.ssh.matchBlocks."remoaku" = { forwardAgent = true; };
 }
