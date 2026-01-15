@@ -11,6 +11,10 @@
       [
         # user packages
       ];
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN6mBjCZKta7fjJ1AEzVvwOxJymlaRVnbsXomjllAkko"
+    ];
   };
 
 }

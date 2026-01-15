@@ -11,5 +11,8 @@
     createDirectories = true;
   };
 
-  programs.ssh.matchBlocks."remoaku" = { forwardAgent = true; };
+  programs.ssh.matchBlocks."remoaku" = {
+    hostname = "100.64.0.6";
+    forwardAgent = true;
+  };
 }
