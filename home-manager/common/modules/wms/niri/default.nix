@@ -218,10 +218,10 @@
         }
         #{ argv = [ "wl-paste" "--type" "text" "--watch" "cliphist" "store" ]; }
         #{ argv = [ "wl-paste" "--type" "image" "--watch" "cliphist" "store" ]; }
-        { sh = "fcitx5 -d -r"; }
+        { sh = "sleep 2 && fcitx5 -d -r"; }
         { argv = [ "blueman-applet" ]; }
         { sh = "${vars.flakePath}/scripts/startup-apps.sh"; }
-        { sh = "vicinae server"; }
+        { sh = "sleep 2 && vicinae server"; }
       ];
 
       binds = {

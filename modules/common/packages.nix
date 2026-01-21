@@ -76,6 +76,7 @@
     nh # better nix cli
     lazygit # better git TUI
     ripgrep
+    # witr
 
     # Terminal
     # alacritty
