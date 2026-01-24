@@ -116,10 +116,9 @@
 
     # Screenshotting
     grim
-    grimblast
     slurp
-    flameshot
     swappy
+    wayfreeze
 
     # Others
     home-manager
