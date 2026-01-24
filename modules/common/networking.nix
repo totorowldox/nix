@@ -2,13 +2,13 @@
   # Network stuffs
   networking.networkmanager.enable = true;
   #networking.networkmanager.wifi.backend = "iwd";
-  networking.nameservers = [ "8.8.8.8" "4.4.4.4" ];
+  networking.nameservers = [ "114.114.114.114" "8.8.8.8" ];
   networking.nat.enable = true; # Enable NAT for container
   networking.nat.internalInterfaces = [ "waydroid0" ];
 
   environment.etc."resolv.conf".text = ''
+    nameserver 114.114.114.114
     nameserver 8.8.8.8
-    nameserver 4.4.4.4
     options edns0
   '';
 

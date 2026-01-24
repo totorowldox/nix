@@ -12,11 +12,17 @@
     };
   };
 
-  shellAliases = {
+  shellAliases = let defaultProtonVersion = "dwproton-10.0-14-x86_64";
+  in {
     wuwa = ''
       GAMEID=umu-3513350 \
-      PROTONPATH="$HOME/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/GE-Proton10-27" \
+      PROTONPATH="$HOME/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/${defaultProtonVersion}" \
       umu-run "/media/windows/d/Wuthering Waves/Wuthering Waves Game/Client/Binaries/Win64/Client-Win64-Shipping.exe"
+    '';
+
+    Endfield = ''
+      PROTONPATH="$HOME/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/${defaultProtonVersion}" \
+      umu-run "/media/windows/d/Hypergryph Launcher/games/Endfield Game/Endfield.exe"
     '';
   };
 }
