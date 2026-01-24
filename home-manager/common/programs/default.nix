@@ -1,10 +1,3 @@
 {
-  imports = [
-    ./shell
-    ./game
-    ./browser
-    ./terminal
-    ./utils
-    ../packages
-  ];
+  imports = [ ./shell ./game ./browser ./terminal ./utils ./apps ../packages ];
 }

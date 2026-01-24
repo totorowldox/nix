@@ -1,4 +1,4 @@
-{ theme, lib, ... }: {
+{ pkgs, theme, lib, ... }: {
   stylix = {
     enable = true;
     image =
@@ -35,7 +35,12 @@
       vscode.enable = true;
       vicinae.enable = true;
       swaync.enable = true;
-      
+    };
+
+    cursor = {
+      package = theme.cursor.package;
+      name = theme.cursor.name;
+      size = theme.cursor.size;
     };
   };
 }

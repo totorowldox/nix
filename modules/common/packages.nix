@@ -43,6 +43,7 @@
     tailscale-systray
     notepad-next
     obs-studio
+    loupe
 
     # SMS
     qq

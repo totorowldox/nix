@@ -41,7 +41,10 @@
     let
       mkHost = { hostname, system ? "x86_64-linux" }:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
           theme = import ./lib/theme.nix { inherit pkgs; };
           vars = import ./lib/vars { inherit hostname; };
         in nixpkgs.lib.nixosSystem {

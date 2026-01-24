@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, vars, ... }: {
+{ pkgs, config, inputs, vars, theme, ... }: {
   imports = [ inputs.niri.homeModules.niri ./animation.nix ./waybar ];
   home.packages = with pkgs;
     [
@@ -27,8 +27,9 @@
         # GTK
         GDK_BACKEND = "wayland";
 
-        # Cursors
-        XCURSOR_SIZE = "36";
+        # Cursor
+        XCURSOR_THEME = theme.cursor.name;
+        XCURSOR_SIZE = builtins.toString theme.cursor.size;
 
         XDG_SCREENSHOTS_DIR = "~/screens";
         SDL_VIDEODRIVER = "wayland";
@@ -145,51 +146,47 @@
         }
         {
           matches = [{ app-id = "^(imv)$"; }];
-          tiled-state = false;
+          open-floating = true;
+        }
+        {
+          matches = [{ app-id = "^(org.gnome.Loupe)$"; }];
+          open-floating = true;
         }
         {
           matches = [{ app-id = "^(mpv)$"; }];
-          tiled-state = false;
-        }
-        {
-          matches = [{ app-id = "^(celluloid)$"; }];
-          tiled-state = false;
+          open-floating = true;
         }
         {
           matches = [{ app-id = "^(QQ)$"; }];
           tiled-state = false;
-          default-floating-position = {
-            x = 5.0e-2;
-            y = 0.1;
-            relative-to = "top-left";
-          };
+          open-floating = true;
         }
         {
           matches = [{ app-id = "^(zenity)$"; }];
           tiled-state = false;
-        }
-        {
-          matches = [{ app-id = "^(org.gnome.TextEditor)$"; }];
-          tiled-state = false;
-        }
-        {
-          matches = [{ app-id = "^(org.gnome.Nautilus)$"; }];
-          tiled-state = false;
+          open-floating = true;
         }
         {
           matches = [{ app-id = "^(io.github.celluloid_player.Celluloid)$"; }];
           tiled-state = false;
+          open-floating = true;
         }
         {
           matches = [{ app-id = "^(it.mijorus.smile)$"; }];
           tiled-state = false;
+          open-floating = true;
+          default-window-height.proportion = 0.1;
+          default-column-width.proportion = 0.1;
         }
         {
-          matches = [{ title = "pavucontrol"; }];
+          matches = [{ app-id = "^(org.pulseaudio.pavucontrol)$"; }];
+          open-floating = true;
           tiled-state = false;
+          default-window-height.proportion = 0.5;
+          default-column-width.proportion = 0.5;
         }
         {
-          matches = [{ title = "Waylyrics"; }];
+          matches = [{ app-id = "^(io.github.waylyrics.Waylyrics)$"; }];
           tiled-state = false;
           draw-border-with-background = false; # Approximate noborder/noshadow
           default-floating-position = {
@@ -198,7 +195,20 @@
             relative-to = "bottom-left";
           };
         }
-        # Note: Niri uses app-id instead of class; adjust if needed. No noblur, noshadow directly.
+        {
+          matches = [{
+            app-id = "^(steam)$";
+            title = "^notificationtoasts_\\d+_desktop$";
+          }];
+          open-focused = false;
+          open-floating = true;
+          border.enable = false;
+          default-floating-position = {
+            x = 20;
+            y = 20;
+            relative-to = "bottom-right";
+          };
+        }
       ];
 
       spawn-at-startup = [
