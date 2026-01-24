@@ -14,6 +14,7 @@
       kde.enable = true;
       btop.enable = true;
       cava.enable = true;
+      cava.rainbow.enable = true;
       tmux.enable = true;
       kitty.enable = true;
       fcitx5.enable = true;

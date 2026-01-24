@@ -322,10 +322,17 @@
         "Mod+WheelScrollUp".action.focus-workspace-up = { };
 
         # Screenshots
-        "Print".action.spawn-sh = "grim - | swappy -f -";
-        "Mod+Print".action.spawn-sh = "grim - | wl-copy";
-        "Ctrl+Alt+A".action.spawn-sh = ''grim -g "$(slurp)" - | swappy -f -'';
-        "Mod+A".action.spawn-sh = ''grim -g "$(slurp)" - | wl-copy'';
+        "Print".action.spawn-sh =
+          "niri msg action screenshot-screen --show-pointer=false --write-to-disk=false";
+        "Mod+Print".action.spawn-sh =
+          "niri msg action screenshot-window --write-to-disk=false";
+        "Mod+A".action.spawn-sh =
+          "niri msg action screenshot --show-pointer=false --path=/dev/null";
+        "Ctrl+Alt+A".action.spawn-sh =
+          "wl-paste --type image/png | swappy -f -";
+
+        #"Ctrl+Alt+A".action.spawn-sh = ''grim -g "$(slurp)" - | swappy -f -'';
+        #"Mod+A".action.spawn-sh = ''grim -g "$(slurp)" - | wl-copy'';
 
         # Waybar signals
         "Mod+B".action.spawn = [ "pkill" "-SIGUSR1" "waybar" ];
