@@ -61,7 +61,6 @@
     gdb
     just
     devenv
-    direnv
     nixfmt-classic
     #jetbrains.rider
 
@@ -72,11 +71,11 @@
     cmd-wrapped
     fzf
     tmux
-    zoxide # better cd
     eza # better ls
     nh # better nix cli
     lazygit # better git TUI
     ripgrep
+    jq
     # witr
 
     # Terminal

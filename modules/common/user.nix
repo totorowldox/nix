@@ -6,7 +6,7 @@
   users.users.remo = {
     isNormalUser = true;
     description = "Remo";
-    extraGroups = [ "networkmanager" "wheel" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "uinput" ];
     packages = with pkgs;
       [
         # user packages

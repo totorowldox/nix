@@ -61,11 +61,6 @@
 
       zle -N fzf-history
       bindkey '^R' fzf-history
-
-      eval "$(zoxide init zsh)"
-
-      eval "$(direnv hook zsh)"
-
     '';
 
     shellAliases = let
@@ -142,8 +137,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "Aloxaf";
           repo = "fzf-tab";
-          rev = "v1.1.2";
-          sha256 = "061jjpgghn8d5q2m2cd2qdjwbz38qrcarldj16xvxbid4c137zs2";
+          rev = "v1.2.0";
+          sha256 = "0mnsmfv0bx6np2r6pll43h261v7mh2ic1kd08r7jcwyb5xarfvmb";
         };
       }
     ];
@@ -151,7 +146,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "extract" "git" "sudo" ];
-      theme = "bira"; # gnzh, blinks are also really nice
+      # theme = "bira"; # gnzh, blinks are also really nice
     };
   };
 }

@@ -15,7 +15,6 @@
   nix.settings.substituters = [
     "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     "https://mirrors.ustc.edu.cn/nix-channels/store"
-    "https://catppuccin.cachix.org"
     "https://devenv.cachix.org"
     "https://cache.nixos.org/"
   ];
