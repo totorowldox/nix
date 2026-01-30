@@ -349,6 +349,7 @@
 
         # App shortcuts
         "Mod+Semicolon".action.spawn = "smile";
+        "Ctrl+Shift+Space".action.spawn = [ "1password" "--quick-access" ];
       };
     };
   };
