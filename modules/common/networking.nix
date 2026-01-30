@@ -36,6 +36,10 @@
     openFirewall = true;
   };
 
+  services.udev.extraRules = ''
+    KERNEL=="uinput", MODE="0660", GROUP="input", SYMLINK+="uinput"
+  '';
+
   # Open ports in the firewall.
   networking.firewall = let
     localRange = "192.168.0.0/24";
