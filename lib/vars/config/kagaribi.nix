@@ -1,4 +1,5 @@
-{
+let defaultProtonVersion = "dwproton-10.0-14-x86_64";
+in {
   displays = {
     "eDP-1" = {
       width = 2560;
@@ -12,8 +13,7 @@
     };
   };
 
-  shellAliases = let defaultProtonVersion = "dwproton-10.0-14-x86_64";
-  in {
+  shellAliases = {
     wuwa = ''
       GAMEID=umu-3513350 \
       PROTONPATH="$HOME/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/${defaultProtonVersion}" \
@@ -25,4 +25,16 @@
       umu-run "/media/windows/d/Hypergryph Launcher/games/Endfield Game/Endfield.exe"
     '';
   };
+
+  shellInitContent = ''
+    function umu() {
+      if [[ -z "$1" ]]; then
+        echo "Usage: umu <path/to/exe> [args]"
+        return 1
+      fi
+
+      PROTONPATH="$HOME/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/${defaultProtonVersion}" \
+      umu-run "$@"
+    }
+  '';
 }

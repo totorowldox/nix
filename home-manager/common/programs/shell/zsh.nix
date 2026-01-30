@@ -1,4 +1,4 @@
-{ pkgs, config, vars, hostname, ... }: {
+{ lib, pkgs, config, vars, hostname, ... }: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -7,61 +7,59 @@
 
     sessionVariables = {
       FZF_DEFAULT_OPTS = ''
-        --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
-        --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
-        --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
-        --color=selected-bg:#494d64 \
         --prompt='$' \
-        --pointer='🍥' \
-        --border=double '';
+                --pointer='🍥' \
+                --border=double '';
       #--multi
-
     };
 
     # Custom shell scripts
-    initContent = ''
-      function y() {
-        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-        yazi "$@" --cwd-file="$tmp"
-        if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-          builtin cd -- "$cwd"
-        fi
-        rm -f -- "$tmp"
-      }
-      function fzf-history() {
-        local selected_command=$(history | awk '{$1=""; sub(/^ */, ""); if (!seen[$0]++) print $0}' | fzf -i \
-          --ansi \
-          --reverse \
-          --height=50% \
-          --margin=2%,2%,2%,2% \
-          --layout=reverse-list \
-          --info=default \
-          --header='Select command to execute, CTRL-C or ESC to quit')
-        if [[ -n $selected_command ]]; then
-          BUFFER=$selected_command
-          CURSOR=$#BUFFER
-          zle accept-line
-        fi
-      }
-      function set-reminder() { 
-        if [[ $# -ne 2 ]]; then
-          echo "Usage: set-reminder 'message' 'time'"
-          return 1
+    initContent = lib.strings.concatLines [
+      ''
+        function y() {
+          local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+          yazi "$@" --cwd-file="$tmp"
+          if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+            builtin cd -- "$cwd"
           fi
-        local message=$1
-        local time=$2
-        echo "notify-send '$message'" | at "$time" > /dev/null
-        if [[ $? -eq 0 ]]; then
-          echo "Reminder set: '$message' at $time"
-        else
-          echo "Error setting reminder"
-          return 1
+          rm -f -- "$tmp"
+        }
+        function fzf-history() {
+          local selected_command=$(history | awk '{$1=""; sub(/^ */, ""); if (!seen[$0]++) print $0}' | fzf -i \
+            --ansi \
+            --reverse \
+            --height=50% \
+            --margin=2%,2%,2%,2% \
+            --layout=reverse-list \
+            --info=default \
+            --header='Select command to execute, CTRL-C or ESC to quit')
+          if [[ -n $selected_command ]]; then
+            BUFFER=$selected_command
+            CURSOR=$#BUFFER
+            zle accept-line
           fi
         }
+        function set-reminder() { 
+          if [[ $# -ne 2 ]]; then
+            echo "Usage: set-reminder 'message' 'time'"
+            return 1
+            fi
+          local message=$1
+          local time=$2
+          echo "notify-send '$message'" | at "$time" > /dev/null
+          if [[ $? -eq 0 ]]; then
+            echo "Reminder set: '$message' at $time"
+          else
+            echo "Error setting reminder"
+            return 1
+            fi
+          }
 
-      zle -N fzf-history
-      bindkey '^R' fzf-history
-    '';
+        zle -N fzf-history
+        bindkey '^R' fzf-history
+      ''
+      vars.config.shellInitContent
+    ];
 
     shellAliases = let
       ## [TODO] make proxy configs to vars.nix
@@ -83,7 +81,7 @@
       conf = "vim ${vars.flakePath}/nixos/configuration.nix";
       pkgs = "vim ${vars.flakePath}/nixos/packages.nix";
 
-      # NixOS
+      # NixOS Utils
       getUrlHash = "nix-prefetch-url --unpack";
 
       # CLI
@@ -94,12 +92,6 @@
       hg = "history | grep";
       se = "sudoedit";
       ff = "fastfetch --logo-type builtin --logo Nixos";
-
-      # Wine
-      #wine = "WINEARCH=win32 WINEPREFIX=~/.wine wine";
-      #winetricks = "WINEARCH=win32 WINEPREFIX=~/.wine winetricks";
-      w64 = "wine64";
-      #wt64 = "WINEARCH=win64 WINEPREFIX=~/.wine64 winetricks";
 
       # Windows drivers/directories
       cdc = "cd /media/windows/c";
@@ -119,7 +111,6 @@
     } // vars.config.shellAliases;
 
     history.size = 10000;
-    #history.path = "${config.xdg.dataHome}/zsh/history";
 
     plugins = [
       {
@@ -147,6 +138,7 @@
       enable = true;
       plugins = [ "extract" "git" "sudo" ];
       # theme = "bira"; # gnzh, blinks are also really nice
+      # moved to starship
     };
   };
 }
