@@ -186,13 +186,18 @@
         }
         {
           matches = [{ app-id = "^(io.github.waylyrics.Waylyrics)$"; }];
-          tiled-state = false;
-          draw-border-with-background = false; # Approximate noborder/noshadow
+          open-floating = true;
+          open-focused = false;
+          draw-border-with-background = false;
+          border = { enable = false; };
+          shadow = { enable = false; };
           default-floating-position = {
-            x = 0.2;
-            y = 0.8;
-            relative-to = "bottom-left";
+            x = 0;
+            y = 0;
+            relative-to = "bottom";
           };
+          default-window-height.proportion = 0.1;
+          default-column-width.proportion = 0.6;
         }
         {
           matches = [{

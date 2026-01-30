@@ -31,6 +31,10 @@
           font-family: "Maple Mono NF CN";
       }
 
+      window#waybar.empty #window {
+          background-color: transparent;
+      }
+
       #workspaces {
           background: #${config.lib.stylix.colors.base01};
           margin: 5px;

@@ -30,6 +30,10 @@
           background: #${config.lib.stylix.colors.base01};
       }
 
+      window#waybar.empty #window {
+          background-color: transparent;
+      }
+
       #workspaces {
           background: #${config.lib.stylix.colors.base01};
           margin: 4px;

@@ -76,6 +76,7 @@
     lazygit # better git TUI
     ripgrep
     jq
+    calcure
     # witr
 
     # Terminal
