@@ -72,7 +72,7 @@
           bottom = 20;
         }; # Outer gaps emulation
         center-focused-column = "never"; # Adjust as needed
-        always-center-single-column = false;
+        always-center-single-column = true;
         border = {
           enable = true;
           width = 4;
@@ -120,7 +120,10 @@
       prefer-no-csd = true;
 
       layer-rules = [{
-        matches = [{ namespace = "^swaync-notification-window$"; }];
+        matches = [
+          { namespace = "^swaync-notification-window$"; }
+          { namespace = "^notifications$"; }
+        ];
         block-out-from = "screencast";
         place-within-backdrop = true;
       }];
@@ -143,6 +146,18 @@
           };
           clip-to-geometry = true;
           draw-border-with-background = false;
+        }
+        {
+          matches = [{ app-id = "^(1password)$"; }];
+          block-out-from = "screencast";
+        }
+        {
+          matches = [{ is-window-cast-target = true; }];
+          border = {
+            enable = true;
+            active.color = config.lib.stylix.colors.withHashtag.base08;
+            inactive.color = config.lib.stylix.colors.withHashtag.base09;
+          };
         }
         {
           matches = [{ app-id = "^(imv)$"; }];

@@ -54,6 +54,7 @@
             { nixpkgs.overlays = [ nur.overlays.default ]; }
 
             stylix.nixosModules.stylix
+
             inputs.minegrub-theme.nixosModules.default
 
             ./hosts/${hostname}

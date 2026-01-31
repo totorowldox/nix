@@ -62,6 +62,7 @@
     just
     devenv
     nixfmt-classic
+    qwen-code
     #jetbrains.rider
 
     # CLI stuffs
