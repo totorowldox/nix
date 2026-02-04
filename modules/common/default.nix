@@ -13,6 +13,7 @@
     ./networking.nix
     ./font.nix
     ./stylix.nix
+    ./services.nix
 
     ./packages.nix
   ];

@@ -125,6 +125,10 @@
     home-manager
     cachix
     nur.repos.ataraxiasjel.waydroid-script
+    hyperhdr
+    mesa
+    libglvnd
+    egl-wayland
 
     # Security
     polkit_gnome

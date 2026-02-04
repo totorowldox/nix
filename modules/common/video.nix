@@ -36,9 +36,9 @@
 
   xdg.portal.enable = true;
   xdg.portal.config = {
-    common.default = [ "gtk" ];
+    common.default = "*";
     niri = {
-      default = [ "gnome" "gtk" ];
+      default = [ "gnome" ];
       # ScreenCast is specifically required for niri to work with GNOME's portal
       "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
       "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
@@ -46,8 +46,5 @@
   };
   xdg.portal.xdgOpenUsePortal = true;
   programs.dconf.enable = true;
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-gnome
-  ];
+  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gnome ];
 }

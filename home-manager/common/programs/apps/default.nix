@@ -1,1 +1,1 @@
-{ imports = [ ./mpv.nix ]; }
+{ imports = [ ./mpv.nix ./obs.nix ]; }

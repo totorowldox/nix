@@ -122,7 +122,7 @@
       layer-rules = [{
         matches = [
           { namespace = "^swaync-notification-window$"; }
-          { namespace = "^notifications$"; }
+          { namespace = "^swaync-control-center$"; }
         ];
         block-out-from = "screencast";
         place-within-backdrop = true;
