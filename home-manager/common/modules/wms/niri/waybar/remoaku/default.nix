@@ -2,7 +2,6 @@
 
   xdg.configFile."waybar/config".source = ./waybar.conf;
 
-  # [TODO] Modify batter blink animation for stylix
   programs.waybar = {
     enable = true;
 
@@ -10,49 +9,64 @@
       * {
           border: none;
           font-family: "Maple Mono NF CN";
-          font-size: 17px;
+          font-size: 13px; /* 参照笔记本配置调小字号 */
           min-height: 0;
-          border-radius: 1rem;
+          border-radius: 0.6rem;
       }
 
       #waybar {
           background: transparent;
           color: #${config.lib.stylix.colors.base05};
-          margin: 0;
-          padding: 0;
       }
 
-      #window {
-          margin: 5px;
-          padding-left: 1rem;
-          padding-right: 1rem;
-          color: #${config.lib.stylix.colors.base05};
+      /* 统一通用模块样式，减少 margin 解决高度过高问题 */
+      #window,
+      #battery,
+      #backlight,
+      #pulseaudio,
+      #network,
+      #custom-notification,
+      #memory,
+      #cpu,
+      #tray,
+      #clock,
+      #custom-launcher {
+          margin: 3px 4px; /* 上下 3px 比原来的 4px 更紧凑 */
+          padding: 0.2rem 0.8rem;
           background: #${config.lib.stylix.colors.base01};
-          font-family: "Maple Mono NF CN";
+          color: #${config.lib.stylix.colors.base05};
       }
 
-      window#waybar.empty #window {
-          background-color: transparent;
+      /* --- 左右边距修正，解决不对称 --- */
+      #custom-launcher {
+          margin-left: 0.6rem; /* 保持笔记本配置的呼吸感 */
+          font-size: 18px;     /* 略微调小，防止撑开高度 */
+          color: rgb(126, 186, 228);
       }
 
+      #custom-notification {
+          margin-right: 0.6rem;
+      }
+
+      /* --- Workspaces --- */
       #workspaces {
           background: #${config.lib.stylix.colors.base01};
-          margin: 5px;
-          font-family: "Maple Mono NF CN";
-          font-size: 25px;
-          border-radius: 1rem;
+          margin: 3px 4px;
+          font-size: 15px;
+          border-radius: 0.6rem;
       }
+
       #workspaces button {
-          margin: 5px;
+          margin: 3px;
+          padding: 0 6px;
           color: #${config.lib.stylix.colors.base04};
           background: #${config.lib.stylix.colors.base00};
       }
 
       #workspaces button.active {
-        color: #${config.lib.stylix.colors.base05};
-        border-radius: 1rem;
-        background: #${config.lib.stylix.colors.base02};
-        font-weight: bold;
+          color: #${config.lib.stylix.colors.base05};
+          background: #${config.lib.stylix.colors.base02};
+          font-weight: bold;
       }
 
       #workspaces button:hover {
@@ -60,116 +74,50 @@
           background: #${config.lib.stylix.colors.base04};
       }
 
-      #battery,
-      #backlight,
-      #pulseaudio,
-      #network,
-      #custom-notification {
-          margin: 5px;
-          padding: 0.5rem 1rem;
-          background: #${config.lib.stylix.colors.base01};
-          color: #${config.lib.stylix.colors.base05};
-      }
+      /* --- 组合模块逻辑 (音量/网络 & 亮度/电池) --- */
+      #pulseaudio { margin-right: 0; border-radius: 0.6rem 0 0 0.6rem; }
+      #network    { margin-left: 0;  border-radius: 0 0.6rem 0.6rem 0; }
 
-      #pulseaudio {
-          margin-right: 0;
-          border-radius: 1rem 0px 0px 1rem;
-          padding-left: 1rem;
-      }
+      #backlight  { margin-right: 0; border-radius: 0.6rem 0 0 0.6rem; }
+      #battery    { margin-left: 0;  border-radius: 0 0.6rem 0.6rem 0; }
 
-      #network {
-          margin-left: 0;
-          padding-right: 1rem;
-          margin-right: 5px;
-          border-radius: 0px 1rem 1rem 0px;
-      }
-
-      #backlight {
-          margin-right: 0;
-          border-radius: 1rem 0px 0px 1rem;
-          padding-left: 1rem;
-      }
-
-      #battery {
-          margin-left: 0;
-          padding-right: 1rem;
-          border-radius: 0px 1rem 1rem 0px;
-      }
-
+      /* --- 悬浮效果 (Hover) --- */
       #network:hover,
       #pulseaudio:hover,
       #battery:hover,
       #backlight:hover,
-      #custom-notification:hover
-      {
+      #custom-notification:hover {
           background: #${config.lib.stylix.colors.base02};
       }
 
-      #battery.charging, #battery.plugged {
+      /* --- 特殊状态 --- */
+      #clock {
+          font-size: 15px;
+          font-weight: bold;
+      }
+
+      window#waybar.empty #window {
+          background-color: transparent;
+      }
+
+      #battery.charging,
+      #battery.plugged {
           color: #${config.lib.stylix.colors.base05};
       }
 
       #battery.critical:not(.charging) {
-              animation-name: blink;
-              animation-duration: 0.5s;
-              animation-timing-function: linear;
-              animation-iteration-count: infinite;
-              animation-direction: alternate;
+          animation-name: blink;
+          animation-duration: 0.5s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
       }
 
       @keyframes blink {
           to {
-              background-color: #BF616A;
-              color: #B5E8E0;
+              background-color: #${config.lib.stylix.colors.base08};
+              color: #${config.lib.stylix.colors.base0C};
           }
-      }
-
-      #clock {
-          margin: 6px;
-          padding-left: 1.5rem;
-          padding-right: 1.5rem;
-          border-radius: 1rem;
-          transition: none;
-          color: #${config.lib.stylix.colors.base05};
-          font-size: 25px;
-          font-weight: bold;
-          font-family: "Maple Mono NF CN";
-          background: #${config.lib.stylix.colors.base01};
-      }
-
-      #memory,
-      #cpu,
-      #tray {
-          margin: 5px;
-          padding-left: 1rem;
-          padding-right: 1rem;
-          transition: none;
-          color: #${config.lib.stylix.colors.base05};
-          background: #${config.lib.stylix.colors.base01};
-      }
-      #cpu {
-          color: #${config.lib.stylix.colors.base05};
-      }
-
-      #custom-launcher {
-          font-size: 25px;
-          margin: 5px;
-          margin-left: 1rem;
-          padding-left: 1rem;
-          padding-right: 1rem;
-          border-radius: 1rem;
-          transition: none;
-          color: rgb(126, 186, 228);
-          background: #${config.lib.stylix.colors.base01};
-      }
-
-      #custom-notification {
-         margin: 5px;
-         margin-right: 1rem;
-          padding-left: 1rem;
-          padding-right: 1rem;
-          border-radius: 1rem;
-          background: #${config.lib.stylix.colors.base01};
       }
     '';
   };

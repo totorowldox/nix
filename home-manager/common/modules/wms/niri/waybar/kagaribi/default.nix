@@ -114,8 +114,8 @@
 
       @keyframes blink {
           to {
-              background-color: #BF616A;
-              color: #B5E8E0;
+              background-color: #${config.lib.stylix.colors.base08};
+              color: #${config.lib.stylix.colors.base0C};
           }
       }
 

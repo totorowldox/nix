@@ -1,9 +1,9 @@
 {
   displays = {
     "DP-1" = {
-      width = 2560;
-      height = 1440;
-      refresh = 180.0;
+      width = 1920;
+      height = 1080;
+      refresh = 165.0;
     };
   };
 
