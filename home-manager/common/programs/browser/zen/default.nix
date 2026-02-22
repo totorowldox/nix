@@ -1,0 +1,60 @@
+{ pkgs, ... }: {
+  programs.zen-browser = {
+    enable = true;
+    profiles = {
+      remo = {
+        id = 0;
+        name = "remo";
+        isDefault = true;
+        settings = {
+          browser = {
+            tabs.warnOnClose = false;
+            download.panel.shown = false;
+          };
+          "general.smoothScroll" = true;
+        };
+        mods = [
+          "253a3a74-0cc4-47b7-8b82-996a64f030d5" # Floating History
+          "4ab93b88-151c-451b-a1b7-a1e0e28fa7f8" # No Sidebar Scrollbar
+          "7190e4e9-bead-4b40-8f57-95d852ddc941" # Tab title fixes
+          "906c6915-5677-48ff-9bfc-096a02a72379" # Floating Status Bar
+          "a6335949-4465-4b71-926c-4a52d34bc9c0" # Better Find Bar
+          "c8d9e6e6-e702-4e15-8972-3596e57cf398" # Zen Back Forward
+          "d8b79d4a-6cba-4495-9ff6-d6d30b0e94fe" # Better Active Tab
+          "e122b5d9-d385-4bf8-9971-e137809097d0" # No Top Sites
+          "f7c71d9a-bce2-420f-ae44-a64bd92975ab" # Better Unloaded Tabs
+          "fd24f832-a2e6-4ce9-8b19-7aa888eb7f8e" # Quietify
+
+        ];
+        extensions.force = true;
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          immersive-translate
+          raindropio
+          onepassword-password-manager
+          firefox-color
+          scroll_anywhere
+          tampermonkey
+          ublock-origin
+        ];
+      };
+    };
+    policies = {
+      AutofillAddressEnabled = true;
+      AutofillCreditCardEnabled = false;
+      DisableAppUpdate = true;
+      DisableFeedbackCommands = true;
+      DisableFirefoxStudies = true;
+      DisablePocket = true;
+      DisableTelemetry = true;
+      DontCheckDefaultBrowser = true;
+      NoDefaultBookmarks = true;
+      OfferToSaveLogins = false;
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
+    };
+  };
+}

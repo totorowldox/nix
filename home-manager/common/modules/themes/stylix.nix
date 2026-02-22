@@ -23,6 +23,10 @@
         colorTheme.enable = true;
         profileNames = [ "remo" ];
       };
+      zen-browser = {
+        enable = true;
+        profileNames = [ "remo" ];
+      };
       gedit.enable = true;
       gtk = {
         enable = true;

@@ -27,6 +27,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
     #niri-caelestia-shell = { url = "github:jutraim/niri-caelestia-shell"; };
 
     #caelestia-cli = { url = "github:caelestia-dots/cli"; };
@@ -70,6 +78,7 @@
               };
               home-manager.users.remo = {
                 imports = [
+                  inputs.zen-browser.homeModules.beta
                   #niri-caelestia-shell.homeManagerModules.default
                   ./home-manager/common
                   ./home-manager/${hostname}

@@ -7,8 +7,7 @@
   environment.etc = {
     "1password/custom_allowed_browsers" = {
       text = ''
-        vivaldi-bin
-        wavebox
+        .zen-wrapped
       '';
       mode = "0755";
     };
