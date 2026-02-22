@@ -12,6 +12,10 @@
     efiSupport = true;
     useOSProber = true;
     copyKernels = true;
+    default = "saved";
+    extraConfig = ''
+      save_default
+    '';
     devices = [ "nodev" ];
     minegrub-theme = {
       enable = true;
