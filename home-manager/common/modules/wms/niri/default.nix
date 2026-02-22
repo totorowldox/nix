@@ -223,8 +223,8 @@
           open-floating = true;
           border.enable = false;
           default-floating-position = {
-            x = 20;
-            y = 20;
+            x = 5;
+            y = 10;
             relative-to = "bottom-right";
           };
         }
