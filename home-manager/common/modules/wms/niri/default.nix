@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, vars, theme, ... }: {
+{ pkgs, config, inputs, vars, theme, lib, ... }: {
   imports = [ inputs.niri.homeModules.niri ./animation.nix ./waybar ];
   home.packages = with pkgs;
     [
@@ -41,7 +41,7 @@
         touchpad.natural-scroll = true;
         touchpad.accel-speed = 0.2;
         touchpad.scroll-factor = {
-          horizontal = 1.0;
+          horizontal = 0.5;
           vertical = 0.5;
         };
         # sensitivity maps to accel-speed, 0 means no modification
@@ -54,6 +54,8 @@
           height = value.height;
           refresh = value.refresh;
         };
+        position = value.position;
+        focus-at-startup = value ? default;
       }) vars.config.displays;
 
       workspaces = {

@@ -85,7 +85,7 @@
       # Auto-apply high quality for 4K content
       "4k-boost" = {
         profile-cond = "width >= 3840";
-        debayer = "no";
+        # debayer = "no";
       };
 
       # Low latency for web streams

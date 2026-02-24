@@ -5,11 +5,20 @@ in {
       width = 2560;
       height = 1600;
       refresh = 180.0;
+      position = {
+        x = 2560;
+        y = 720;
+      };
     };
     "HDMI-A-1" = {
       width = 2560;
       height = 1440;
       refresh = 143.981;
+      position = {
+        x = 0;
+        y = 0;
+      };
+      default = true;
     };
   };
 
