@@ -15,7 +15,12 @@ rec {
     terminalOpacity = 0.9;
   };
 
-  fonts = { monospace = { name = "Maple Mono NF CN"; }; };
+  fonts = {
+    monospace = { name = "Maple Mono NF CN"; };
+    emoji = { name = "Noto Color Emoji"; };
+    serif = { name = "Noto Serif CJK JP"; };
+    sansSerif = { name = "Noto Sans CJK JP"; };
+  };
 
   cursor = {
     package = pkgs.bibata-cursors;

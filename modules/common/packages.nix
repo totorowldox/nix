@@ -2,7 +2,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.config.permittedInsecurePackages = [ "immersive-translate-1.22.4" ];
+  nixpkgs.config.permittedInsecurePackages = [ "immersive-translate-1.27.2" ];
 
   services.flatpak.enable = true;
 

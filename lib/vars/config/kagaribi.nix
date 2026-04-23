@@ -1,4 +1,4 @@
-let defaultProtonVersion = "dwproton-10.0-14-x86_64";
+let defaultProtonVersion = "dwproton-10.0-24";
 in {
   displays = {
     "eDP-1" = {
@@ -29,9 +29,10 @@ in {
       umu-run "/media/windows/d/Wuthering Waves/Wuthering Waves Game/Client/Binaries/Win64/Client-Win64-Shipping.exe"
     '';
 
-    Endfield = ''
+    nte = ''
+      GAMEID=umu-3513350 \
       PROTONPATH="$HOME/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/${defaultProtonVersion}" \
-      umu-run "/media/windows/d/Hypergryph Launcher/games/Endfield Game/Endfield.exe"
+      umu-run "/media/windows/d/Neverness To Everness/NTELauncher.exe"
     '';
   };
 

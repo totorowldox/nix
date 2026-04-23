@@ -1,12 +1,12 @@
 { pkgs ? import <nixpkgs> { }, port ? null }:
 pkgs.stdenv.mkDerivation rec {
   pname = "ani-rss";
-  version = "2.2.12"; # Match the release version
+  version = "3.0.30"; # Match the release version
 
   src = pkgs.fetchurl {
     url =
-      "https://github.com/wushuo894/ani-rss/releases/download/v${version}/ani-rss-jar-with-dependencies.jar";
-    sha256 = "1c7pcqpaszwx1rc4kcq7b1kjyn0q2g527nga4b22lnafwc3v28vk";
+      "https://github.com/wushuo894/ani-rss/releases/download/v${version}/ani-rss.jar";
+    sha256 = "0ax11214wr07zwwc1mglgjmkdl84zig9l8dnj6b2c48r5s7i2yhd";
   };
 
   dontUnpack = true; # No need to extract, it's a single JAR

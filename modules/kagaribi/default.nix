@@ -10,7 +10,7 @@
       TLP_ENABLE = 1;
       #TLP_DEFAULT_MODE = "BAT";
       #TLP_PERSISTENT_DEFAULT = 1;
-      RUNTIME_PM_DENYLIST = "01:00.0";
+      RUNTIME_PM_DENYLIST = "01:00.0 01:00.1";
 
       TLP_AUTO_SWITCH = 1;
 
@@ -21,9 +21,9 @@
       CPU_BOOST_ON_AC = 1;
 
       # 2. Balanced
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
-      CPU_MAX_PERF_ON_BAT = 60;
+      CPU_MAX_PERF_ON_BAT = 70;
       CPU_BOOST_ON_BAT = 0;
 
       # 3. Power Saver ( Let's implement first and wait tlp 1.9+ :/ )
