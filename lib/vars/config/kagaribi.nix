@@ -26,14 +26,16 @@ in {
     wuwa = ''
       GAMEID=umu-3513350 \
       PROTONPATH="$HOME/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/${defaultProtonVersion}" \
-      umu-run "/media/windows/d/Wuthering Waves/Wuthering Waves Game/Client/Binaries/Win64/Client-Win64-Shipping.exe"
+      nvidia-offload umu-run "/media/windows/d/Wuthering Waves/Wuthering Waves Game/Client/Binaries/Win64/Client-Win64-Shipping.exe"
     '';
 
     nte = ''
-      GAMEID=umu-3513350 \
       PROTONPATH="$HOME/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/${defaultProtonVersion}" \
-      umu-run "/media/windows/d/Neverness To Everness/NTELauncher.exe"
+      nvidia-offload umu-run "/media/windows/d/Neverness To Everness/NTELauncher.exe"
     '';
+
+    wine = "nvidia-offload wine";
+    wine64 = "nvidia-offload wine64";
   };
 
   shellInitContent = ''
@@ -44,7 +46,7 @@ in {
       fi
 
       PROTONPATH="$HOME/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/${defaultProtonVersion}" \
-      umu-run "$@"
+      nvidia-offload umu-run "$@"
     }
   '';
 }

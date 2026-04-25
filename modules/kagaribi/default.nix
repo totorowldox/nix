@@ -33,7 +33,7 @@
       CPU_BOOST_ON_SAV = 0;
 
       RUNTIME_PM_ON_BAT = "auto";
-      PCIE_ASPM_ON_BAT = "powersupersave";
+      PCIE_ASPM_ON_BAT = "default";
 
       USB_AUTOSUSPEND = 1;
     };
@@ -46,10 +46,13 @@
   # };
 
   boot.kernelParams = [
-    "nvidia.NVreg_DynamicPowerManagement=0x03"
-    #"nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     "nvidia-drm.modeset=1"
-    "amd_pstate=active"
+    #  "amd_pstate=active"
   ];
+
+  # options nvidia NVreg_DynamicPowerManagement=0x03
+  boot.extraModprobeConfig = ''
+    options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp
+  '';
 
 }

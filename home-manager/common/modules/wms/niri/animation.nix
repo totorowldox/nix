@@ -62,7 +62,7 @@
     window-close = {
       kind.easing = {
         curve = "linear";
-        duration-ms = 1000;
+        duration-ms = 400;
       };
       custom-shader = let
         mkGLSLColor = color:
@@ -214,15 +214,21 @@
         }
 
         // Directional artifacts can be reduced by rotating each octave
-        float simplex3DFractal(vec3 m) {
+        //float simplex3DFractal(vec3 m) {
+        //  // const matrices for 3D rotation
+        //  const mat3 rot1 = mat3(-0.37, 0.36, 0.85, -0.14, -0.93, 0.34, 0.92, 0.01, 0.4);
+        //  const mat3 rot2 = mat3(-0.55, -0.39, 0.74, 0.33, -0.91, -0.24, 0.77, 0.12, 0.63);
+        //  const mat3 rot3 = mat3(-0.71, 0.52, -0.47, -0.08, -0.72, -0.68, -0.7, -0.45, 0.56);
+        //  return 0.5333333 * simplex3D(m * rot1) + 0.2666667 * simplex3D(2.0 * m * rot2) +
+        //         0.1333333 * simplex3D(4.0 * m * rot3) + 0.0666667 * simplex3D(8.0 * m);
+        //}
 
-          // const matrices for 3D rotation
+        float simplex3DFractal(vec3 m) {
           const mat3 rot1 = mat3(-0.37, 0.36, 0.85, -0.14, -0.93, 0.34, 0.92, 0.01, 0.4);
           const mat3 rot2 = mat3(-0.55, -0.39, 0.74, 0.33, -0.91, -0.24, 0.77, 0.12, 0.63);
-          const mat3 rot3 = mat3(-0.71, 0.52, -0.47, -0.08, -0.72, -0.68, -0.7, -0.45, 0.56);
 
-          return 0.5333333 * simplex3D(m * rot1) + 0.2666667 * simplex3D(2.0 * m * rot2) +
-                 0.1333333 * simplex3D(4.0 * m * rot3) + 0.0666667 * simplex3D(8.0 * m);
+          // 只保留两层噪声，计算量减半
+          return 0.6 * simplex3D(m * rot1) + 0.4 * simplex3D(2.0 * m * rot2);
         }
 
 

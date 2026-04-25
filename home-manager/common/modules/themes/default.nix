@@ -4,5 +4,6 @@
     #./qt.nix
     ./stylix.nix
     ./PFP.nix
+    ./wallpaper.nix
   ];
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
 
   home = {
     username = "remo";
@@ -14,5 +14,12 @@
   programs.ssh.matchBlocks."remoaku" = {
     hostname = "100.64.0.6";
     forwardAgent = true;
+  };
+
+  programs.niri.settings = {
+    debug = { render-drm-device = "/dev/dri/renderD129"; };
+    animations = {
+
+    };
   };
 }

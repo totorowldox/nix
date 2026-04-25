@@ -281,6 +281,7 @@
         "Mod+L".action.spawn = "wlogout";
         "Mod+R".action.switch-preset-column-width = { };
         "Mod+P".action.spawn-sh = "${vars.flakePath}/scripts/power-menu.sh";
+        "Mod+C".action.spawn-sh = "${vars.flakePath}/scripts/wallpaper-menu.sh";
 
         # Focus
         "Mod+Left".action.focus-column-left = { };
