@@ -22,6 +22,7 @@
       #librime
       fcitx5-mozc
       qt6Packages.fcitx5-chinese-addons
+      librime-octagram
       #fcitx5-pinyin-moegirl
       #rime-ice
       #rime-moegirl

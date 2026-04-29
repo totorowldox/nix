@@ -1,4 +1,10 @@
-{
+{ inputs, config, ... }:
+let
+  unstable-pkgs = import inputs.nixpkgs-unstable {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
+in {
   imports = [ ./hardware.nix ./packages.nix ];
 
   # Powersaving matters!
@@ -49,6 +55,9 @@
     "nvidia-drm.modeset=1"
     #  "amd_pstate=active"
   ];
+
+  boot.kernelPackages = unstable-pkgs.linuxPackages_latest;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   # options nvidia NVreg_DynamicPowerManagement=0x03
   boot.extraModprobeConfig = ''

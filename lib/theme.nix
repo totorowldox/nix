@@ -8,8 +8,28 @@ rec {
       convert = "lutgen";
     }
     {
-      name = "2560x1440px_B_katan.png";
-      colorSchemeName = "katan-B";
+      name = "totsulover-katan.jpg";
+      convert = "lutgen";
+    }
+    {
+      name = "ogipote-syuuden.jpg";
+      colorSchemeName = "syuuden";
+      convert = "lutgen";
+    }
+    {
+      name = "ogipote-valentine.jpg";
+      convert = "lutgen";
+    }
+    {
+      name = "rainworld-1.jpg";
+      convert = "lutgen";
+    }
+    {
+      name = "rainworld-2.jpg";
+      convert = "lutgen";
+    }
+    {
+      name = "wuwa-denia.jpg";
       convert = "lutgen";
     }
   ];
@@ -40,10 +60,10 @@ rec {
     useImage = false;
     wallpaper = builtins.elemAt wallpapers 0;
 
-    name = if useImage then wallpaper.name else "gruvbox-dark";
+    name = if useImage then wallpaper.name else "everforest";
     # tomorrow-night-eighties
     # catppuccin-macchiato
-    #
+    # everforest
     # gruvbox-dark
 
     path = if useImage then

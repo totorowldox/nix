@@ -4,6 +4,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
@@ -45,7 +46,8 @@
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
-  outputs = { nixpkgs, stylix, nix-gaming, home-manager, nur, ... }@inputs:
+  outputs = { nixpkgs, nixpkgs-unstable, stylix, nix-gaming, home-manager, nur
+    , ... }@inputs:
     let
       mkHost = { hostname, system ? "x86_64-linux" }:
         let
