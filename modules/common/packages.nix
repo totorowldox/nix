@@ -44,6 +44,7 @@
     notepad-next
     obs-studio
     loupe
+    peazip
 
     # SMS
     qq
