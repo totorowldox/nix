@@ -1,19 +1,25 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   # Network stuffs
   networking.networkmanager.enable = true;
   #networking.networkmanager.wifi.backend = "iwd";
+  networking.nftables.enable = true;
   networking.nameservers = [ "114.114.114.114" "8.8.8.8" ];
   networking.nat.enable = true; # Enable NAT for container
   networking.nat.internalInterfaces = [ "waydroid0" ];
 
-  environment.etc."resolv.conf".text = ''
-    nameserver 114.114.114.114
-    nameserver 8.8.8.8
-    options edns0
-  '';
+  # environment.etc."resolv.conf".text = ''
+  #   nameserver 114.114.114.114
+  #   nameserver 8.8.8.8
+  #   options edns0
+  # '';
 
   # Enable tailscale service
   services.tailscale.enable = true;
+  systemd.services.tailscaled.serviceConfig.Environment =
+    [ "TS_DEBUG_FIREWALL_MODE=nftables" ];
+  # Optimization: Prevent systemd from waiting for network online
+  systemd.network.wait-online.enable = false;
+  boot.initrd.systemd.network.wait-online.enable = false;
 
   # Enable bluetooth
   services.blueman.enable = true;
@@ -53,7 +59,9 @@
     enable = true;
 
     allowedTCPPorts = openToWANPorts;
-    allowedUDPPorts = openToWANPorts;
+    allowedUDPPorts = openToWANPorts ++ [ config.services.tailscale.port ];
+
+    trustedInterfaces = [ "tailscale0" ];
 
     # extraCommands = ''
     #   nft 'flush table inet nixos-fw'
