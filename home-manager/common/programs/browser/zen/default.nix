@@ -10,6 +10,7 @@
           browser = {
             tabs.warnOnClose = false;
             download.panel.shown = false;
+
           };
           "general.smoothScroll" = true;
         };
@@ -24,7 +25,6 @@
           "e122b5d9-d385-4bf8-9971-e137809097d0" # No Top Sites
           "f7c71d9a-bce2-420f-ae44-a64bd92975ab" # Better Unloaded Tabs
           "fd24f832-a2e6-4ce9-8b19-7aa888eb7f8e" # Quietify
-
         ];
         extensions.force = true;
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [

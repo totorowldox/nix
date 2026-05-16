@@ -7,6 +7,7 @@
     polarity = theme.colorScheme.polarity;
     fonts = theme.fonts;
     targets = {
+      neovim.enable = false;
       hyprlock.enable = false;
       hyprland.enable = true;
       yazi.enable = true;

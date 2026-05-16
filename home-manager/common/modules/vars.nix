@@ -1,7 +1,6 @@
 { lib, ... }: {
   home.sessionVariables = {
-    EDITOR = "code";
-    TERMNIAL = "kitty";
+    TERMINAL = "kitty";
     BROWSER = "zen-beta";
 
     NIXOS_OZONE_WL = "1";
