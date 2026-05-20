@@ -202,7 +202,13 @@
           default-column-width.proportion = 0.5;
         }
         {
-          matches = [{ app-id = "^(io.github.waylyrics.Waylyrics)$"; }];
+          matches = [
+            { app-id = "^(io.github.waylyrics.Waylyrics)$"; }
+            {
+              app-id = "SPlayer";
+              title = "SPlayer - 桌面歌词";
+            }
+          ];
           open-floating = true;
           open-focused = false;
           draw-border-with-background = false;

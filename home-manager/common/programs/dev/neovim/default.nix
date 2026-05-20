@@ -21,6 +21,8 @@
 
       # Formatter
       stylua
+
+      vimPlugins.nvim-treesitter.withAllGrammars
     ];
   };
 

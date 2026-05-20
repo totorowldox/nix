@@ -35,6 +35,8 @@
           scroll_anywhere
           tampermonkey
           ublock-origin
+          auto-tab-discard
+          sponsorblock
         ];
       };
     };

@@ -25,4 +25,18 @@
       };
     };
   };
+
+  programs.codex = {
+    enable = true;
+    settings = {
+      model = "gpt-5.5";
+      model_provider = "cli_proxy_api";
+      model_providers.cli_proxy_api = {
+        name = "CLI Proxy API";
+        base_url = "http://127.0.0.1:8317/v1";
+        env_key = "OPENAI_API_KEY";
+        wire_api = "responses";
+      };
+    };
+  };
 }
