@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  services.printing.enable = true;
+
   systemd.user.services.hyperhdr = {
     description = "HyperHDR service";
     serviceConfig = {

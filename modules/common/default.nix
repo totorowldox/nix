@@ -1,6 +1,9 @@
 {
 
   imports = [
+    ./nix.nix
+    ./locale.nix
+    ./appimage.nix
     ./bootloader.nix
     ./user.nix
     ./video.nix
