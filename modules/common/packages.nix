@@ -117,10 +117,11 @@
     #gnome-themes-extra
 
     # Screenshotting
-    grim
-    slurp
-    swappy
-    wayfreeze
+    # grim
+    # slurp
+    # swappy
+    # wayfreeze
+    gradia
 
     # Others
     home-manager

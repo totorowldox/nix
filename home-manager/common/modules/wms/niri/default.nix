@@ -162,15 +162,12 @@
           };
         }
         {
-          matches = [{ app-id = "^(imv)$"; }];
-          open-floating = true;
-        }
-        {
-          matches = [{ app-id = "^(org.gnome.Loupe)$"; }];
-          open-floating = true;
-        }
-        {
-          matches = [{ app-id = "^(mpv)$"; }];
+          matches = [
+            { app-id = "^(imv)$"; }
+            { app-id = "^(org.gnome.Loupe)$"; }
+            { app-id = "^(mpv)$"; }
+            { app-id = "^(be.alexandervanhee.gradia)"; }
+          ];
           open-floating = true;
         }
         {
@@ -354,10 +351,12 @@
           "niri msg action screenshot-screen --show-pointer=false --write-to-disk=false";
         "Mod+Print".action.spawn-sh =
           "niri msg action screenshot-window --write-to-disk=false";
-        "Mod+A".action.spawn-sh = ''
-          wayfreeze --hide-cursor & PID=$!; sleep .1; grim -g "$(slurp)" - | wl-copy; kill $PID'';
-        "Ctrl+Alt+A".action.spawn-sh =
-          "wl-paste --type image/png | swappy -f -";
+        # "Mod+A".action.spawn-sh = ''
+        #  wayfreeze --hide-cursor & PID=$!; sleep .1; grim -g "$(slurp)" - | wl-copy; kill $PID'';
+        "Mod+A".action.spawn-sh =
+          "niri msg action screenshot --show-pointer=false --path=/dev/null";
+        "Ctrl+Alt+A".action.spawn-sh = "wl-paste --type image/png | gradia";
+        #  "wl-paste --type image/png | swappy -f -";
 
         #"Ctrl+Alt+A".action.spawn-sh = ''grim -g "$(slurp)" - | swappy -f -'';
         #"Mod+A".action.spawn-sh = ''grim -g "$(slurp)" - | wl-copy'';

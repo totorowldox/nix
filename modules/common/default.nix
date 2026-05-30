@@ -3,7 +3,7 @@
   imports = [
     ./nix.nix
     ./locale.nix
-    ./appimage.nix
+    ./compatibility.nix
     ./bootloader.nix
     ./user.nix
     ./video.nix

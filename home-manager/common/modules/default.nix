@@ -8,5 +8,6 @@
     ./input.nix
     ./removable.nix
     ./vars.nix
+    ./default-apps.nix
   ];
 }
