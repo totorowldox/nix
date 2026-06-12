@@ -36,7 +36,7 @@
     libreoffice
     jiten # CLI Japanese dictionary
     nautilus # File manager
-    gedit # Text editor
+    geany # Text editor
     smile # Emoji picker
     musescore # Music score engraving app
     mission-center # Resource management

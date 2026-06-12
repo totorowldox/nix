@@ -27,7 +27,6 @@
         enable = true;
         profileNames = [ "remo" ];
       };
-      gedit.enable = true;
       gtk = {
         enable = true;
         flatpakSupport.enable = false; # Fix for flatpak packages (steam etc.)

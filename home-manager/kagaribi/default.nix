@@ -1,4 +1,5 @@
 { config, pkgs, lib, ... }: {
+  imports = [ ./programs ];
 
   home = {
     username = "remo";
