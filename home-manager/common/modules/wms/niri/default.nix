@@ -236,16 +236,7 @@
       ];
 
       spawn-at-startup = [
-        { argv = [ "swww-daemon" "-n" "niri" ]; }
-        {
-          argv = [
-            "swww"
-            "img"
-            "${vars.flakePath}/assets/nixos-anime-wallpaper.png"
-            "-n"
-            "niri"
-          ];
-        }
+        { argv = [ "awww-daemon" "-n" "niri" ]; }
         { argv = [ "swaync" ]; }
         {
           argv = [ "waybar" ];
@@ -264,7 +255,7 @@
         "Mod+V" = {
           repeat = false;
           action.spawn-sh =
-            "vicinae vicinae://extensions/vicinae/clipboard/history";
+            "vicinae deeplink vicinae://launch/clipboard/history";
         };
 
         "Mod+Return".action.spawn = "kitty";

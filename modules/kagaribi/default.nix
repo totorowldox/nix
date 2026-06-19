@@ -27,7 +27,7 @@ in {
       CPU_BOOST_ON_AC = 1;
 
       # 2. Balanced
-      CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
       CPU_MAX_PERF_ON_BAT = 70;
       CPU_BOOST_ON_BAT = 0;
@@ -52,6 +52,9 @@ in {
   # };
 
   boot.kernelParams = [
+    "quiet"
+    "splash"
+    "i8042.nopnp"
     "nvidia-drm.modeset=1"
     #  "amd_pstate=active"
   ];

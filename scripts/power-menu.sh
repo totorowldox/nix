@@ -2,10 +2,11 @@
 
 # [TODO] Implement power-saver when tlp updated to 1.9+
 
-current=$(tlp-stat -s | grep "Mode" | awk -F'= ' '{print $2}' || echo "unknown")
+current=$(tlp-stat -s | grep "Power profile" | awk -F'= ' '{print $2}' || echo "unknown")
 
 profiles="Performance:ac
 Balanced:bat
+Power-Saver:power-saver
 Auto:start"
 
 choice_label=$(echo "$profiles" | cut -d':' -f1 | vicinae dmenu --placeholder "Current TLP Mode: $current")

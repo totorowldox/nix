@@ -29,7 +29,7 @@
           icon_theme = "default";
         };
       };
-      launcher_window = { opacity = 0.98; };
+      # launcher_window = { opacity = 0.98; };
     };
     extensions =
       with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [

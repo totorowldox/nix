@@ -2,9 +2,14 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    # matchBlocks = {
+    #   "*" = {
+    #     identityAgent = "${config.home.homeDirectory}/.1password/agent.sock";
+    #   };
+    # };
+    settings = {
       "*" = {
-        identityAgent = "${config.home.homeDirectory}/.1password/agent.sock";
+        IdentityAgent = "${config.home.homeDirectory}/.1password/agent.sock";
       };
     };
     extraConfig = "";

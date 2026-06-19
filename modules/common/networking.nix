@@ -35,12 +35,12 @@
   };
 
   # Enable Sunshine service
-  services.sunshine = {
-    enable = true;
-    autoStart = true;
-    capSysAdmin = true;
-    openFirewall = true;
-  };
+  #  services.sunshine = {
+  #    enable = true;
+  #    autoStart = true;
+  #    capSysAdmin = true;
+  #    openFirewall = true;
+  #  };
 
   services.udev.extraRules = ''
     KERNEL=="uinput", MODE="0660", GROUP="input", SYMLINK+="uinput"

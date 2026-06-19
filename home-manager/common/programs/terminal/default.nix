@@ -6,5 +6,6 @@
     cava.enable = true;
     imv.enable = true;
     yazi.enable = true;
+    yazi.shellWrapperName = "yy";
   };
 }

@@ -1,4 +1,4 @@
-{
+{ inputs, ... }: {
   nix.settings = {
     builders-use-substitutes = true;
 
@@ -17,4 +17,7 @@
 
     experimental-features = [ "nix-command" "flakes" ];
   };
+
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 }

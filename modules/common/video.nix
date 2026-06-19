@@ -9,7 +9,7 @@
 
   # Enable the GDM
   services.displayManager.gdm.enable = true;
-  services.displayManager.gdm.wayland = true;
+  # services.displayManager.gdm.wayland = true;
   services.desktopManager.gnome.enable = false;
 
   # Enable COSMIC DE
@@ -43,7 +43,7 @@
   xdg.portal.config = {
     common.default = "*";
     niri = {
-      default = [ "gnome" ];
+      # default = [ "gnome" ];
       # ScreenCast is specifically required for niri to work with GNOME's portal
       "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
       "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
