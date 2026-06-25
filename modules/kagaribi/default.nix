@@ -52,8 +52,6 @@ in {
   # };
 
   boot.kernelParams = [
-    "quiet"
-    "splash"
     "i8042.nopnp"
     "nvidia-drm.modeset=1"
     #  "amd_pstate=active"

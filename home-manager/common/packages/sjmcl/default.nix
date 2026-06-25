@@ -10,7 +10,12 @@ pkgs.stdenv.mkDerivation rec {
     hash = "sha256-hYzb5rxN49NZfUCpnublQChn9eekfeYsdE5LreeZULg=";
   };
 
-  nativeBuildInputs = with pkgs; [ dpkg autoPatchelfHook wrapGAppsHook4 ];
+  nativeBuildInputs = with pkgs; [
+    dpkg
+    autoPatchelfHook
+    wrapGAppsHook4
+    makeWrapper
+  ];
 
   buildInputs = with pkgs; [
     glib # Provides libglib-2.0, libgobject-2.0, libgio-2.0
@@ -29,5 +34,24 @@ pkgs.stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out
     cp -r unpack/usr/* $out/
+
+    # makeWrapper 在它外面套一层壳
+    wrapProgram $out/bin/SJMCL \
+      --prefix LD_LIBRARY_PATH : "${
+        pkgs.lib.makeLibraryPath [
+          pkgs.glfw
+          pkgs.mesa
+          pkgs.libglvnd
+          pkgs.xorg.libX11
+          pkgs.xorg.libXcursor
+          pkgs.xorg.libXrandr
+          pkgs.xorg.libXi
+          pkgs.xorg.libXext
+          pkgs.xorg.libXxf86vm
+          pkgs.stdenv.cc.cc.lib
+          pkgs.alsa-lib
+          pkgs.libpulseaudio
+        ]
+      }:/run/opengl-driver/lib" # 这一行非常重要！它直接指向 NixOS 系统的当前显卡驱动目录
   '';
 }

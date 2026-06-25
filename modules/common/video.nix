@@ -7,8 +7,11 @@
   services.xserver.enable = true;
   services.xserver.desktopManager.wallpaper.mode = "fill";
 
-  # Enable the GDM
-  services.displayManager.gdm.enable = true;
+  # Disable the grumpy GDM
+  services.displayManager.gdm.enable = false;
+  # Enable a lightweight alternative instead!
+  services.displayManager.ly.enable = true;
+
   # services.displayManager.gdm.wayland = true;
   services.desktopManager.gnome.enable = false;
 
