@@ -4,6 +4,7 @@
       width = 1920;
       height = 1080;
       refresh = 165.0;
+      vrr = false;
       position = {
         x = 0;
         y = 0;

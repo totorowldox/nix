@@ -5,6 +5,7 @@ in {
       width = 2560;
       height = 1600;
       refresh = 180.0;
+      vrr = true;
       position = {
         x = 2560;
         y = 720;
@@ -14,6 +15,7 @@ in {
       width = 2560;
       height = 1440;
       refresh = 143.981;
+      vrr = false;
       position = {
         x = 0;
         y = 0;

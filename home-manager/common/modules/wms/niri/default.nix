@@ -55,6 +55,7 @@
           refresh = value.refresh;
         };
         position = value.position;
+        variable-refresh-rate = value.vrr;
         focus-at-startup = value ? default;
       }) vars.config.displays;
 
