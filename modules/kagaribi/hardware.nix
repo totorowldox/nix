@@ -39,7 +39,7 @@
   # boot.extraModprobeConfig = ''
   #   options nvidia_modeset vblank_sem_control = 0 nvidia NVreg_PreserveVideoMemoryAllocations = 1 NVreg_TemporaryFilePath = /var/tmp
   # '';
-  #boot.kernelModules = [ "nvidia_uvm" "nvidia_modeset" "nvidia_drm" "nvidia" ];
+  boot.kernelModules = [ "nvidia_uvm" "nvidia_modeset" "nvidia_drm" "nvidia" ];
 
   fileSystems."/media/windows/c" = {
     device = "/dev/disk/by-uuid/227CBA057CB9D42F";

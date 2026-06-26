@@ -42,8 +42,6 @@
 
     vicinae.url = "github:vicinaehq/vicinae";
     vicinae-extensions.url = "github:vicinaehq/extensions";
-
-    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
   outputs = { nixpkgs, nixpkgs-unstable, stylix, nix-gaming, home-manager, nur
@@ -64,8 +62,6 @@
             { nixpkgs.overlays = [ nur.overlays.default ]; }
 
             stylix.nixosModules.stylix
-
-            inputs.minegrub-theme.nixosModules.default
 
             ./hosts/${hostname}
             ./modules/common

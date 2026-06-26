@@ -29,12 +29,5 @@
       save_default
     '';
     devices = [ "nodev" ];
-    minegrub-theme = {
-      enable = true;
-      splash = "100% Declarative!";
-      background = "background_options/1.8  - [Classic Minecraft].png";
-      boot-options-count = 4;
-    };
   };
-  stylix.targets.grub.enable = false;
 }
