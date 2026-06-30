@@ -5,7 +5,7 @@ let
     config.allowUnfree = true;
   };
 in {
-  imports = [ ./hardware.nix ./packages.nix ];
+  imports = [ ./hardware.nix ./packages.nix ./specialisation.nix ];
 
   # Powersaving matters!
   services.power-profiles-daemon.enable = false;

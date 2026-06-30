@@ -1,11 +1,11 @@
 let defaultProtonVersion = "dwproton-10.0-24";
 in {
   displays = {
-    "eDP-1" = {
+    "eDP-2" = {
       width = 2560;
       height = 1600;
       refresh = 180.0;
-      vrr = true;
+      vrr = false;
       position = {
         x = 2560;
         y = 720;
