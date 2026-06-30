@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, config, lib, ... }:
 let
   unstable-pkgs = import inputs.nixpkgs-unstable {
     system = "x86_64-linux";
@@ -65,4 +65,6 @@ in {
   boot.extraModprobeConfig = ''
     options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp
   '';
+
+  time.timeZone = lib.mkForce "Asia/Tokyo";
 }
